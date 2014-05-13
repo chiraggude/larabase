@@ -22,7 +22,7 @@ class RemindersController extends Controller {
 		switch ($response = Password::remind(Input::only('email')))
 		{
 			case Password::INVALID_USER:
-				return Redirect::back()->with('error', Lang::get($response));
+				return Redirect::back()->withError(Lang::get($response));
 
 			case Password::REMINDER_SENT:
 				return Redirect::back()->withSuccess(Lang::get($response));
