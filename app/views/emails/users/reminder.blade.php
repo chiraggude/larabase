@@ -7,8 +7,8 @@
 		<h2>Password Reset</h2>
 
             <p>Hello {{ $user->username }},</p>
-
-            <b>Access the following link to change your password</b>
+            
+            <b>If you are having problems accessing your account, reset your password by clicking the button below:</b>
 
             {{ URL::to('password/reset', array($token)) }}
 
