@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html lang="en-US">
-	<head>
-		<meta charset="utf-8">
-	</head>
-	<body>
-		<h2>Password Reset</h2>
+@extends('layouts.emails.master')
+@section('content')
 
-            <p>Hello {{ $user->username }},</p>
+    <h1>Hi, {{ $user->username }}</h1>
+    <p class="lead">We have sent you this email because you requested a password reset for your account at LaraBase</p>
 
-            <b>Access the following link to change your password</b>
+    <h2>Reset your Password</h2>
+    <p>Access the following link to change your password</p>
+    <a class="btn" href="{{ URL::to('password/reset', array($token)) }}">Reset your password now</a>
 
-            {{ URL::to('password/reset', array($token)) }}
+    <p>Thanks</p>
+    <p>LaraBase</p>
 
-            <p>Thanks</p>
-            <p>Team Turizon</p>
+    <br/>
+    <br/>
 
-	</body>
-</html>
+@stop
