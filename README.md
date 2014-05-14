@@ -3,6 +3,9 @@ LaraBase
 
 A Base app for developing Laravel projects
 
+## Features
+Coming soon...
+
 ## Installation and Setup
 
 ### Step 1 - Get LaraBase
@@ -32,6 +35,15 @@ If you have seeded the database, you can Login at: [http://localhost/larabase/pu
 `Email: admin@gmail.com   Password: password`
 
 **Note**: The URL's depends on how you have configured your webserver.
+
+## Feature Roadmap
+Coming soon...
+
+## Pending
+Code refactoring (reduce ickiness)
+Nicer email templates
+Make code base more generic 
+Live Demo 
 
 ## Requirements
 * PHP >= 5.4.0
