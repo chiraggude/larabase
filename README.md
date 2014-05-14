@@ -21,14 +21,14 @@ composer install
 **Mail**: Configure your mail settings in `/app/config/mail.php`
 
 ### Step 4: Database Migrations and Seeding
-**Setup migrations table in DB**: `php artisan migrate`
+Setup migrations table in DB: `php artisan migrate`
 
-**Seed the database**: `php artisan db:seed`
+Seed the database: `php artisan db:seed`
 
 ### Step 5: Start using LaraBase
-[http://localhost/larabase/public](http://localhost/larabase/public)
+LaraBase Login: [http://localhost/larabase/public](http://localhost/larabase/public)
 
-**If you have seeded the database, you can Login at**: [http://localhost/larabase/public/login](http://localhost/larabase/public/login)
+If you have seeded the database, you can Login at: [http://localhost/larabase/public/login](http://localhost/larabase/public/login)
 `Email: admin@gmail.com   Password: password`
 
 Note: The URL's depends on how you have configured your webserver. 
