@@ -31,4 +31,9 @@ LaraBase Login: [http://localhost/larabase/public](http://localhost/larabase/pub
 If you have seeded the database, you can Login at: [http://localhost/larabase/public/login](http://localhost/larabase/public/login)
 `Email: admin@gmail.com   Password: password`
 
-Note: The URL's depends on how you have configured your webserver. 
+**Note**: The URL's depends on how you have configured your webserver.
+
+## Requirements
+* PHP >= 5.4.0
+* MCrypt PHP Extension
+* Composer
