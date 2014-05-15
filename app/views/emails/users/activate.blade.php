@@ -1,15 +1,18 @@
 @extends('layouts.emails.master')
 @section('content')
 
-		<h2>Account Activation</h2>
+    <h1>Hi, {{ $username }}</h1>
+        <p>Thanks for creating a new account at LaraBase</p>
 
-            <p> Hello, {{ $username }},</p>
+    <h2>Account Activation</h2>
+        <p>Please access the link below to activate your account.</p>
+        <strong><a href="{{ $link }}">Activate your Account</a></strong>
 
-            <b>Please access the link below to activate your account.</b>
-
-            {{ $link }}
-
-            <p>Thanks</p>
-            <p>LaraBase</p>
+    <br/>
+    <br/>
+    <p>Thanks</p>
+    <p>LaraBase</p>
+    <br/>
+    <br/>
 
 @stop
