@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="en-US">
-	<head>
-		<meta charset="utf-8">
-	</head>
-	<body>
+@extends('layouts.emails.master')
+@section('content')
+
 		<h2>Account Activation</h2>
 
             <p> Hello, {{ $username }},</p>
@@ -13,7 +10,6 @@
             {{ $link }}
 
             <p>Thanks</p>
-            <p>Team Turizon</p>
+            <p>LaraBase</p>
 
-	</body>
-</html>
+@stop
