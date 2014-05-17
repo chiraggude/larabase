@@ -109,11 +109,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         'password_confirm' => 'required|same:password'
     ];
 
-    // Add your validation rules for user profile
-    public static $profile_rules = [
-        'first_name'  => 'min:2',
-        'last_name'  => 'min:2'
-    ];
 
     // Add your validation rules for user initiated password change
     public static $change_password_rules = [
@@ -132,8 +127,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return Validator::make($data, static::$registration_rules);
     }
 
-    public static function validate_profile($data){
-        return Validator::make($data, static::$profile_rules);
+    public static function validate_profile($data, $user){
+        $profile_rules = [
+            'first_name'  => 'min:2',
+            'last_name'  => 'min:2',
+            'username'  => 'required|min:3|unique:users,username,'.$user->id,
+            'email' => 'required|email|unique:users,email,'.$user->id
+        ];
+        return Validator::make($data, $profile_rules);
     }
 
     public static function validate_change_password($data){
