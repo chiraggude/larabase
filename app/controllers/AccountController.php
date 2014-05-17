@@ -39,13 +39,15 @@ class AccountController extends \BaseController {
     {
         $user = Auth::user();
         $data = Input::all();
-        $user->first_name = $data['first_name'];
-        $user->last_name = $data['last_name'];
-        $validator = User::validate_profile($data);
+        $validator = User::validate_profile($data, $user);
         if ($validator->fails())
         {
             return Redirect::intended('profile/edit')->withInput(Input::except('password'))->withErrors($validator);
         }
+        $user->first_name = $data['first_name'];
+        $user->last_name = $data['last_name'];
+        $user->username = $data['username'];
+        $user->email = $data['email'];
         $user->save();
         return Redirect::to('profile')->withSuccess('Profile was updated successfully');
     }
