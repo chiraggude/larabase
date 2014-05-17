@@ -42,7 +42,7 @@ class AccountController extends BaseController {
         $validator = User::validate_profile($data, $user);
         if ($validator->fails())
         {
-            return Redirect::intended('profile/edit')->withInput(Input::except('password'))->withErrors($validator);
+            return Redirect::back()->withInput(Input::except('password'))->withErrors($validator);
         }
         $user = Auth::user()->update($data);
         return Redirect::to('profile')->withSuccess('Profile was updated successfully');
