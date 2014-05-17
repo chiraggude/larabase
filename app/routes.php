@@ -26,7 +26,6 @@ Route::group(['before' => 'auth'], function()
     });
 });
 
-
 // Only Guests can access these Routes
 Route::group(['before' => 'guest'], function()
 {
@@ -41,7 +40,6 @@ Route::group(['before' => 'guest'], function()
         Route::post('register',               'AuthController@processRegister');
     });
 });
-
 
 // Public Routes
 Route::get('/',             'HomeController@home');

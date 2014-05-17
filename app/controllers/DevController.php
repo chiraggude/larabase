@@ -10,7 +10,6 @@ class DevController extends BaseController { // For Developers only
         return View::make('hello');
     }
 
-
     // Check hashed password against DB
 
     public function password()
