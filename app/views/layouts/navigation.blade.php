@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            {{ HTML::link('/', 'PROJECT X', array('class' => 'navbar-brand')) }}
+            {{ HTML::link('/', 'LARABASE', array('class' => 'navbar-brand')) }}
         </div>
 
         <div class="navbar-collapse collapse">
