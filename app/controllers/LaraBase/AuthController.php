@@ -52,7 +52,6 @@ class AuthController extends BaseController {
     {
         $data = Input::all();
         $validator = User::validate_login($data);
-
         if ($validator->fails())
         {
          return Redirect::back()->withErrors($validator)->withInput(Input::except('password'));
@@ -62,7 +61,7 @@ class AuthController extends BaseController {
             if ( $user->activated == false)         {
                 return Redirect::back()->withWarning('Account Activation is pending. We have already sent you an Activation Email. Resend activation email');
             }
-            $auth_attempt = Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password')), Input::get('remember'));
+            $auth_attempt = Auth::attempt(['email' => Input::get('email'), 'password' => Input::get('password')], Input::get('remember'));
             if ($auth_attempt) {
                 return Redirect::intended('dashboard');
             }

@@ -1,6 +1,6 @@
 <?php
 
-class AccountController extends \BaseController {
+class AccountController extends BaseController {
 
 	/** Show Account Settings  */
 	public function settings()
@@ -53,8 +53,6 @@ class AccountController extends \BaseController {
 
     public function passwordChange()
     {
-        /*$user = Auth::user();
-        return View::make('auth.password_change', compact('user'));*/
         return View::make('auth.password_change');
     }
 
@@ -81,7 +79,7 @@ class AccountController extends \BaseController {
                 }
                 $user->password = Hash::make($new_password);
                 $user->save();
-                return Redirect::action('AccountController@profile')->withSuccess('Your Password was changed Successfully!');
+                return Redirect::to('profile')->withSuccess('Your Password was changed Successfully!');
             }
             return Redirect::back()->withError('Your Current Password is incorrect');
         }

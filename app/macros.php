@@ -1,6 +1,5 @@
 <?php
 
-
 Form::macro('textField', function($name, $label, $placeholder)
 {
     $value = Form::getValueAttribute($name); // Get old form input type field (Does not work on textarea, select)
@@ -49,3 +48,5 @@ if (! function_exists ( 'errorClass' )) {
         return $error;
     }
 }
+
+
