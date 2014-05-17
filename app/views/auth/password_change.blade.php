@@ -13,11 +13,10 @@
 
     {{ Form::passwordField('new_password_confirmation', 'Confirm New Password', null) }}
 
-    <div class="form-group">
-        {{ Form::submit('Save new Password', array('class' => 'btn btn-primary')) }}
-    </div>
-
+    {{ Form::submitField('Save new Password', 'btn btn-primary') }}
 
     {{ Form::close() }}
+
 </div>
+
 @stop
