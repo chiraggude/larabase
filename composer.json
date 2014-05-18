@@ -24,10 +24,12 @@
 			"app/database/seeds",
 			"app/tests/TestCase.php"
 		],
-
         "psr-4": {
             "LaraBase\\": "app/LaraBase"
-        }
+        },
+        "files": [
+            "app/LaraBase/helpers.php"
+        ]
 	},
 
 	"scripts": {
