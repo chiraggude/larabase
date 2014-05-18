@@ -44,7 +44,7 @@ class AccountController extends BaseController {
         {
             return Redirect::back()->withInput()->withErrors($validator);
         }
-        $user = Auth::user()->update($data);
+        $user->update($data);
         return Redirect::to('profile')->withSuccess('Profile was updated successfully');
     }
 
