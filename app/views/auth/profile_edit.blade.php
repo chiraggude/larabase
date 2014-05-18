@@ -5,7 +5,7 @@
 
 <div class="col-md-6">
 
-{{Form::model($user, array('action'=> array('AccountController@profileSave','$user->id'),'class' => 'form-horizontal'))}}
+    {{ Form::model($user, ['action'=> ['AccountController@profileSave'],'class' => 'form-horizontal']) }}
 
     {{ Form::textField('first_name', 'First Name', '') }}
 
@@ -15,10 +15,10 @@
 
     {{ Form::emailField('email', 'Email', '') }}
 
-    <div class="form-group">
-    {{ Form::submit('Save Profile', array('class' => 'btn btn-primary')) }}
-    </div>
+    {{ Form::submitField('Save Profile', 'btn btn-primary') }}
 
-{{ Form::close() }}
+    {{ Form::close() }}
+
 </div>
+
 @stop

@@ -34,7 +34,7 @@ class AccountController extends BaseController {
     }
 
 
-    /** Save Changes to User Profile  */
+    // Save Changes to User Profile
     public function profileSave()
     {
         $user = Auth::user();
