@@ -4,6 +4,7 @@
 <h1>Register</h1>
 
 <div class="col-md-6">
+
 {{ Form::open(array('action' => 'AuthController@processRegister','class' => 'form-horizontal')) }}
 
     {{ Form::textField('username', 'Username', null) }}
@@ -14,10 +15,10 @@
 
     {{ Form::passwordField('password_confirm', 'Confirm your Password', null) }}
 
-    <div class="form-group">
-    {{ Form::submit('Create new Account', array('class' => 'btn btn-primary')) }}
-    </div>
+    {{ Form::submitField('Create new Account', 'btn btn-primary') }}
 
 {{ Form::close() }}
+
 </div>
+
 @stop
