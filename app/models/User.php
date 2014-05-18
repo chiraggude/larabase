@@ -85,8 +85,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      *
      */
 
-    // data entities that can be saved to the database eg: title, content (leave empty for all)
-    protected $fillable = ['username','email', 'password'];
+    // data entities that can be saved to the database via Mass Assginments
+    protected $fillable = ['username','email','password','first_name','last_name'];
 
     // Method (a.k.a laravel mutator) to automatically hash the password whenever it is saved to DB (via migrations, controllers etc.)
     // Commented out because some passwords were hashed twice. Before uncommenting remove all mentions of Hash::make across codebase
