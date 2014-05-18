@@ -2,6 +2,7 @@
 
 class Report extends \Eloquent {
 
+
 	// Add your validation rules for this Model
 	public static $rules = [
         'title' => 'required|min:3',

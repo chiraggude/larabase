@@ -48,8 +48,8 @@ class ReportsController extends \BaseController {
 	public function show($id)
 	{
 		$report = Report::findOrFail($id);
-
-		return View::make('reports.show', compact('report'));
+        $user = User::findOrFail($report->user_id);
+		return View::make('reports.show', compact('report', 'user'));
 	}
 
 	/**

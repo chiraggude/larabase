@@ -13,7 +13,7 @@ class ReportsTableSeeder extends Seeder {
 		foreach(range(1, 20) as $index)
 		{
             Report::create([
-            'user_id' => 1,
+            'user_id' => $faker->randomNumber(1,3),
             'title'=> $faker->paragraph(1),
             'content'=> $faker->paragraph(40),
             'category'=> $faker->word(1),
