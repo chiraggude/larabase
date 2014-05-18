@@ -28,7 +28,6 @@ class AuthController extends BaseController {
         $user->activation_code = $code;
         $user->activated =  0;
         $user->save();
-        //$user = User::create($data);
         //$user->email is out of scope for the mail closure, hence to access it, we have defined "use ($user)"
         Mail::send('emails.users.activate', ['link' => URL::route('activate', $code), 'username' => Input::get('username')], function($message) use ($user) {
             $message->to($user->email, $user->username)->subject('Activate Your Account');

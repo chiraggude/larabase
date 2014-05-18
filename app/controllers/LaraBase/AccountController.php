@@ -2,14 +2,17 @@
 
 class AccountController extends BaseController {
 
-	/** Show Account Settings  */
+    //  Show Account Settings
+
 	public function settings()
 	{
         $user = Auth::user();
         return View::make('auth.settings', compact('user'));
 	}
 
-    /** Show User Dashboard  */
+
+    //  Show User Dashboard
+
     public function dashboard()
     {
         $user = Auth::user();
@@ -17,7 +20,8 @@ class AccountController extends BaseController {
     }
 
 
-    /** Show User Profile  */
+    //  Show User Profile
+
     public function profile()
     {
         $user = Auth::user();
@@ -26,7 +30,8 @@ class AccountController extends BaseController {
     }
 
 
-    /** Edit User Profile  */
+    // Edit User Profile
+
     public function profileEdit()
     {
         $user = Auth::user();
@@ -35,6 +40,7 @@ class AccountController extends BaseController {
 
 
     // Save Changes to User Profile
+
     public function profileSave()
     {
         $user = Auth::user();

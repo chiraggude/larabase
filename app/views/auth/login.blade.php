@@ -1,9 +1,11 @@
 @extends('layouts.master')
 @section('content')
+
 <h1>Login</h1>
+
 <div class="col-md-6">
 
-{{ Form::open(array('action'=>'AuthController@processLogin', 'class' => 'form-horizontal')) }}
+    {{ Form::open(array('action'=>'AuthController@processLogin', 'class' => 'form-horizontal')) }}
 
     {{ Form::emailField('email', 'Email', null) }}
 
@@ -19,6 +21,8 @@
     <a href="{{ URL::to('register') }}" class="btn btn-success pull-right">Sign up for new account</a>
     </div>
 
-{{ Form::close() }}
+    {{ Form::close() }}
+
 </div>
+
 @stop
