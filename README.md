@@ -25,7 +25,15 @@ Setup migrations table in DB: `php artisan migrate`
 
 Seed the database: `php artisan db:seed`
 
-### Step 5: Start using LaraBase
+### Step 5: Setup Development Tools (optional)
+Autoload the following Service Providers in `/app/config/app.php`
+```
+'Way\Generators\GeneratorsServiceProvider',
+'Barryvdh\Debugbar\ServiceProvider',
+```
+It is good practice to maintain different configurations for Local Development, Staging and Production. To set this up, read this short guide: [Configurations & Environments](https://github.com/chiraggude/larabase/wiki/Development-Environments-and-Configuration-in-Laravel)
+
+### Step 6: Start using LaraBase
 LaraBase Login: [http://localhost/larabase/public](http://localhost/larabase/public)
 
 If you have seeded the database, you can Login at: [http://localhost/larabase/public/login](http://localhost/larabase/public/login)
