@@ -3,6 +3,15 @@ LaraBase
 
 A Base app for developing Laravel projects
 
+#### User Authentication
+* User Registration & Login 
+* Email Activation: An account activation email is sent the user's email for verification
+* Password Reset: Resets the user password after sends reset instructions to the user's email
+* User Profile: Users have a Public and Private profile (editable)
+* Change Password: User can change password while logged in (from profile - to be moved to settings)
+* Unique validation rules for login and registration
+* More Coming soon...
+
 ## Installation and Setup
 
 ### Step 1 - Get LaraBase
@@ -40,17 +49,6 @@ If you have seeded the database, you can Login at: [http://localhost/larabase/pu
 `Email: admin@gmail.com   Password: password`
 
 **Note**: The URL's depends on how you have configured your webserver.
-
-## Features
-
-#### User Authentication
-* User Registration & Login 
-* Email Activation: An account activation email is sent the user's email for verification
-* Password Reset: Resets the user password after sends reset instructions to the user's email
-* User Profile: Users have a Public and Private profile (editable)
-* Change Password: User can change password while logged in (from profile - to be moved to settings)
-* Unique validation rules for login and registration
-* More Coming soon...
 
 ## Upcoming Features
 * Allow users to destroy their account (soft delete)
