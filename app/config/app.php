@@ -120,6 +120,8 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
         // LaraBase
+        'Way\Generators\GeneratorsServiceProvider',
+        'Barryvdh\Debugbar\ServiceProvider',
 
 	),
 
@@ -187,8 +189,6 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
         // LaraBase
-        'Way\Generators\GeneratorsServiceProvider',
-        'Barryvdh\Debugbar\ServiceProvider',
 
 	),
 
