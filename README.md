@@ -52,7 +52,15 @@ If you have seeded the database, you can Login at: [http://localhost/larabase/pu
 
 ## Upcoming Features
 * Allow users to destroy their account (soft delete)
-Coming soon...
+* Profile Pictures via Gravatar
+* OAuth 1 & 2 - Login via FaceBook, Twitter, LinkedIn, Google, Microsoft, GitHub
+* Manages generating and clearing a token for remembering the user from a saved cookie. (Recheck)
+* Tracks sign in count, last login,  timestamps and IP address.
+* Expires sessions that have no activity in a specified period of time.
+* Login Throttling: Locks an account after a specified number of failed sign-in attempts. Can unlock via email or after a specified time period.
+* User Management - User suspension, banning, allow users to delete account
+* Roles – Super Admin, Group Admin, Users
+* Permissions - Manage Everything, Manage a group of users, manage only themselves
 
 ## Pending
 * Code refactoring (reduce ickiness)
