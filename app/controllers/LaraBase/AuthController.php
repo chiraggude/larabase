@@ -51,24 +51,23 @@ class AuthController extends BaseController {
     {
         $data = Input::all();
         $validator = User::validate_login($data);
-        if ($validator->fails())
-        {
-         return Redirect::back()->withErrors($validator)->withInput(Input::except('password'));
+        if ($validator->fails())    {
+            return Redirect::back()->withErrors($validator)->withInput(Input::except('password'));
         }
         else {
             $user = User::where('email', '=', Input::get('email'))->first();
-            if ( $user->activated == false)         {
-                return Redirect::back()->withWarning('Account Activation is pending. We have already sent you an Activation Email. Resend activation email');
+            if ( ! $user == null) {  // Check if user in DB
+                if ( $user->activated == 0)  {  // Check if user is activated
+                    return Redirect::back()->withWarning('Account Activation is pending. We have already sent you an Activation Email. Resend activation email');
+                }
+                $attempt = Auth::attempt(['email' => $data['email'], 'password' => $data['password']], Input::get('remember'));
+                if ( $attempt == true) {  // Check if user was authenticated
+                    return Redirect::intended('dashboard')->withSuccess('Your have successfully logged in!');
+                }
+                return Redirect::back()->withInput(Input::except('password'))->withError('Invalid Credentials! Your email or password is incorrect.');
             }
-            $auth_attempt = Auth::attempt(['email' => Input::get('email'), 'password' => Input::get('password')], Input::get('remember'));
-            if ($auth_attempt) {
-                return Redirect::intended('dashboard');
-            }
-            else {
-                return Redirect::action('AuthController@login')->withInput(Input::except('password'))->withError('Invalid Credentials! Your email or password is incorrect.');
-            }
+            return Redirect::back()->withInput(Input::except('password'))->withError('Invalid Credentials! Your email or password is incorrect.');
         }
-        return Redirect::action('AuthController@login')->withInput(Input::except('password'))->withError('Something went wrong');
     }
 
 
