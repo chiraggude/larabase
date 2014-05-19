@@ -83,9 +83,9 @@ require app_path().'/filters.php';
 
 /*
 |--------------------------------------------------------------------------
-| CPG Extras
+| LaraBase
 |--------------------------------------------------------------------------
 */
 
-require app_path().'/events.php';
-require app_path().'/macros.php';
+require app_path().'/LaraBase/events.php';
+require app_path().'/LaraBase/macros.php';
