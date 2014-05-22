@@ -1,15 +1,19 @@
 LaraBase
 ========
 
-A Base app for developing Laravel projects
+LaraBase is a starter app for speeding up the development of Laravel projects. With basic knowledge of Laravel, LaraBase can be adapted and customized to your needs. The frontend of LaraBase was built with Bootstrap 3 and the authentican system was built in such a way that you could use it right away or modify AuthController.php to change the control flow. As far as possible, external packages were not used with the exception of [Generators](https://github.com/JeffreyWay/Laravel-4-Generators) and [Debugbar](https://github.com/barryvdh/laravel-debugbar)
 
-#### User Authentication
-* User Registration & Login 
+#### Live Demo (Coming soon)
+
+## Features
+* Home page, About Page
+* User Registration & Login/Logout 
 * Email Activation: An account activation email is sent the user's email for verification
 * Password Reset: Resets the user password after sends reset instructions to the user's email
 * User Profile: Users have a Public and Private profile (editable)
 * Change Password: User can change password while logged in (from profile - to be moved to settings)
-* Unique validation rules for login and registration
+* Unique Validation Rules for login and registration
+* List of all Users with liks to their Public Profiles
 * More Coming soon...
 
 ## Installation and Setup
@@ -51,6 +55,8 @@ If you have seeded the database, you can Login at: [http://localhost/larabase/pu
 **Note**: The URL's depends on how you have configured your webserver.
 
 ## Upcoming Features
+* Fully working Contact Form 
+* News, FAQ's Page
 * Allow users to destroy their account (soft delete)
 * Profile Pictures via Gravatar
 * OAuth 1 & 2 - Login via FaceBook, Twitter, LinkedIn, Google, Microsoft, GitHub
