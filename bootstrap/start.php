@@ -24,13 +24,16 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-$env = $app->detectEnvironment(array(
+/*$env = $app->detectEnvironment(array(
+	'local' => array('local-hostname'),
+    'staging' => array('staging-server-hostname'),
+    'production' => array('production-server-hostname'),
+));*/
 
-	'local' => array('CPG-PC'),
-    'staging' => array('staging-server-name'),
-    'production' => array('production-server-name'),
-
-));
+$env = $app->detectEnvironment(function()
+{
+    return getenv('SERVER-ENV') ?: 'development'; // Set Server Environment variable, if not specified set environment to development
+});
 
 /*
 |--------------------------------------------------------------------------

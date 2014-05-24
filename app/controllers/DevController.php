@@ -1,13 +1,15 @@
 <?php
 
-class DevController extends BaseController { // For Developers only
+class DevController extends BaseController {
 
 
     // Laravel Start page with DB connection check
 
     public function hello()
     {
-        return View::make('hello');
+        $environment = App::environment();
+        $database = DB::connection()->getDatabaseName();
+        return View::make('hello', compact('environment', 'database'));
     }
 
     // Check hashed password against DB
