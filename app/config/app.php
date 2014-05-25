@@ -78,7 +78,7 @@ return array(
 	|
 	*/
 
-	'key' => 'YqINWU84M9UxilfY2hDv9Uy6rtmfcWBp',
+	'key' => getenv('APP_ENCRYPT_KEY'), // 'your-app-key',
 
 	/*
 	|--------------------------------------------------------------------------

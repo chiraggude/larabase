@@ -32,7 +32,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(function()
 {
-    return getenv('SERVER-ENV') ?: 'development'; // Set Server Environment variable, if not specified set environment to development
+    return getenv('SERVER_ENV') ?: 'local'; // Set Server Environment variable, if not specified set environment to local
 });
 
 /*

@@ -9,7 +9,7 @@ class DevController extends BaseController {
     {
         $environment = App::environment();
         $database = DB::connection()->getDatabaseName();
-        return View::make('hello', compact('environment', 'database'));
+        return View::make('hello', compact('environment','database'));
     }
 
     // Check hashed password against DB
