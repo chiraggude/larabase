@@ -21,6 +21,7 @@
 
         <h4 class="text-muted">Account Created: {{ $user->created_at->toDayDateTimeString() }} ({{ $user->created_at->diffForHumans() }})</h4>
         <h4 class="text-muted">Last Updated: {{ $user->updated_at->toDayDateTimeString() }} ({{ $user->updated_at->diffForHumans() }})</h4>
+        <h4 class="text-muted">Current Time: {{ Carbon\Carbon::now()->toTimeString() }}</h4>
     </div>
 </div>
 @stop

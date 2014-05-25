@@ -24,12 +24,6 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-/*$env = $app->detectEnvironment(array(
-	'local' => array('local-hostname'),
-    'staging' => array('staging-server-hostname'),
-    'production' => array('production-server-hostname'),
-));*/
-
 $env = $app->detectEnvironment(function()
 {
     return getenv('APP_ENV') ?: 'local'; // Set the server Environment variable, if not specified set environment to local
