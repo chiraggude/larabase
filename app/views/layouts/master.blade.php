@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PROJECT X</title>
+    <title>LaraBase</title>
 
-    {{ HTML::style('css/project-x.css') }}
+    {{ HTML::style('css/larabase.css') }}
     {{ HTML::style('css/flatty.min.css') }}
     {{ HTML::style('css/font-awesome.min.css') }}
 
@@ -34,7 +34,7 @@
 </body>
 
 {{ HTML::script('js/jquery-1.11.0.min.js') }}
-{{ HTML::script('js/project-x.js') }}
+{{ HTML::script('js/larabase.js') }}
 {{ HTML::script('js/bootstrap.min.js') }}
 {{ HTML::script('js/analytics.js') }}
 
