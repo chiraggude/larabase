@@ -3,7 +3,7 @@ LaraBase
 
 LaraBase is a starter app for speeding up the development of Laravel projects. With basic knowledge of Laravel, LaraBase can be adapted and customized to your needs. The frontend of LaraBase was built with Bootstrap 3 and the authentican system was built in such a way that you could use it right away or modify AuthController.php to change the control flow. As far as possible, external packages were not used with the exception of [Generators](https://github.com/JeffreyWay/Laravel-4-Generators) and [Debugbar](https://github.com/barryvdh/laravel-debugbar)
 
-#### [Live Demo](http://larabase.turizon.co.in/)
+#### Live Demo: [http://larabase.turizon.co.in/](http://larabase.turizon.co.in/)
 
 ## Features
 * Home page, About Page
