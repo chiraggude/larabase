@@ -5,8 +5,11 @@ LaraBase is a starter app for speeding up the development of Laravel projects. W
 
 #### Live Demo: [http://larabase.turizon.co.in/](http://larabase.turizon.co.in/)
 
+#### Learn about Deployment, Environments etc from the [Wiki](https://github.com/chiraggude/larabase/wiki)
+
 ## Features
-* Home page, About Page
+* Public Pages: Home, About, FAQ's, Feedback
+* User Pages: Dashboard, Profile, Settings
 * User Registration & Login/Logout 
 * Email Activation: An account activation email is sent the user's email for verification
 * Password Reset: Resets the user password after sends reset instructions to the user's email
@@ -14,6 +17,7 @@ LaraBase is a starter app for speeding up the development of Laravel projects. W
 * Change Password: User can change password while logged in (from profile - to be moved to settings)
 * Unique Validation Rules for login and registration
 * List of all Users with liks to their Public Profiles
+* Responsive HTML email templates
 * More Coming soon...
 
 ## Installation and Setup
@@ -55,8 +59,7 @@ If you have seeded the database, you can Login at: [http://localhost/larabase/pu
 **Note**: The URL's depends on how you have configured your webserver.
 
 ## Upcoming Features
-* Fully working Contact Form 
-* News, FAQ's Page
+* Reports resource to be changed to News
 * Allow users to destroy their account (soft delete)
 * Profile Pictures via Gravatar
 * OAuth 1 & 2 - Login via FaceBook, Twitter, LinkedIn, Google, Microsoft, GitHub
@@ -70,11 +73,12 @@ If you have seeded the database, you can Login at: [http://localhost/larabase/pu
 
 ## Pending
 * Code refactoring (reduce ickiness)
-* Nicer email templates
 * Make code base more generic 
-* Live Demo 
 
 ## Requirements
 * PHP >= 5.4.0
 * MCrypt PHP Extension
 * Composer
+
+#### Thanks
+[HTML email templates](https://github.com/mailchimp/Email-Blueprints)
