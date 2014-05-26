@@ -14,7 +14,7 @@ Route::group(['before' => 'auth'], function()
     Route::get('profile',           'AccountController@profile');
     Route::get('settings',          'AccountController@settings');
     Route::get('users',             'UserController@index');
-    Route::get('users-table',             'UserController@indexTable');
+    Route::get('users-table',       'UserController@indexTable');
     Route::get('users/{username}',  'UserController@publicProfile');
     Route::get('logout',            'AuthController@logout');
     Route::get('password/change',   'AccountController@passwordChange');
@@ -43,9 +43,10 @@ Route::group(['before' => 'guest'], function()
 });
 
 // Public Routes
+Route::get('contact',      'HomeController@contact');
+Route::get('faqs',        'HomeController@faqs');
+Route::get('about',        'HomeController@about');
 Route::get('/',             'HomeController@home');
-Route::get('/contact',      'HomeController@contact');
-Route::get('/about',        'HomeController@about');
 
 // Developer Routes
 Route::get('hello',         'DevController@hello');

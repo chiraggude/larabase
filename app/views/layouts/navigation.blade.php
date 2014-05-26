@@ -17,8 +17,9 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li class="{{ active('about') }}"><a href="{{ URL::to('about') }}">About</a></li>
+                        <li class="{{ active('faqs') }}"><a href="{{ URL::to('faqs') }}">FAQ's</a></li>
                         <li class="divider"></li>
-                        <li class="dropdown-header">Nav header text</li>
+                        <li class="dropdown-header">Need Help?</li>
                         <li class="{{ active('contact') }}"><a href="{{ URL::to('contact') }}">Contact</a></li>
                     </ul>
                 </li>
