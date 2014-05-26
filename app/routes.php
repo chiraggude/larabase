@@ -13,8 +13,8 @@ Route::group(['before' => 'auth'], function()
     Route::get('dashboard',         'AccountController@dashboard');
     Route::get('profile',           'AccountController@profile');
     Route::get('settings',          'AccountController@settings');
-    Route::get('users',             'UsersController@index');
-    Route::get('users/{username}',  'UsersController@publicProfile');
+    Route::get('users',             'UserController@index');
+    Route::get('users/{username}',  'UserController@publicProfile');
     Route::get('logout',            'AuthController@logout');
     Route::get('password/change',   'AccountController@passwordChange');
     Route::get('profile/edit',      'AccountController@profileEdit');
@@ -29,15 +29,15 @@ Route::group(['before' => 'auth'], function()
 // Only Guests can access these Routes
 Route::group(['before' => 'guest'], function()
 {
-    Route::get( 'login',                       'AuthController@login');
-    Route::get( 'register',                    'AuthController@register');
-    Route::get( 'activate/{code}',              array('as'=>'activate', 'uses' => 'AuthController@activate'));
+    Route::get( 'login',                       'UserController@login');
+    Route::get( 'register',                    'UserController@register');
+    Route::get( 'activate/{code}',              array('as'=>'activate', 'uses' => 'UserController@activate'));
     Route::controller('password',              'RemindersController');
     // All post routes should be protected from CSRF
     Route::group(['before' => 'csrf'], function()
     {
-        Route::post('login',                  'AuthController@processLogin');
-        Route::post('register',               'AuthController@processRegister');
+        Route::post('login',                  'UserController@processLogin');
+        Route::post('register',               'UserController@processRegister');
     });
 });
 
@@ -48,5 +48,5 @@ Route::get('/about',        'HomeController@about');
 
 // Developer Routes
 Route::get('hello',         'DevController@hello');
-Route::get('checkpass',         'DevController@password');
+Route::get('checkpass',     'DevController@password');
 
