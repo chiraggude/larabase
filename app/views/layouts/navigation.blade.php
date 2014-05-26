@@ -28,8 +28,8 @@
 
             <ul class="nav navbar-nav navbar-right">
                 @if ( Auth::guest())
-                <li class="{{ active('login') }}"><a href="{{ URL::to('login') }}"><i class="fa fa-sign-in"></i> Login</a></li>
-                <li class="{{ active('register') }}"><a href="{{ URL::to('register') }}">Register</a></li>
+                <li class="{{ active('login') }}"><a href="{{ URL::to('login') }}"><i class="fa fa-lock"></i> Login</a></li>
+                <li class="{{ active('register') }}"><a href="{{ URL::to('register') }}"><i class="fa fa-sign-in"></i> Register</a></li>
                 @else
                 <li class="{{ active('dashboard') }}"><a href="{{ URL::to('dashboard') }}"><i class="fa fa-bar-chart-o"></i> Dashboard</a></li>
                 <li class="dropdown">
