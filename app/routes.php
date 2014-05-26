@@ -51,4 +51,3 @@ Route::get('/',             'HomeController@home');
 
 // Developer Routes
 Route::get('hello',         'DevController@hello');
-
