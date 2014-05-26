@@ -43,7 +43,8 @@ Route::group(['before' => 'guest'], function()
 });
 
 // Public Routes
-Route::get('contact',      'HomeController@contact');
+Route::get('feedback',      'HomeController@feedbackShow');
+Route::post('feedback',      'HomeController@feedbackSave');
 Route::get('faqs',        'HomeController@faqs');
 Route::get('about',        'HomeController@about');
 Route::get('/',             'HomeController@home');

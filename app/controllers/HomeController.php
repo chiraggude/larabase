@@ -7,9 +7,22 @@ class HomeController extends BaseController {
 		return View::make('home');
 	}
 
-    public function contact()
+    public function feedbackShow()
     {
-        return View::make('contact');
+        return View::make('pages.feedback');
+    }
+
+    public function feedbackSave()
+    {
+        $data = Input::all();
+        $validator = Feedback::validate($data);
+        if ($validator->fails())
+        {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        Feedback::create($data);
+        $event = Event::fire('feedback.submitted', array($data));
+        return Redirect::back()->withSuccess('Thanks for your feedback. We will be in touch soon!');
     }
 
     public function about()

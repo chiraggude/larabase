@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-    <meta charset="utf-8">
-</head>
-<body>
-<h2>Report was Created</h2>
+@extends('layouts.emails.master')
+@section('content')
 
-<p>Thanks</p>
-<p>Team Turizon</p>
+    <h4>Hi, Admin</h4>
 
-</body>
-</html>
+    <h1>Notification: Report was created </h1>
+
+@stop

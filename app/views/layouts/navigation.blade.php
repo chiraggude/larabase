@@ -20,7 +20,7 @@
                         <li class="{{ active('faqs') }}"><a href="{{ URL::to('faqs') }}">FAQ's</a></li>
                         <li class="divider"></li>
                         <li class="dropdown-header">Need Help?</li>
-                        <li class="{{ active('contact') }}"><a href="{{ URL::to('contact') }}">Contact</a></li>
+                        <li class="{{ active('feedback') }}"><a href="{{ URL::to('feedback') }}">Feedback</a></li>
                     </ul>
                 </li>
                 @if ( Auth::user())

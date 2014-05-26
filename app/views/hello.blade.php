@@ -17,6 +17,7 @@
 		<h1>You have arrived.</h1>
         <h3>Database > {{ $database }}</h3>
         <h3>Environment > {{ $environment }}</h3>
+        <h3>Admin Email > {{ $admin_email }}</h3>
         <a href="{{ URL::to('checkpass') }}">Check Password Hash Comparison</a>
     </div>
 </body>

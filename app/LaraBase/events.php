@@ -1,15 +1,18 @@
 <?php
 
-//Event::listen('report.created', 'NotificationHandler@reportCreated');
-
-class NotificationHandler {
-
-    public function reportCreated($data)
+Event::listen('report.created', function($data)
+{
+    Mail::send('emails.notifications.report_created', $data, function($message)
     {
-        Mail::send('emails.notifications.report_created', $data, function($message)
-        {
-            $message->to('turizon1@gmail.com', 'John Smith')->subject('Notification - Report Created');
-        });
-    }
+        $message->to(Config::get('larabase.admin_email'), 'LaraBase Admin')->subject('Notification - Report Created');
+    });
+});
 
-}
+
+Event::listen('feedback.submitted', function($data)
+{
+    Mail::send('emails.notifications.feedback', $data, function($message)
+    {
+        $message->to(Config::get('larabase.admin_email'), 'LaraBase Admin')->subject('Notification - Feedback');
+    });
+});

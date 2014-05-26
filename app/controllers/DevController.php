@@ -9,7 +9,8 @@ class DevController extends BaseController {
     {
         $environment = App::environment();
         $database = DB::connection()->getDatabaseName();
-        return View::make('hello', compact('environment','database'));
+        $admin_email = Config::get('larabase.admin_email');
+        return View::make('hello', compact('environment','database','admin_email'));
     }
 
     // Check hashed password against DB
