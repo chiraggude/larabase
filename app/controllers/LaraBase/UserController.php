@@ -10,6 +10,12 @@ class UserController extends BaseController {
         return View::make('users.index', compact('users'));
     }
 
+    public function indexTable()
+    {
+        $users = User::paginate(10);
+        return View::make('users.index', compact('users'));
+    }
+
     // Displays the form for account creation
     public function publicProfile($username)
     {

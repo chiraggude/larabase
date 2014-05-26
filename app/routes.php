@@ -14,6 +14,7 @@ Route::group(['before' => 'auth'], function()
     Route::get('profile',           'AccountController@profile');
     Route::get('settings',          'AccountController@settings');
     Route::get('users',             'UserController@index');
+    Route::get('users-table',             'UserController@indexTable');
     Route::get('users/{username}',  'UserController@publicProfile');
     Route::get('logout',            'AuthController@logout');
     Route::get('password/change',   'AccountController@passwordChange');
