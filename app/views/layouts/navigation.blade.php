@@ -18,25 +18,30 @@
                     <ul class="dropdown-menu">
                         <li class="{{ active('about') }}"><a href="{{ URL::to('about') }}">About</a></li>
                         <li class="{{ active('faqs') }}"><a href="{{ URL::to('faqs') }}">FAQ's</a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-header">Need Help?</li>
-                        <li class="{{ active('contact') }}"><a href="{{ URL::to('contact') }}">Contact</a></li>
+                        <li class="{{ active('feedback') }}"><a href="{{ URL::to('feedback') }}">Feedback</a></li>
                     </ul>
                 </li>
                 @if ( Auth::user())
-                <li class="{{ active('users') }}"><a href="{{ URL::to('users') }}">Users</a></li>
+                <li class="{{ active('users') }}"><a href="{{ URL::to('users') }}"><i class="fa fa-users"></i> Users</a></li>
                 @endif
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 @if ( Auth::guest())
-                <li class="{{ active('login') }}"><a href="{{ URL::to('login') }}">Login</a></li>
+                <li class="{{ active('login') }}"><a href="{{ URL::to('login') }}"><i class="fa fa-sign-in"></i> Login</a></li>
                 <li class="{{ active('register') }}"><a href="{{ URL::to('register') }}">Register</a></li>
                 @else
-                <li class="{{ active('dashboard') }}"><a href="{{ URL::to('dashboard') }}">Dashboard</a></li>
-                <li class="{{ active('profile') }}"><a href="{{ URL::to('profile') }}">Profile</a></li>
-                <li class="{{ active('settings') }}"><a href="{{ URL::to('settings') }}">Settings</a></li>
-                <li><a href="{{ URL::to('logout') }}">Logout</a></li>
+                <li class="{{ active('dashboard') }}"><a href="{{ URL::to('dashboard') }}"><i class="fa fa-bar-chart-o"></i> Dashboard</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi,  {{ Auth::user()->first_name ?: Auth::user()->username }} <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header">YOUR ACCOUNT</li>
+                        <li class="{{ active('profile') }}"><a href="{{ URL::to('profile') }}"><i class="fa fa-user"></i> Profile</a></li>
+                        <li class="{{ active('settings') }}"><a href="{{ URL::to('settings') }}"> <i class="fa fa-cog"></i> Settings</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{{ URL::to('logout') }}"> <i class="fa fa-power-off"></i> Logout</a></li>
+                    </ul>
+                </li>
                 @endif
             </ul>
 

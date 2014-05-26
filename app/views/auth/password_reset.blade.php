@@ -15,7 +15,7 @@
 
     {{ Form::passwordField('password_confirmation', 'Confirm New Password', null) }}
 
-    {{ Form::submitField('Reset', 'btn btn-primary') }}
+    {{ Form::submitField('Reset') }}
 
     {{ Form::close() }}
 

@@ -26,8 +26,11 @@
             {{ Form::label('visibility', 'Visibility') }}
             {{ Form::text('visibility', @$report->visibility, array('class'=>'form-control')) }}
         </div>
+
         <a href='{{URL::previous()}}' class='btn btn-default pull-right'>Cancel</a>
-        {{ Form::submit('Submit', array('class'=>'btn btn-primary')) }}
+
+        {{ Form::submitField('Submit') }}
+
         {{ Form::close() }}
 
 @stop

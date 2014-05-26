@@ -9,7 +9,7 @@
 
     {{ Form::emailField('email', 'Your Email', null) }}
 
-    {{ Form::submitField('Send Password Reset email', 'btn btn-primary') }}
+    {{ Form::submitField('Send Password Reset email') }}
 
     {{ Form::close() }}
 

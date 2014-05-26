@@ -16,7 +16,7 @@ Route::group(['before' => 'auth'], function()
     Route::get('users',             'UserController@index');
     Route::get('users-table',       'UserController@indexTable');
     Route::get('users/{username}',  'UserController@publicProfile');
-    Route::get('logout',            'AuthController@logout');
+    Route::get('logout',            'UserController@logout');
     Route::get('password/change',   'AccountController@passwordChange');
     Route::get('profile/edit',      'AccountController@profileEdit');
     // All post routes should be protected from CSRF
@@ -43,13 +43,12 @@ Route::group(['before' => 'guest'], function()
 });
 
 // Public Routes
-Route::get('contact',      'HomeController@feedbackShow');
-Route::post('contact',      'HomeController@feedbackSave');
+Route::get('feedback',      'HomeController@feedbackShow');
+Route::post('feedback',      'HomeController@feedbackSave');
 Route::get('faqs',        'HomeController@faqs');
 Route::get('about',        'HomeController@about');
 Route::get('/',             'HomeController@home');
 
 // Developer Routes
 Route::get('hello',         'DevController@hello');
-Route::get('checkpass',     'DevController@password');
 

@@ -15,7 +15,7 @@
 
     {{ Form::passwordField('password_confirm', 'Confirm your Password', null) }}
 
-    {{ Form::submitField('Create new Account', 'btn btn-primary') }}
+    {{ Form::submitField('Create new Account') }}
 
 {{ Form::close() }}
 

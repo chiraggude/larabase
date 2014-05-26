@@ -17,7 +17,7 @@
 
         <a href='{{URL::previous()}}' class='btn btn-default pull-right'>Cancel</a>
 
-        {{ Form::submit('Submit', array('class'=>'btn btn-primary')) }}
+        {{ Form::submitField('Submit') }}
 
         {{ Form::close() }}
 

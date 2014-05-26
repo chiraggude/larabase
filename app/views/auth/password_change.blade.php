@@ -13,7 +13,7 @@
 
     {{ Form::passwordField('new_password_confirmation', 'Confirm New Password', null) }}
 
-    {{ Form::submitField('Save new Password', 'btn btn-primary') }}
+    {{ Form::submitField('Save new Password') }}
 
     {{ Form::close() }}
 

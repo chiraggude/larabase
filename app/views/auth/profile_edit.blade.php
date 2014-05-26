@@ -15,7 +15,7 @@
 
     {{ Form::emailField('email', 'Email', '') }}
 
-    {{ Form::submitField('Save Profile', 'btn btn-primary') }}
+    {{ Form::submitField('Save Profile') }}
 
     {{ Form::close() }}
 

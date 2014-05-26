@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-<h1>Dashboard <small>Hi, {{ $user->first_name or $user->username }}</small></h1>
+<h1>Dashboard <small>Hi, {{ $user->first_name ?: $user->username }}</small></h1>
 
 <div class="row">
     <div class="col-md-6">

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-<h1>General Account Settings</h1>
+<h1>Account Settings</h1>
 
 <div class="row">
     <div class="col-md-6">
