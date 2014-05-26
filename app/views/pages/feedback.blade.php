@@ -12,10 +12,7 @@
 
         {{ Form::textField('topic', 'Topic', 'What is your message about?') }}
 
-        <div class='form-group'>
-            {{ Form::label('message_body', 'Your Message') }}
-            {{ Form::textarea('message_body', Input::old('message'), array('class'=>'form-control')) }}
-        </div>
+        {{ Form::textareaField('message_body', 'Your Message', 'Start writing...') }}
 
         <a href='{{URL::previous()}}' class='btn btn-default pull-right'>Cancel</a>
 

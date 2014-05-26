@@ -8,10 +8,13 @@
          {{ str_limit($report->content, 480, "...") }}  </br>
          <a class="btn btn-xs btn-success" href="{{ URL::to('reports/' . $report->id) }}">Read More</a>
          <a class="btn btn-xs btn-info" href="{{ URL::to('reports/' . $report->id . '/edit') }}">Edit</a>
+
          {{ Form::open(array('route' => ['reports.destroy', $report->id], 'method' => 'DELETE', 'class' => 'pull-right')) }}
          {{ Form::submit('Delete', array('class' => 'btn btn-xs btn-warning')) }}
          {{ Form::close() }}
          <hr>
     @endforeach
+
 {{ $reports->links() }}
+
 @stop
