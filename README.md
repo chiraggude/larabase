@@ -10,12 +10,13 @@ LaraBase is a starter app for speeding up the development of Laravel projects. W
 ## Features
 * Public Pages: Home, About, FAQ's, Feedback
 * User Pages: Dashboard, Profile, Settings
-* User Registration & Login/Logout 
+* User Registration & Login/Logout  (includes - "remember me" option)
 * Email Activation: An account activation email is sent the user's email for verification
 * Password Reset: Resets the user password after sends reset instructions to the user's email
 * User Profile: Users have a Public and Private profile (editable)
 * Change Password: User can change password while logged in (from profile - to be moved to settings)
 * Unique Validation Rules for login and registration
+* Feedback forms are saved in DB and emailed to the Admin
 * List of all Users with liks to their Public Profiles
 * Responsive HTML email templates
 * More Coming soon...
@@ -63,17 +64,18 @@ If you have seeded the database, you can Login at: [http://localhost/larabase/pu
 * Allow users to destroy their account (soft delete)
 * Profile Pictures via Gravatar
 * OAuth 1 & 2 - Login via FaceBook, Twitter, LinkedIn, Google, Microsoft, GitHub
-* Manages generating and clearing a token for remembering the user from a saved cookie. (Recheck)
-* Tracks sign in count, last login,  timestamps and IP address.
-* Expires sessions that have no activity in a specified period of time.
+* Tracks sign in count, last login,  timestamps and IP address
+* Expires sessions that have no activity in a specified period of time
+* User Suspension: A user can be temporarily banned from logging in to the app for a small interval (eg. 7 days)
+* User Banning: Admins can add a user's email to a banned list. A banned user will not be allowed to create a new account with their existing emails or social accounts (potentially)
 * Login Throttling: Locks an account after a specified number of failed sign-in attempts. Can unlock via email or after a specified time period.
-* User Management - User suspension, banning, allow users to delete account
-* Roles – Super Admin, Group Admin, Users
-* Permissions - Manage Everything, Manage a group of users, manage only themselves
+* Role based Access Control (RBAC) – Super Admin, Group Admin, Users
+* Permissions Types - Manage Everything, Manage a group of users, manage only themselves, manage certain resources, manage only certain actions in a resource
 
 ## Pending
 * Code refactoring (reduce ickiness)
 * Make code base more generic 
+* 
 
 ## Requirements
 * PHP >= 5.4.0
@@ -81,4 +83,4 @@ If you have seeded the database, you can Login at: [http://localhost/larabase/pu
 * Composer
 
 #### Thanks
-[HTML email templates](https://github.com/mailchimp/Email-Blueprints)
+[Mailchimp Email Blueprints](https://github.com/mailchimp/Email-Blueprints)
