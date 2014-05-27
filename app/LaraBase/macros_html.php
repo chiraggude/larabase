@@ -8,9 +8,9 @@ HTML::macro('br', function($count = 1)
 });
 
 
-HTML::macro('table', function($data = array(), $fields = array()) {
-
-    $table = '<table class="table table-bordered table-hover table-striped">';
+HTML::macro('table', function($data = array(), $fields = array())
+{
+    $table = '<div class="table-responsive"><table class="table table-bordered table-hover table-striped">';
 
     $table .='<tr>';
         foreach ($fields as $field)
@@ -31,7 +31,7 @@ HTML::macro('table', function($data = array(), $fields = array()) {
         }
     $table .= '</tr>';
 
-    $table .= '</table>';
+    $table .= '</table></div>';
 
     return $table;
 });

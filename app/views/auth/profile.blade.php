@@ -11,10 +11,5 @@
         {{ HTML::br(2) }}
 
     </div>
-
-    <div class="col-md-6">
-
-    </div>
-
 </div>
 @stop
