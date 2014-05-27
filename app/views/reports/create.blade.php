@@ -3,7 +3,7 @@
 
         {{ Form::open(array('route' => 'reports.store', 'method' =>'post', 'role'=>'form')) }}
 
-        {{ Form::textField('title', 'Title', null }}
+        {{ Form::textField('title', 'Title', null) }}
 
         {{ Form::textareaField('content', 'Content', 'Start writing...') }}
 
