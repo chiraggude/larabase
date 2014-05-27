@@ -33,9 +33,9 @@
 
 </body>
 
-{{ HTML::script('js/jquery-1.11.0.min.js') }}
-{{ HTML::script('js/larabase.js') }}
-{{ HTML::script('js/bootstrap.min.js') }}
-{{ HTML::script('js/analytics.js') }}
+{{ HTML::script('js/jquery-1.11.0.min.js', ['async' => 'async']) }}
+{{ HTML::script('js/larabase.js', ['async' => null]) }}
+{{ HTML::script('js/bootstrap.min.js', ['async' => 'async']) }}
+{{ HTML::script('js/analytics.js', ['async' => 'async']) }}
 
 </html>
