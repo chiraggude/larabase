@@ -7,7 +7,8 @@ class AccountController extends BaseController {
 	public function settings()
 	{
         $user = Auth::user();
-        return View::make('auth.settings', compact('user'));
+        $settings = [];
+        return View::make('auth.settings', compact('user', 'settings'));
 	}
 
 

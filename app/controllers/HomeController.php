@@ -21,7 +21,7 @@ class HomeController extends BaseController {
             return Redirect::back()->withErrors($validator)->withInput();
         }
         Feedback::create($data);
-        $event = Event::fire('feedback.submitted', array($data));
+        Event::fire('feedback.submitted', array($data));
         return Redirect::back()->withSuccess('Thanks for your feedback. We will be in touch soon!');
     }
 

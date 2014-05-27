@@ -8,7 +8,7 @@ class ReportsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$reports = Report::paginate(5);
+        $reports = Report::orderBy('updated_at', 'desc')->paginate(5);
 
 		return View::make('reports.index', compact('reports'));
 	}
@@ -37,7 +37,7 @@ class ReportsController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 		Report::create($data);
-        $event = Event::fire('report.created', array($data));
+        Event::fire('report.created', array($data));
 		return Redirect::route('reports.index')->withSuccess('Report created');
 	}
 
