@@ -5,7 +5,7 @@ LaraBase is a starter app for speeding up the development of Laravel projects. W
 
 ### Live Demo: [http://larabase.turizon.co.in/](http://larabase.turizon.co.in/)
 
-#### Learn More [LaraBase Wiki](https://github.com/chiraggude/larabase/wiki)
+### Learn More: [LaraBase Wiki](https://github.com/chiraggude/larabase/wiki)
 
 ## Features
 * Public Pages: Home, About, FAQ's, Feedback
@@ -39,15 +39,16 @@ composer install
 
 **Mail**: Configure your mail settings in `/app/config/mail.php`
 
-**LaraBase** Congigure your LaraBase specific settings in `/app/config/larabase.php`
+**LaraBase** Configure your LaraBase specific settings in `/app/config/larabase.php`
 
 By default, LaraBase's environment is set to `local`, so all configurations in `/app/config/local/` will take precedence over configurations in `/app/config/`.
 
-##### Confused about `getenv('something')`? 
+**Confused about `getenv('setting')`?**
 
-**Option 1**: Replace all `getenv('your-setting')` with `'your-setting'`
+**Option 1**: Replace all `getenv('setting');` with `'your-setting';`
 
-**Option 2**: Learn about configurations based on server environment variables [Learnmore](https://github.com/chiraggude/larabase/wiki/Deployment-on-a-VPS#env-file)
+**Option 2**: It is good practice to maintain different configurations for Local Development, Staging and Production. To set this up, read this short guide: [Configurations & Environments](https://github.com/chiraggude/larabase/wiki/Development-Environments-and-Configuration-in-Laravel)
+
 
 ### Step 4: Database Migrations and Seeding
 Setup migrations table in DB: `php artisan migrate`
@@ -60,7 +61,6 @@ Autoload the following Service Providers in `/app/config/app.php`
 'Way\Generators\GeneratorsServiceProvider',
 'Barryvdh\Debugbar\ServiceProvider',
 ```
-It is good practice to maintain different configurations for Local Development, Staging and Production. To set this up, read this short guide: [Configurations & Environments](https://github.com/chiraggude/larabase/wiki/Development-Environments-and-Configuration-in-Laravel)
 
 ### Step 6: Start using LaraBase
 LaraBase Login: [http://localhost/larabase/public](http://localhost/larabase/public)
