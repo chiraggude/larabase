@@ -34,9 +34,20 @@ cd larabase
 composer install
 ```
 ### Step 3: Configure app Settings
+
 **Database**: Create a new database and change the appropriate settings in `/app/config/database.php`
 
 **Mail**: Configure your mail settings in `/app/config/mail.php`
+
+**LaraBase** Congigure your LaraBase specific settings in `/app/config/larabase.php`
+
+By default, LaraBase's environment is set to `local`, so all configurations in `/app/config/local/` will take precedence over configurations in `/app/config/`.
+
+##### Confused about `getenv('something')`? 
+
+**Option 1**: Replace all `getenv('your-setting')` with `'your-setting'`
+
+**Option 2**: Learn about configurations based on server environment variables [Learnmore](https://github.com/chiraggude/larabase/wiki/Deployment-on-a-VPS#env-file)
 
 ### Step 4: Database Migrations and Seeding
 Setup migrations table in DB: `php artisan migrate`
