@@ -5,7 +5,7 @@ LaraBase is a starter app for speeding up the development of Laravel projects. W
 
 ### Live Demo: [http://larabase.turizon.co.in/](http://larabase.turizon.co.in/)
 
-#### Learn about Deployment, Environments etc from the [Wiki](https://github.com/chiraggude/larabase/wiki)
+#### Learn More [LaraBase Wiki](https://github.com/chiraggude/larabase/wiki)
 
 ## Features
 * Public Pages: Home, About, FAQ's, Feedback
