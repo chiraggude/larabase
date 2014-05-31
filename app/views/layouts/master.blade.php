@@ -10,10 +10,17 @@
     {{ HTML::style('css/flatty.min.css') }}
     {{ HTML::style('css/font-awesome.min.css') }}
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    {{ HTML::script('js/jquery-1.11.0.min.js') }}
+
+    @yield('header-js')
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries. ExplorerCanvas brings the HTML5 Canvas functionality to Internet Explorer-->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+    <script src="https://cdn.jsdelivr.net/excanvas/r3/excanvas.js"></script>
     <![endif]-->
 </head>
 <body>
@@ -31,11 +38,12 @@
 
 @include("layouts/footer")
 
-</body>
-
-{{ HTML::script('js/jquery-1.11.0.min.js', ['async' => 'async']) }}
-{{ HTML::script('js/larabase.js', ['async' => null]) }}
 {{ HTML::script('js/bootstrap.min.js', ['async' => 'async']) }}
 {{ HTML::script('js/analytics.js', ['async' => 'async']) }}
 
+@yield('footer-js')
+
+{{ HTML::script('js/larabase.js') }}
+
+</body>
 </html>

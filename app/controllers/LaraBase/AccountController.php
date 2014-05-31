@@ -17,7 +17,11 @@ class AccountController extends BaseController {
     public function dashboard()
     {
         $user = Auth::user();
-        return View::make('auth.dashboard', compact('user'));
+        $users = DB::table('users')->count();
+        $user_reports = DB::table('reports')->where('user_id', '=', $user->id)->count();
+        $reports = Report::all()->count();
+        $feedback = Feedback::all()->count();
+        return View::make('auth.dashboard', compact('user','reports','users','user_reports', 'feedback'));
     }
 
 
