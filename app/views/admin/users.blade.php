@@ -26,7 +26,13 @@
 
     var dataset = [
     @foreach($users as $user)
-    [ "{{$user->username }}", "{{ $user->first_name }}", "{{ $user->last_name }}", "{{$user->email }}", "{{$user->updated_at->diffForHumans() }}" ],
+    [ "{{ $user->username }}",
+      "{{ $user->first_name }}",
+      "{{ $user->last_name }}",
+      "{{$user->email }}",
+      "{{$user->updated_at->diffForHumans() }}",
+      "<a href='{{ URL::to('users') }}/{{ $user->username}}' class='btn btn-xs btn-default'><i class='fa fa-user'></i></a>"
+    ],
     @endforeach
     ];
 
@@ -36,8 +42,8 @@
         { "title": "Last Name", "class": "text-center" },
         { "title":"Email", "class": "text-center" },
         { "title":"Last Active", "class": "text-center" },
+        { "title":"Action", "class": "text-center"}
     ];
-
 
 </script>
 @stop
