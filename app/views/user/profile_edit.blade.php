@@ -15,6 +15,8 @@
 
     {{ Form::emailField('email', 'Email', '') }}
 
+    <a href="{{ URL::to('password/change') }}" class="btn btn-default pull-right"><i class="fa fa-lock"></i> Change Account Password</a>
+
     {{ Form::submitField('Save Profile') }}
 
     {{ Form::close() }}
