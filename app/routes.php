@@ -11,11 +11,10 @@ Route::resource('reports', 'ReportsController');
 Route::group(['before' => 'auth'], function()
 {
     Route::get('dashboard',         'AccountController@dashboard');
+    Route::get('users/{username}',  'AccountController@profilePublic');
     Route::get('profile',           'AccountController@profile');
     Route::get('settings',          'AccountController@settings');
     Route::get('users',             'UserController@index');
-    Route::get('users-table',       'UserController@indexTable');
-    Route::get('users/{username}',  'UserController@publicProfile');
     Route::get('logout',            'UserController@logout');
     Route::get('password/change',   'AccountController@passwordChange');
     Route::get('profile/edit',      'AccountController@profileEdit');
@@ -26,6 +25,13 @@ Route::group(['before' => 'auth'], function()
         Route::post('password/change',  'AccountController@passwordSave');
     });
 });
+
+// Admin Routes
+Route::group(['before' => 'auth|admin','prefix' => 'admin'], function()
+{
+    Route::get('users',       'AdminController@users');
+});
+
 
 // Only Guests can access these Routes
 Route::group(['before' => 'guest'], function()

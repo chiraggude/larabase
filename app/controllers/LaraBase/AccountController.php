@@ -8,7 +8,7 @@ class AccountController extends BaseController {
 	{
         $user = Auth::user();
         $settings = [];
-        return View::make('auth.settings', compact('user', 'settings'));
+        return View::make('user.settings', compact('user', 'settings'));
 	}
 
 
@@ -21,7 +21,14 @@ class AccountController extends BaseController {
         $user_reports = DB::table('reports')->where('user_id', '=', $user->id)->count();
         $reports = Report::all()->count();
         $feedback = Feedback::all()->count();
-        return View::make('auth.dashboard', compact('user','reports','users','user_reports', 'feedback'));
+        return View::make('user.dashboard', compact('user','reports','users','user_reports', 'feedback'));
+    }
+
+    // Displays the form for account creation
+    public function profilePublic($username)
+    {
+        $user = User::where('username', '=', $username)->firstOrFail();
+        return View::make('user.profile_public', compact('user'));
     }
 
 
@@ -30,7 +37,7 @@ class AccountController extends BaseController {
     public function profile()
     {
         $user = Auth::user();
-        return View::make('auth.profile', compact('user'));
+        return View::make('user.profile', compact('user'));
 
     }
 
@@ -40,7 +47,7 @@ class AccountController extends BaseController {
     public function profileEdit()
     {
         $user = Auth::user();
-        return View::make('auth.profile_edit', compact('user'));
+        return View::make('user.profile_edit', compact('user'));
     }
 
 
@@ -48,6 +55,7 @@ class AccountController extends BaseController {
 
     public function profileSave()
     {
+        return Redirect::back()->withWarning('This feature is disabled for the live demo'); // Remove for production
         $user = Auth::user();
         $data = Input::all();
         $validator = User::validate_profile($data, $user);
@@ -56,7 +64,7 @@ class AccountController extends BaseController {
             return Redirect::back()->withInput()->withErrors($validator);
         }
         $user->update($data);
-        return Redirect::to('profile')->withSuccess('Profile was updated successfully');
+        return Redirect::to('profile')->withSuccess('Profile was updated Successfully');
     }
 
 
@@ -64,7 +72,7 @@ class AccountController extends BaseController {
 
     public function passwordChange()
     {
-        return View::make('auth.password_change');
+        return View::make('user.password_change');
     }
 
 
@@ -72,6 +80,7 @@ class AccountController extends BaseController {
 
     public function passwordSave()
     {
+        //return Redirect::back()->withWarning('This feature is disabled for the live demo'); // Remove for production
         $data = Input::all();
         $validator = User::validate_change_password($data);
         if ($validator->fails())
@@ -90,7 +99,7 @@ class AccountController extends BaseController {
                 }
                 $user->password = Hash::make($new_password);
                 $user->save();
-                return Redirect::to('profile')->withSuccess('Your Password was changed Successfully!');
+                return Redirect::to('profile')->withSuccess('Your Password was changed Successfully');
             }
             return Redirect::back()->withError('Your Current Password is incorrect');
         }

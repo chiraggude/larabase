@@ -1,20 +1,28 @@
-.jumbotron { margin-top:-20px;}
-@media screen and (min-width:768px)
-{
-    .jumbotron { margin-top:-20px;}
-}
-
 html { position:relative !important; min-height:100% !important;}
 
 body { background-color:#f7f7f7 !important; margin-bottom:60px !important}
 
+.jumbotron { margin-top:-20px;}
+
 #footer{height:60px; background-color:#f5f5f5; border-top:1px solid #ddd; padding-top: 20px; position:absolute; bottom:0; width:100%}
 
-
-.knob-content{color:#999; display: inline-block; position: relative; bottom: 60px; right: 125px; font-size: 12px;}
-
+/* Dashboard */
 .dashboard-knob-panel-body {padding:20px 0px 15px 13px;}
-
+.knob-content{color:#999; display: inline-block; position: relative; bottom: 60px; right: 125px; font-size: 12px;}
 @media (min-width: 992px) and (max-width: 1200px) {
     .knob-content {color: #999;display: inline-block;position: relative;bottom: 78px;right: -81px;font-size: 12px;}
 }
+
+/* DataTables */
+@media (max-width: 990px) {
+    div.dataTables_length{display:none;}
+}
+div.dataTables_length select {color:#b4bcc2}
+div.dataTables_info {color:#b4bcc2;}
+
+/* DataTables - TableTools */
+div.DTTT {margin-bottom:1.0em; display:block; float:right; position:static; margin-left:50px;}
+@media (max-width: 720px) {
+    div.DTTT{display:none;}
+}
+

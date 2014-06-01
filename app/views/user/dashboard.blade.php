@@ -14,12 +14,18 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Trends</h3>
+                <h3 class="panel-title">Site-wide Trends</h3>
             </div>
             <div class="panel-body">
                 <div id="trends"></div>
-                <h1 class="pull-right"><i class="fa fa-file-text"></i> <span id="reports">0</span> Reports</h1>
-                <h1><i class="fa fa-users"></i> <span id="users">0</span> Users</h1>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1><i class="fa fa-file-text"></i> <span id="reports">0</span> Reports</h1>
+                    </div>
+                    <div class="col-md-6">
+                        <h1><i class="fa fa-users"></i> <span id="users">0</span> Users</h1>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -52,31 +58,25 @@
             </div>
         </div>
 
-
-
         <h3>Timeline</h3>
-
         <ul class="list-group">
             <li class="list-group-item">Dapibus ac facilisis in <span class="label label-default pull-right">3 mins ago</span></li>
             <li class="list-group-item">Porta ac consectetur ac <span class="label label-default pull-right">1 hour ago</span></li>
         </ul>
 
         <h3>Favourites <span class="badge">2</span></h3>
-
         <div class="list-group">
             <a href="#" class="list-group-item">Porta ac consectetur ac</a>
             <a href="#" class="list-group-item">Vestibulum at eros</a>
         </div>
 
         <h3>Network Updates</h3>
-
         <ul class="list-group">
             <li class="list-group-item">Dapibus ac facilisis in <span class="label label-default pull-right">3 mins ago</span></li>
             <li class="list-group-item">Porta ac consectetur ac <span class="label label-default pull-right">1 hour ago</span></li>
         </ul>
 
         <h3>Connections <span class="badge">2</span></h3>
-
         <div class="list-group">
             <a href="#" class="list-group-item">Porta ac consectetur ac</a>
             <a href="#" class="list-group-item">Vestibulum at eros</a>
@@ -85,6 +85,7 @@
     </div>
 
 </div>
+
 @stop
 
 @section('footer-js')

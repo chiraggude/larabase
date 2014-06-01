@@ -3,26 +3,12 @@
 
 class UserController extends BaseController {
 
-    // Displays the form for account creation
+    // Displays all Users
     public function index()
     {
         $users = User::paginate(10);
-        return View::make('users.index', compact('users'));
+        return View::make('user.index', compact('users'));
     }
-
-    public function indexTable()
-    {
-        $users = User::paginate(10);
-        return View::make('users.index', compact('users'));
-    }
-
-    // Displays the form for account creation
-    public function publicProfile($username)
-    {
-        $user = User::where('username', '=', $username)->firstOrFail();
-        return View::make('users.public_profile', compact('user'));
-    }
-
 
     // Displays the registration form for account creation
 
@@ -83,11 +69,11 @@ class UserController extends BaseController {
                 }
                 $attempt = Auth::attempt(['email' => $data['email'], 'password' => $data['password']], Input::get('remember'));
                 if ( $attempt == true) {  // Check if user was authenticated
-                    return Redirect::intended('dashboard')->withSuccess('Your have successfully logged in!');
-                }
-                return Redirect::back()->withInput(Input::except('password'))->withError('Invalid Credentials! Your email or password is incorrect.');
+                    return Redirect::intended('dashboard')->withSuccess('Your have successfully logged in');
             }
-            return Redirect::back()->withInput(Input::except('password'))->withError('Invalid Credentials! Your email or password is incorrect.');
+                return Redirect::back()->withInput(Input::except('password'))->withError('Invalid Credentials - Your email or password is incorrect.');
+            }
+            return Redirect::back()->withInput(Input::except('password'))->withError('Invalid Credentials - Your email or password is incorrect.');
         }
     }
 
@@ -111,7 +97,7 @@ class UserController extends BaseController {
     public function logout()
     {
         Auth::logout();
-        return Redirect::to('login')->withInfo('You have logged out!');
+        return Redirect::to('login')->withInfo('You have logged out');
     }
 
 

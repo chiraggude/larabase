@@ -24,6 +24,16 @@
                 @if ( Auth::user())
                 <li class="{{ active('users') }}"><a href="{{ URL::to('users') }}"><i class="fa fa-users"></i> Users</a></li>
                 @endif
+                @if ( Auth::check())
+                @if ( Auth::user()->id == 1)
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-th-list"></i> Admin <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="{{ active('admin/users') }}"><a href="{{ URL::to('admin/users') }}">Users</a></li>
+                    </ul>
+                </li>
+                @endif
+                @endif
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -35,7 +45,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi,  {{ Auth::user()->first_name ?: Auth::user()->username }} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-header">YOUR ACCOUNT</li>
+                        <li class="dropdown-header">ACCOUNT</li>
                         <li class="{{ active('profile') }}"><a href="{{ URL::to('profile') }}"><i class="fa fa-user"></i> Profile</a></li>
                         <li class="{{ active('settings') }}"><a href="{{ URL::to('settings') }}"> <i class="fa fa-cog"></i> Settings</a></li>
                         <li class="divider"></li>
