@@ -24,7 +24,8 @@ class AccountController extends BaseController {
         return View::make('user.dashboard', compact('user','reports','users','user_reports', 'feedback'));
     }
 
-    // Displays the form for account creation
+    // Show Public Profile of user
+
     public function profilePublic($username)
     {
         $user = User::where('username', '=', $username)->firstOrFail();
@@ -32,7 +33,7 @@ class AccountController extends BaseController {
     }
 
 
-    //  Show User Profile
+    //  Show Account Profile of User
 
     public function profile()
     {
