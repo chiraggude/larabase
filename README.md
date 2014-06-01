@@ -61,8 +61,12 @@ Autoload the following Service Providers in `/app/config/app.php`
 'Way\Generators\GeneratorsServiceProvider',
 'Barryvdh\Debugbar\ServiceProvider',
 ```
-Get Ready for production by removing the following line from `/app/controllers/LaraBase/AccountController.php` - Check in profileSave() and passwordSave()
-`return Redirect::back()->withWarning('This feature is disabled for the live demo');`
+Get Ready for production by removing the following line from `/app/controllers/LaraBase/AccountController.php`
+
+Check in profileSave() and passwordSave()
+```
+return Redirect::back()->withWarning('This feature is disabled for the live demo');
+```
 
 ### Step 6: Start using LaraBase
 LaraBase Login: [http://localhost/larabase/public](http://localhost/larabase/public)
