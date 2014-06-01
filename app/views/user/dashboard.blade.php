@@ -8,13 +8,13 @@
 @section('content')
 <h1>Dashboard <small>Hi, {{ $user->first_name ?: $user->username }}</small></h1>
 <hr>
-<div class="row">
+<div class="row" id="dashboard">
 
     <div class="col-md-6">
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Site-wide Trends</h3>
+                <h3 class="panel-title">Trends</h3>
             </div>
             <div class="panel-body">
                 <div id="trends"></div>
@@ -42,7 +42,7 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Your Summary</h3>
+                <h3 class="panel-title">Summary</h3>
             </div>
             <div class="dashboard-knob-panel-body">
                 <div class="row">

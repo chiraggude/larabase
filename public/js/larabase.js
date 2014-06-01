@@ -26,103 +26,106 @@ window.setTimeout(function() {
 Dashboard
 ***********************************
 */
-if(typeof reports != 'undefined'){
-$('#reports').animateNumber(
-    {
-        number: reports,
-    },
-    2000
-)
-}
 
-    if(typeof users != 'undefined'){
-$('#users').animateNumber(
-    {
-        number: users,
-    },
-    2000
-)
-}
+if(jQuery('div#dashboard').length > 0) {
 
-
-if(typeof user_reports != 'undefined'){
-$(document).ready(function(){
-    // Knob - Reports of Current User
-    $(".reports").knob({
-        'min':0,
-        'max':user_reports,
-        'readOnly': true,
-        "thickness":.1,
-        //'format': function(v){ return v + '+';},
-        'change' : function (v) { console.log(v); }
-    });
-    // Animate number inside knob
-    $({value: 0}).animate({value: user_reports}, {
-        duration: 1000,
-        step: function()
+    // Trends - Stats
+    $('#reports').animateNumber(
         {
-            $('.reports').val(Math.ceil(this.value)).trigger('change');
-        }
-    })
-});
-}
+            number: reports,
+        },
+        2000
+    )
 
-if(typeof feedback != 'undefined'){
-$(document).ready(function(){
-    // Knob - Reports of Current User
-    $("#feedback").knob({
-        'min':0,
-        'max':feedback,
-        'readOnly': true,
-        "thickness":.1,
-        'change' : function (v) { console.log(v); }
-    });
-    // Animate number inside knob
-    $({value: 0}).animate({value: feedback}, {
-        duration: 1000,
-        step: function()
+    $('#users').animateNumber(
         {
-            $('#feedback').val(Math.ceil(this.value)).trigger('change');
-        }
-    })
-});
-}
+            number: users,
+        },
+        2000
+    )
 
-if(typeof users != 'undefined' && typeof reports != 'undefined'){
-// Trends - Highcharts
-$(function () {
-    $('#trends').highcharts({
-        chart: {
-            type: 'column'
-        },
-        credits: {
-            enabled: false
-        },
-        title: {
-            text: 'Users & Reports'
-        },
-        xAxis: {
-            categories: ['Current Count']
-        },
-        yAxis: {
-            title: {
-                text: 'Total'
+    // Summary  Knob
+    $(document).ready(function(){
+        // Knob - Reports of Current User
+        $(".reports").knob({
+            'min':0,
+            'max':user_reports,
+            'readOnly': true,
+            "thickness":.1,
+            //'format': function(v){ return v + '+';},
+            'change' : function (v) { console.log(v); }
+        });
+        // Animate number inside knob
+        $({value: 0}).animate({value: user_reports}, {
+            duration: 1000,
+            step: function()
+            {
+                $('.reports').val(Math.ceil(this.value)).trigger('change');
             }
-        },
-        series: [{
-            name: 'Users',
-            data: [ users ]
-        }, {
-            name: 'Reports',
-            data: [ reports ]
-        }]
+        })
     });
-});
+
+    // Summary  Knob
+    $(document).ready(function(){
+        // Knob - Reports of Current User
+        $("#feedback").knob({
+            'min':0,
+            'max':feedback,
+            'readOnly': true,
+            "thickness":.1,
+            'change' : function (v) { console.log(v); }
+        });
+        // Animate number inside knob
+        $({value: 0}).animate({value: feedback}, {
+            duration: 1000,
+            step: function()
+            {
+                $('#feedback').val(Math.ceil(this.value)).trigger('change');
+            }
+        })
+    });
+
+    // Site Trends - Highcharts
+    $(function () {
+        $('#trends').highcharts({
+            chart: {
+                type: 'column'
+            },
+            credits: {
+                enabled: false
+            },
+            title: {
+                text: 'Users & Reports'
+            },
+            xAxis: {
+                categories: ['Current Count']
+            },
+            yAxis: {
+                title: {
+                    text: 'Total'
+                }
+            },
+            series: [{
+                name: 'Users',
+                data: [ users ]
+            }, {
+                name: 'Reports',
+                data: [ reports ]
+            }]
+        });
+    });
+
 }
 
-// DataTables
+/*
+ ***********************************
+ Admin
+ ***********************************
+ */
+// Users DataTables
 
 if(jQuery('table#users-datatable').length > 0) { //checks if div element exists
+
     $(document).ready(function() {
         // Initialize Datatables in <table> with class "datatable"
         $('table#users-datatable').dataTable( {
@@ -147,5 +150,5 @@ if(jQuery('table#users-datatable').length > 0) { //checks if div element exists
         $('.dataTables_filter input').removeClass('input-sm').addClass('input').attr("placeholder", "Search");
         $('.dataTables_length select').removeClass('input-sm').addClass('input');
     });
-}
 
+}
