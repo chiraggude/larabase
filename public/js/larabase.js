@@ -136,7 +136,7 @@ if(jQuery('table#users-datatable').length > 0) { //checks if div element exists
             },
             "stateSave": true, // user preferences are saved even on page reload
             "tableTools": {
-                "sSwfPath": "js/datatables/copy_csv_xls_pdf.swf",
+                "sSwfPath": "../js/datatables/copy_csv_xls_pdf.swf",
                 "sRowSelect": "multi",
                 "aButtons": [ "csv","xls","pdf","print"]
             },
