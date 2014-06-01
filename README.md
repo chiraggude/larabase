@@ -61,11 +61,13 @@ Autoload the following Service Providers in `/app/config/app.php`
 'Way\Generators\GeneratorsServiceProvider',
 'Barryvdh\Debugbar\ServiceProvider',
 ```
+Get Ready for production by removing the following line from `/app/controllers/LaraBase/AccountController.php` - Check in profileSave() and passwordSave()
+`return Redirect::back()->withWarning('This feature is disabled for the live demo');`
 
 ### Step 6: Start using LaraBase
 LaraBase Login: [http://localhost/larabase/public](http://localhost/larabase/public)
 
-If you have seeded the database, you can Login at: [http://localhost/larabase/public/login](http://localhost/larabase/public/login)
+If you have seeded the database, you can Login at: [http://example.com/larabase/public/login](http://localhost/larabase/public/login)
 `Email: admin@gmail.com   Password: password`
 
 **Note**: The URL's depends on how you have configured your webserver.
@@ -73,7 +75,7 @@ If you have seeded the database, you can Login at: [http://localhost/larabase/pu
 ## Upcoming Features
 * Reports to be displayed in masonry-style grid and Datatables
 * Admin Console and Dashboard
-* Reports resource to be changed to News
+* Reports resource to be changed to Blog
 * Allow users to destroy their account (soft delete)
 * Profile Pictures via Gravatar
 * OAuth 1 & 2 - Login via FaceBook, Twitter, LinkedIn, Google, Microsoft, GitHub
