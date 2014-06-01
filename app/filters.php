@@ -79,3 +79,19 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+
+/*
+|--------------------------------------------------------------------------
+| LaraBase Filters
+|--------------------------------------------------------------------------
+|
+*/
+
+Route::filter('admin', function()
+{
+    if ( Auth::user()->id != 1 )
+    {
+        return Redirect::back()->withWarning('Your not the Admin');
+    }
+});
