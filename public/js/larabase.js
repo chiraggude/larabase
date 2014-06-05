@@ -1,3 +1,8 @@
+/*
+ ***********************************
+ Pages
+ ***********************************
+ */
 // Accordian on FAQ's page
 function toggleChevron(e) {
     $(e.target)

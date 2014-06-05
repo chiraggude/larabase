@@ -3,7 +3,7 @@
 
 <h1>Feedback</h1>
 
-<p>If you have any feedback, business inquiries or other questions, please fill out the following form to contact us. Thank you.</p>
+<p>Please get in touch with us if you have any feedback, business inquiries or other questions</p>
 
 <div class="col-md-6">
 

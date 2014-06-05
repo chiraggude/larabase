@@ -10,8 +10,7 @@
 
     "require-dev": {
         "way/generators": "2.*",
-        "fzaninotto/faker": "1.4.x-dev",
-        "barryvdh/laravel-debugbar": "1.*"
+        "fzaninotto/faker": "1.4.0"
     },
 
 

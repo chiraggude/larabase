@@ -40,7 +40,7 @@ class UserController extends BaseController {
             $message->to($user->email, $user->username)->subject('Activate Your Account');
         });
         $notice = 'Your account was created. Before logging in, you need to activate your account. Please check your email for instructions.';
-        return Redirect::action('AuthController@login')->withInfo($notice);
+        return Redirect::action('UserController@login')->withInfo($notice);
     }
 
 
