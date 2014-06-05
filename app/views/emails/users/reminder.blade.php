@@ -7,7 +7,7 @@
     <h2>Reset your Password</h2>
         <p>Access the following link to change your password</p>
         <strong><a href="{{ URL::to('password/reset', array($token)) }}">Reset your password now</a></strong>
-
+        <p>This link will expire in {{ Config::get('auth.reminder.expire', 60) }} minutes.</p>
     <br/>
     <br/>
     <p>Thanks</p>
