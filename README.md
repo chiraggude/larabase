@@ -1,7 +1,7 @@
 LaraBase
 ========
 
-LaraBase is a starter app for speeding up the development of Laravel projects. With basic knowledge of Laravel, LaraBase can be adapted and customized to your needs. The frontend of LaraBase was built with Bootstrap 3.1.1 and the authentican system was built in such a way that you could use it right away or modify AuthController.php to change the control flow. As far as possible, external packages were not used with the exception of [Generators](https://github.com/JeffreyWay/Laravel-4-Generators) and [Debugbar](https://github.com/barryvdh/laravel-debugbar)
+LaraBase is a starter app for speeding up the development of Laravel projects. With basic knowledge of Laravel, LaraBase can be adapted and customized to your needs. The frontend of LaraBase is built with Bootstrap 3.1.1 and the authentican system was built in such a way that you could use it right away or modify AuthController.php to change the control flow. As far as possible, external packages were not used with the exception of [Generators](https://github.com/JeffreyWay/Laravel-4-Generators) 
 
 ### Live Demo: [http://larabase.turizon.co.in/](http://larabase.turizon.co.in/)
 
@@ -16,9 +16,12 @@ LaraBase is a starter app for speeding up the development of Laravel projects. W
 * User Profile: Users have a Public and Private profile (editable)
 * Change Password: User can change password while logged in from Settings page
 * Unique Validation Rules for login and registration
-* Feedback forms are saved in DB and emailed to the Admin
+* Basic Admin Console to monitor Users (DataTables)
+* Dashboard Stats & Graphs
+* Feedback form submissions are saved in DB and emailed to the Admin
 * List of all Users with liks to their Public Profiles
 * Responsive HTML email templates
+* Custom Error pages
 * More Coming soon...
 
 ## Installation and Setup
@@ -77,8 +80,7 @@ If you have seeded the database, you can Login at: [http://example.com/larabase/
 **Note**: The URL's depends on how you have configured your webserver.
 
 ## Upcoming Features
-* Reports to be displayed in masonry-style grid and Datatables
-* Admin Console and Dashboard
+* Reports to be displayed in masonry-style grid 
 * Reports resource to be changed to Blog
 * Allow users to destroy their account (soft delete)
 * Profile Pictures via Gravatar
@@ -93,7 +95,8 @@ If you have seeded the database, you can Login at: [http://example.com/larabase/
 
 ## Pending
 * Code refactoring (reduce ickiness)
-* Make code base more generic * 
+* Make code base more generic 
+* Write tests
 
 ## Requirements
 * PHP >= 5.4.0
