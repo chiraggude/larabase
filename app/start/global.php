@@ -48,7 +48,11 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 
 App::error(function(Exception $exception, $code)
 {
-	Log::error($exception);
+    Log::error($exception);
+    // LaraBase - Show error page only when App Debug = False
+    if (Config::get('app.debug') == false) {
+        return Response::view('pages.error', array('code' => $code), $code);
+    }
 });
 
 /*
