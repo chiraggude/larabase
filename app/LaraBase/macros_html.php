@@ -7,18 +7,16 @@ HTML::macro('br', function($count = 1)
     return $br;
 });
 
-
+// Table
 HTML::macro('table', function($data = array(), $fields = array())
 {
     $table = '<div class="table-responsive"><table class="table table-bordered table-hover table-striped">';
-
     $table .='<tr>';
         foreach ($fields as $field)
         {
             $table .= '<th>' . Str::title($field) . '</th>';
         }
     $table .= '</tr>';
-
     $table .= '<tr>';
         if ( $data == null){
             foreach($fields as $key) {
@@ -30,8 +28,33 @@ HTML::macro('table', function($data = array(), $fields = array())
             }
         }
     $table .= '</tr>';
-
     $table .= '</table></div>';
-
     return $table;
+});
+
+// Delete Modal
+HTML::macro('deleteModal', function($modalID, $resource, $resource_name, $resource_id)
+{
+    $form_open = Form::open(array('route' => [''.$resource.'.destroy', $resource_id], 'method' => 'DELETE'));
+    $form_submit = Form::submitField("Delete", "btn btn-danger");
+    $form_close =  Form::close();
+    return '<div class="modal fade" id="'.$modalID.'" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="deleteModal">Delete '.$resource_name.'</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete this '.$resource_name.'?</p>
+                        <br>
+                        <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancel</button>
+                        '.$form_open.'
+                        '.$form_submit.'
+                        '.$form_close.'
+                    </div>
+                </div>
+            </div>
+        </div>';
+
 });
