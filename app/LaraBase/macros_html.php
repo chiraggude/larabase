@@ -56,5 +56,4 @@ HTML::macro('deleteModal', function($modalID, $resource, $resource_name, $resour
                 </div>
             </div>
         </div>';
-
 });

@@ -1,6 +1,7 @@
 <?php
 
 // ID's accross all routes should be integers (parameter constraints on a global level)
+// Regex \d+ means 1 or more digits
 Route::pattern('id', '\d+');
 
 // Filter every POST, PUT, DELETE request for the CSRF token (Patter based Filter)

@@ -15,7 +15,7 @@
 
         {{ Form::textField('visibility', 'Visibility', null) }}
 
-        <a href='{{URL::previous()}}' class='btn btn-default pull-right'>Cancel</a>
+        <a href='{{ URL::previous() }}' class='btn btn-default pull-right'>Cancel</a>
 
         {{ Form::submitField('Submit') }}
 
