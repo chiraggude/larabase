@@ -27,7 +27,7 @@ class UserController extends BaseController {
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator)->withInput(Input::except('password', 'password_confirm'));
         }
-        $code = str_random(70);
+        $code = str_random(32);
         $user = new User;
         $user->username = Input::get('username');
         $user->email = Input::get('email');
@@ -39,7 +39,7 @@ class UserController extends BaseController {
         Mail::send('emails.users.activate', ['link' => URL::route('activate', $code), 'username' => Input::get('username')], function($message) use ($user) {
             $message->to($user->email, $user->username)->subject('Activate Your Account');
         });
-        $notice = 'Your account was created. Before logging in, you need to activate your account. Please check your email for instructions.';
+        $notice = 'Your account was created. To activate your account, please check your email for instructions';
         return Redirect::action('UserController@login')->withInfo($notice);
     }
 
@@ -83,10 +83,10 @@ class UserController extends BaseController {
     public function activate($code)
     {
         $user = User::where('activation_code', '=', $code)->where('activated', '=', 0)->first();
-        if ($user->exists) {
+        if ( ! $user == null) {
             $user->activated = 1;
             $user->save();
-            return Redirect::to('login')->withSuccess('Your Account is now Activated! You can now login');
+            return Redirect::to('login')->withSuccess('Your Account is now Activated');
         }
         return Redirect::to('login')->withError('Invalid Activation Code: Your account could not be activated. Resend activation email');
     }

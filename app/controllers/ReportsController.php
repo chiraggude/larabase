@@ -91,7 +91,7 @@ class ReportsController extends \BaseController {
 	{
 		Report::destroy($id);
 
-		return Redirect::route('reports.index')->withWarning('Report Deleted');
+		return Redirect::route('reports.index')->withInfo('Report Deleted');
 	}
 
 }
