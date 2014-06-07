@@ -1,8 +1,8 @@
 @extends('layouts.master')
 @section('header-js')
-    {{ HTML::script('js/highcharts.js') }}
-    {{ HTML::script('js/highcharts-exporting.js') }}
-    {{ HTML::script('js/knob.js') }}
+    {{ HTML::script('//cdn.jsdelivr.net/highcharts/4.0.1/highcharts.js') }}
+    {{ HTML::script('//cdn.jsdelivr.net/highcharts/4.0.1/modules/exporting.js') }}
+    {{ HTML::script('//cdn.jsdelivr.net/jquery.knob/1.2.2/jquery.knob.min.js') }}
 @stop
 
 @section('content')

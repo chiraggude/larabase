@@ -4,23 +4,17 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>LaraBase</title>
 
     {{ HTML::style('css/larabase.css') }}
-    {{ HTML::style('css/flatty.min.css') }}
-    {{ HTML::style('css/font-awesome.min.css') }}
+    {{ HTML::style('//cdn.jsdelivr.net/bootswatch/3.1.1.1/flatly/bootstrap.min.css') }}
+    {{ HTML::style('//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css') }}
 
-    {{ HTML::script('js/jquery-1.11.0.min.js') }}
+    {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') }}
 
     @yield('header-js')
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- ExplorerCanvas brings the HTML5 Canvas functionality to Internet Explorer 8 and below -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/excanvas/r3/excanvas.js"></script>
-    <![endif]-->
 </head>
 <body>
 
@@ -37,7 +31,7 @@
 
 @include("layouts/footer")
 
-{{ HTML::script('js/bootstrap.min.js', ['async' => 'async']) }}
+{{ HTML::script('//cdn.jsdelivr.net/bootstrap/3.1.1/js/bootstrap.min.js', ['async' => 'async']) }}
 {{ HTML::script('js/analytics.js', ['async' => 'async']) }}
 
 @yield('footer-js')
