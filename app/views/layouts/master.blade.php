@@ -10,7 +10,6 @@
     {{ HTML::style('css/larabase.css') }}
     {{ HTML::style('//cdn.jsdelivr.net/bootswatch/3.1.1.1/flatly/bootstrap.min.css') }}
     {{ HTML::style('//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css') }}
-
     {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') }}
 
     @yield('header-js')

@@ -127,8 +127,8 @@ if(jQuery('div#dashboard').length > 0) {
  Admin
  ***********************************
  */
-// Users DataTables
 
+// Users DataTables
 if(jQuery('table#users-datatable').length > 0) { //checks if div element exists
 
     $(document).ready(function() {
