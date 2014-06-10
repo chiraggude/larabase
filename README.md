@@ -42,7 +42,7 @@ composer install
 
 By default, LaraBase's environment is set to `local`, so all configurations in `/app/config/local/` will take precedence over configurations in `/app/config/`.
 
-**Step 1**: Copy **database.php**, **mail.php** and **larabase.php** from `/app/config/` to `/app/config/local`
+**Step 1**: Copy **app.php**, **database.php**, **mail.php** and **larabase.php** from `/app/config/` to `/app/config/local`
 
 **Step 2**: Create a new database on your machine and change the appropriate settings in `/app/config/local/database.php`
 
@@ -58,7 +58,7 @@ Repeat this procedure for Step 3 and 4
 
 [Read this guide If your planning to deploy an app built on LaraBase to prroduction](https://github.com/chiraggude/larabase/wiki/Deployment-on-a-VPS#env-file)
 
-##### Enable Profile Save and Password Change
+#### Enable Profile Save and Password Change
 
 Remove the following line from `/app/controllers/LaraBase/AccountController.php`
 
@@ -74,7 +74,7 @@ Setup migrations table in DB: `php artisan migrate`
 Seed the database: `php artisan db:seed`
 
 ### Step 5: Setup Development Tools (optional)
-Autoload the following Service Providers in `/app/config/app.php`
+Add the following line to the list of autoloaded Service Providers in `/app/config/local/app.php`
 ```
 'Way\Generators\GeneratorsServiceProvider',
 ```
