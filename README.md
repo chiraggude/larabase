@@ -5,6 +5,8 @@ LaraBase is a starter app for speeding up the development of Laravel projects. W
 
 ### Live Demo: [http://larabase.turizon.co.in/](http://larabase.turizon.co.in/)
 
+Admin Account - Email: `admin@gmail.com`   Password: `password`
+
 ### Learn More: [LaraBase Wiki](https://github.com/chiraggude/larabase/wiki)
 
 ## Features
@@ -36,21 +38,34 @@ LaraBase is a starter app for speeding up the development of Laravel projects. W
 cd larabase
 composer install
 ```
-### Step 3: Configure app Settings
-
-**Database**: Create a new database and change the appropriate settings in `/app/config/database.php`
-
-**Mail**: Configure your mail settings in `/app/config/mail.php`
-
-**LaraBase** Configure your LaraBase specific settings in `/app/config/larabase.php`
+### Step 3: Configure Settings
 
 By default, LaraBase's environment is set to `local`, so all configurations in `/app/config/local/` will take precedence over configurations in `/app/config/`.
 
-**Confused about `getenv('setting')`?**
+**Step 1**: Copy **database.php**, **mail.php** and **larabase.php** from `/app/config/` to `/app/config/local`
 
-**Option 1**: Replace all `getenv('setting');` with `'your-setting';`
+**Step 2**: Create a new database on your machine and change the appropriate settings in `/app/config/local/database.php`
 
-**Option 2**: It is good practice to maintain different configurations for Local Development, Staging and Production. To set this up, read this short guide: [Configurations & Environments](https://github.com/chiraggude/larabase/wiki/Development-Environments-and-Configuration-in-Laravel)
+Replace all occurences of `getenv('setting');` with `'your-setting';`. 
+
+For example, `'database'  => getenv('DATABASE_NAME'),` should be changed to `'database'  => 'name-of-database',`
+
+Repeat this procedure for Step 3 and 4
+
+**Step 3**: Configure your mail settings in `/app/config/local/mail.php`
+
+**Step 4**:  Configure your LaraBase specific settings in `/app/config/local/larabase.php`
+
+[Read this guide If your planning to deploy an app built on LaraBase to prroduction](https://github.com/chiraggude/larabase/wiki/Deployment-on-a-VPS#env-file)
+
+##### Enable Profile Save and Password Change
+
+Remove the following line from `/app/controllers/LaraBase/AccountController.php`
+
+```
+return Redirect::back()->withWarning('This feature is disabled for the live demo');
+```
+The above line is both in the profileSave() and passwordSave() action
 
 
 ### Step 4: Database Migrations and Seeding
@@ -62,26 +77,18 @@ Seed the database: `php artisan db:seed`
 Autoload the following Service Providers in `/app/config/app.php`
 ```
 'Way\Generators\GeneratorsServiceProvider',
-'Barryvdh\Debugbar\ServiceProvider',
-```
-Get Ready for production by removing the following line from `/app/controllers/LaraBase/AccountController.php`
-
-Check in profileSave() and passwordSave()
-```
-return Redirect::back()->withWarning('This feature is disabled for the live demo');
 ```
 
 ### Step 6: Start using LaraBase
-LaraBase Login: [http://localhost/larabase/public](http://localhost/larabase/public)
+LaraBase: [http://localhost/larabase/public](http://localhost/larabase/public)
 
-If you have seeded the database, you can Login at: [http://example.com/larabase/public/login](http://localhost/larabase/public/login)
-`Email: admin@gmail.com   Password: password`
+Admin Account - Email: `admin@gmail.com`   Password: `password`
 
-**Note**: The URL's depends on how you have configured your webserver.
+**Note**: The URL depends on how you have configured your webserver.
 
 ## Upcoming Features
 * Reports to be displayed in masonry-style grid 
-* Reports resource to be changed to Blog
+* Reports resource to be renamed to Blog
 * Allow users to destroy their account (soft delete)
 * Profile Pictures via Gravatar
 * OAuth 1 & 2 - Login via FaceBook, Twitter, LinkedIn, Google, Microsoft, GitHub
