@@ -56,7 +56,6 @@ class AccountController extends BaseController {
 
     public function profileSave()
     {
-        return Redirect::back()->withWarning('This feature is disabled for the live demo'); // Remove for production
         $user = Auth::user();
         $data = Input::all();
         $validator = User::validate_profile($data, $user);
