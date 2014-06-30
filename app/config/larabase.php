@@ -3,6 +3,6 @@
 return [
 
     // All Notifications will go to the Admin email by default
-    'admin_email' => getenv('ADMIN_EMAIL'),
+    'admin_email' => 'larabase_admin@example.com',
 
 ];

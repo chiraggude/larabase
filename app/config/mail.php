@@ -54,7 +54,7 @@ return array(
     |
     */
 
-    'from' => array('address' => getenv('MAIL_ADDRESS'), 'name' => 'LaraBase'),
+    'from' => array('address' => 'your-email-address', 'name' => 'LaraBase'),
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
     |
     */
 
-    'username' => getenv('MAILGUN_USERNAME'),
+    'username' => 'mail_username',
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
     |
     */
 
-    'password' => getenv('MAILGUN_PASSWORD'),
+    'password' => 'mail_password',
 
     /*
     |--------------------------------------------------------------------------

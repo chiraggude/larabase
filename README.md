@@ -46,26 +46,11 @@ By default, LaraBase's environment is set to `local`, so all configurations in `
 
 **Step 2**: Create a new database on your machine and change the appropriate settings in `/app/config/local/database.php`
 
-Replace all occurences of `getenv('setting');` with `'your-setting';`. 
-
-For example, `'database'  => getenv('DATABASE_NAME'),` should be changed to `'database'  => 'name-of-database',`
-
-Repeat this procedure for Step 3 and 4
-
 **Step 3**: Configure your mail settings in `/app/config/local/mail.php`
 
 **Step 4**:  Configure your LaraBase specific settings in `/app/config/local/larabase.php`
 
-[Read this guide If your planning to deploy an app built on LaraBase to prroduction](https://github.com/chiraggude/larabase/wiki/Deployment-on-a-VPS#env-file)
-
-#### Enable Profile Save and Password Change
-
-Remove the following line from `/app/controllers/LaraBase/AccountController.php`
-
-```
-return Redirect::back()->withWarning('This feature is disabled for the live demo');
-```
-The above line is both in the profileSave() and passwordSave() action
+[Read this guide If your planning to deploy an app built on LaraBase to production](https://github.com/chiraggude/larabase/wiki/Deployment-on-a-VPS#env-file)
 
 
 ### Step 4: Database Migrations and Seeding

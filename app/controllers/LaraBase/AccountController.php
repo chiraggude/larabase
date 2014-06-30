@@ -80,7 +80,6 @@ class AccountController extends BaseController {
 
     public function passwordSave()
     {
-        return Redirect::back()->withWarning('This feature is disabled for the live demo'); // Remove for production
         $data = Input::all();
         $validator = User::validate_change_password($data);
         if ($validator->fails())
