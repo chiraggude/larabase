@@ -92,6 +92,7 @@ Route::filter('admin', function()
 {
     if ( Auth::user()->id != 1 )
     {
-        return Redirect::back()->withWarning('Your not the Admin');
+        $url = URL::previous() ?: 'dashboard';
+        return Redirect::to($url)->withWarning('Your not the Admin');
     }
 });
