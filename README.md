@@ -42,19 +42,21 @@ composer install
 
 By default, LaraBase's environment is set to `local`, so all configurations in `/app/config/local/` will take precedence over configurations in `/app/config/`.
 
-**Step 1**: Copy **app.php**, **database.php**, **mail.php** and **larabase.php** from `/app/config/` to `/app/config/local`
+**Step A**: Copy **app.php**, **database.php**, **mail.php** and **larabase.php** from `/app/config/` to `/app/config/local`
 
-**Step 2**: Create a new database on your machine and change the appropriate settings in `/app/config/local/database.php`
+**Step B**: Configure App settings in `/app/config/local/app.php`. Add your app encryption `key` and set `debug` to `true`
 
-Replace all occurences of `getenv('setting');` with `'your-setting';`. 
+**Step C**: Create a new database on your machine and change the appropriate settings in `/app/config/local/database.php`
+
+Replace all occurrences of `getenv('setting');` with `'your-setting';`
 
 For example, `'database'  => getenv('DATABASE_NAME'),` should be changed to `'database'  => 'name-of-database',`
 
 Repeat this procedure for Step 3 and 4
 
-**Step 3**: Configure your mail settings in `/app/config/local/mail.php`
+**Step D**: Configure your Mail settings in `/app/config/local/mail.php`
 
-**Step 4**:  Configure your LaraBase specific settings in `/app/config/local/larabase.php`
+**Step E**:  Configure your LaraBase specific settings in `/app/config/local/larabase.php`
 
 [Read this guide If your planning to deploy an app built on LaraBase to prroduction](https://github.com/chiraggude/larabase/wiki/Deployment-on-a-VPS#env-file)
 
@@ -74,9 +76,11 @@ Setup migrations table in DB: `php artisan migrate`
 Seed the database: `php artisan db:seed`
 
 ### Step 5: Setup Development Tools (optional)
-Add the following line to the list of autoloaded Service Providers in `/app/config/local/app.php`
+Autoload local-only Service Providers in `/app/config/local/app.php`
 ```
-'Way\Generators\GeneratorsServiceProvider',
+'providers' => append_config([
+        'Way\Generators\GeneratorsServiceProvider',
+    ]),
 ```
 
 ### Step 6: Start using LaraBase
