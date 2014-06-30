@@ -50,7 +50,7 @@ By default, LaraBase's environment is set to `local`, so all configurations in `
 
 **Step 4**:  Configure your LaraBase specific settings in `/app/config/local/larabase.php`
 
-[Read this guide If your planning to deploy an app built on LaraBase to production](https://github.com/chiraggude/larabase/wiki/Deployment-on-a-VPS#env-file)
+[Read this guide if your planning to deploy an app built on LaraBase to production](https://github.com/chiraggude/larabase/wiki/Deployment-on-a-VPS#env-file)
 
 
 ### Step 4: Database Migrations and Seeding
@@ -61,7 +61,9 @@ Seed the database: `php artisan db:seed`
 ### Step 5: Setup Development Tools (optional)
 Add the following line to the list of autoloaded Service Providers in `/app/config/local/app.php`
 ```
-'Way\Generators\GeneratorsServiceProvider',
+'providers' => append_config([
+        'Way\Generators\GeneratorsServiceProvider',
+    ]),
 ```
 
 ### Step 6: Start using LaraBase
