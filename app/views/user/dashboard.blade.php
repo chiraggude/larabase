@@ -29,11 +29,12 @@
             </div>
         </div>
 
-        <h3>Notifications <span class="badge">2</span></h3>
+        <h3>Notifications <span class="badge">3</span></h3>
 
         <div class="list-group">
             <a href="#" class="list-group-item">Porta ac consectetur ac <span class="label label-default pull-right">6 hours ago</span></a>
             <a href="#" class="list-group-item">Vestibulum at eros <span class="label label-default pull-right">2 days ago</span></a>
+            <a href="#" class="list-group-item">Dapibus ac facilisis in <span class="label label-default pull-right">5 days ago</span></a>
         </div>
 
     </div>
@@ -75,12 +76,6 @@
             <li class="list-group-item">Dapibus ac facilisis in <span class="label label-default pull-right">3 mins ago</span></li>
             <li class="list-group-item">Porta ac consectetur ac <span class="label label-default pull-right">1 hour ago</span></li>
         </ul>
-
-        <h3>Connections <span class="badge">2</span></h3>
-        <div class="list-group">
-            <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-            <a href="#" class="list-group-item">Vestibulum at eros</a>
-        </div>
 
     </div>
 
