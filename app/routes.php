@@ -7,12 +7,11 @@ Route::pattern('id', '\d+');
 // Filter every POST, PUT, DELETE request for the CSRF token (Patter based Filter)
 Route::when('*', 'csrf', array('post', 'put', 'delete'));
 
-
 // RESTful resources
-Route::resource('reports', 'ReportsController');
+Route::resource('posts', 'PostController');
 
 
-// Only Authenticated users can access these routes
+// Routes for Authenticated Users
 Route::group(['before' => 'auth'], function()
 {
     Route::get('dashboard',         'AccountController@dashboard');
@@ -35,7 +34,7 @@ Route::group(['before' => 'auth|admin','prefix' => 'admin'], function()
 });
 
 
-// Only Guests can access these Routes
+// Guest Routes
 Route::group(['before' => 'guest'], function()
 {
     Route::get( 'login',                  'UserController@login');
