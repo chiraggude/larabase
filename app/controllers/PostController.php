@@ -97,7 +97,7 @@ class PostController extends \BaseController {
      */
     public function destroy($id)
     {
-        post::destroy($id);
+        Post::destroy($id);
 
         return Redirect::route('posts.index')->withInfo('Post Deleted');
     }
