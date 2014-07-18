@@ -2,17 +2,17 @@
 
 use Faker\Factory as Faker;
 
-class ReportsTableSeeder extends Seeder {
+class PostsTableSeeder extends Seeder {
 
 	public function run()
 	{
-        //removes existing reports from table
-        Report::truncate();
+        //removes existing posts from table
+        Post::truncate();
 
         $faker = Faker::create();
 		foreach(range(1, 20) as $index)
 		{
-            Report::create([
+            Post::create([
             'user_id' => $faker->numberBetween(1,3),
             'title'=> $faker->paragraph(1),
             'content'=> $faker->paragraph(40),

@@ -1,8 +1,8 @@
 @extends('layouts.master')
 @section('header-js')
-    {{ HTML::script('//cdn.jsdelivr.net/highcharts/4.0.1/highcharts.js') }}
-    {{ HTML::script('//cdn.jsdelivr.net/highcharts/4.0.1/modules/exporting.js') }}
-    {{ HTML::script('//cdn.jsdelivr.net/jquery.knob/1.2.2/jquery.knob.min.js') }}
+{{ HTML::script('//cdn.jsdelivr.net/highcharts/4.0.1/highcharts.js') }}
+{{ HTML::script('//cdn.jsdelivr.net/highcharts/4.0.1/modules/exporting.js') }}
+{{ HTML::script('//cdn.jsdelivr.net/jquery.knob/1.2.2/jquery.knob.min.js') }}
 @stop
 
 @section('content')
@@ -20,7 +20,7 @@
                 <div id="trends"></div>
                 <div class="row">
                     <div class="col-md-6">
-                        <h1><i class="fa fa-file-text"></i> <span id="reports">0</span> Reports</h1>
+                        <h1><i class="fa fa-file-text"></i> <span id="posts">0</span> Posts</h1>
                     </div>
                     <div class="col-md-6">
                         <h1><i class="fa fa-users"></i> <span id="users">0</span> Users</h1>
@@ -48,8 +48,8 @@
             <div class="dashboard-knob-panel-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <input type="text" class="reports">
-                        <div class="knob-content"><strong>Reports</strong></div>
+                        <input type="text" class="posts">
+                        <div class="knob-content"><strong>Posts</strong></div>
                     </div>
                     <div class="col-md-6">
                         <input type="text" id="feedback">
@@ -84,11 +84,11 @@
 @stop
 
 @section('footer-js')
-    {{ HTML::script('js/animateNumber.min.js') }}
-    <script>
-        var users = {{ json_encode($users) }};
-        var reports = {{ json_encode($reports) }};
-        var user_reports = {{ json_encode($user_reports) }};
-        var feedback = {{ json_encode($feedback) }};
-    </script>
+{{ HTML::script('js/animateNumber.min.js') }}
+<script>
+    var users = {{ json_encode($users) }};
+    var posts = {{ json_encode($posts) }};
+    var user_posts = {{ json_encode($user_posts) }};
+    var feedback = {{ json_encode($feedback) }};
+</script>
 @stop

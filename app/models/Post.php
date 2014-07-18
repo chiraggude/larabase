@@ -1,6 +1,6 @@
 <?php
 
-class Report extends \Eloquent {
+class Post extends \Eloquent {
 
 
 	// Add your validation rules for this Model
@@ -18,7 +18,7 @@ class Report extends \Eloquent {
 
     // The guarded property specifies which attributes should not be mass-assignable -
     // Increases security when storing data with Input::all()
-    protected $guarded = array('id', 'created_at', 'updated_at', 'author_id');
+    protected $guarded = array('id', 'created_at', 'updated_at', 'user_id');
 
     // Creating a method for the Controller to call to and pass the data
     // public static so that we can call this Model from the Controller

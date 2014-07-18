@@ -12,7 +12,7 @@
 
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="{{ active('reports') }}"><a href="{{ URL::to('reports') }}">Reports</a></li>
+                <li class="{{ active('posts') }}"><a href="{{ URL::to('posts') }}">Blog</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
                     <ul class="dropdown-menu">

@@ -35,9 +35,9 @@ Dashboard
 if(jQuery('div#dashboard').length > 0) {
 
     // Trends - Stats
-    $('#reports').animateNumber(
+    $('#posts').animateNumber(
         {
-            number: reports,
+            number: posts,
         },
         2000
     )
@@ -51,28 +51,28 @@ if(jQuery('div#dashboard').length > 0) {
 
     // Summary  Knob
     $(document).ready(function(){
-        // Knob - Reports of Current User
-        $(".reports").knob({
+        // Knob - Posts of Current User
+        $(".posts").knob({
             'min':0,
-            'max':user_reports,
+            'max':user_posts,
             'readOnly': true,
             "thickness":.1,
             //'format': function(v){ return v + '+';},
             'change' : function (v) { console.log(v); }
         });
         // Animate number inside knob
-        $({value: 0}).animate({value: user_reports}, {
+        $({value: 0}).animate({value: user_posts}, {
             duration: 1000,
             step: function()
             {
-                $('.reports').val(Math.ceil(this.value)).trigger('change');
+                $('.posts').val(Math.ceil(this.value)).trigger('change');
             }
         })
     });
 
     // Summary  Knob
     $(document).ready(function(){
-        // Knob - Reports of Current User
+        // Knob - Posts of Current User
         $("#feedback").knob({
             'min':0,
             'max':feedback,
@@ -100,7 +100,7 @@ if(jQuery('div#dashboard').length > 0) {
                 enabled: false
             },
             title: {
-                text: 'Users & Reports'
+                text: 'Users & Posts'
             },
             xAxis: {
                 categories: ['Current Count']
@@ -114,8 +114,8 @@ if(jQuery('div#dashboard').length > 0) {
                 name: 'Users',
                 data: [ users ]
             }, {
-                name: 'Reports',
-                data: [ reports ]
+                name: 'Posts',
+                data: [ posts ]
             }]
         });
     });

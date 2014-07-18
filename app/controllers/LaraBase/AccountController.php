@@ -18,10 +18,10 @@ class AccountController extends BaseController {
     {
         $user = Auth::user();
         $users = DB::table('users')->count();
-        $user_reports = DB::table('reports')->where('user_id', '=', $user->id)->count();
-        $reports = Report::all()->count();
+        $user_posts = DB::table('posts')->where('user_id', '=', $user->id)->count();
+        $posts = Post::all()->count();
         $feedback = Feedback::all()->count();
-        return View::make('user.dashboard', compact('user','reports','users','user_reports', 'feedback'));
+        return View::make('user.dashboard', compact('user','posts','users','user_posts', 'feedback'));
     }
 
     // Show Public Profile of user
