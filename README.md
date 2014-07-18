@@ -1,7 +1,7 @@
 LaraBase
 ========
 
-LaraBase is a starter app for speeding up the development of Laravel projects. With basic knowledge of Laravel, LaraBase can be adapted and customized to your needs. The frontend of LaraBase is built with Bootstrap 3.1.1 and the authentican system was built in such a way that you could use it right away or modify AuthController.php to change the control flow. As far as possible, external packages were not used with the exception of [Generators](https://github.com/JeffreyWay/Laravel-4-Generators) 
+LaraBase is a starter app for speeding up the development of Laravel projects. With basic knowledge of Laravel, LaraBase can be adapted and customized to your needs. The frontend of LaraBase is built with Bootstrap 3.2 and the authentication system was built in such a way that you could use it right away or modify UserController.php to change the control flow. LaraBase does not include external packages/libraries as dependencies.
 
 ### Live Demo: [http://larabase.turizon.co.in/](http://larabase.turizon.co.in/)
 
@@ -10,8 +10,8 @@ LaraBase is a starter app for speeding up the development of Laravel projects. W
 ### Learn More: [LaraBase Wiki](https://github.com/chiraggude/larabase/wiki)
 
 ## Features
-* Public Pages: Home, About, FAQ's, Feedback
-* User Pages: Dashboard, Profile, Settings
+* Public pages: Home, Blog, About, FAQ's, Feedback/Contact Form
+* Authenticated User pages: Dashboard, Profile, Settings
 * User Registration & Login/Logout  (includes - "remember me" option)
 * Email Activation: An account activation email is sent the user's email for verification
 * Password Reset: Resets the user password after sends reset instructions to the user's email
@@ -24,7 +24,6 @@ LaraBase is a starter app for speeding up the development of Laravel projects. W
 * List of all Users with liks to their Public Profiles
 * Responsive HTML email templates
 * Custom Error pages
-* More Coming soon...
 
 ## Installation and Setup
 
@@ -60,12 +59,11 @@ Setup migrations table in DB: `php artisan migrate`
 
 Seed the database: `php artisan db:seed`
 
-### Step 5: Setup Development Tools (optional)
-Add the following line to the list of autoloaded Service Providers in `/app/config/local/app.php`
+### Step 5: Setup extra Dev Tools (optional)
+Add the following line to the list of Service Providers in `/app/config/local/app.php`
 ```
-'providers' => append_config([
+        // Larabase
         'Way\Generators\GeneratorsServiceProvider',
-    ]),
 ```
 
 ### Step 6: Start using LaraBase
@@ -76,8 +74,7 @@ Admin Account - Email: `admin@gmail.com`   Password: `password`
 **Note**: The URL depends on how you have configured your webserver.
 
 ## Upcoming Features
-* Reports to be displayed in masonry-style grid 
-* Reports resource to be renamed to Blog
+* Reports to be displayed in masonry-style grid
 * Allow users to destroy their account (soft delete)
 * Profile Pictures via Gravatar
 * OAuth 1 & 2 - Login via FaceBook, Twitter, LinkedIn, Google, Microsoft, GitHub
@@ -99,5 +96,5 @@ Admin Account - Email: `admin@gmail.com`   Password: `password`
 * MCrypt PHP Extension
 * Composer
 
-#### Thanks
+##### Extra Resources
 [Mailchimp Email Blueprints](https://github.com/mailchimp/Email-Blueprints)
