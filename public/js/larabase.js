@@ -19,12 +19,12 @@ $('#accordion').on('shown.bs.collapse', toggleChevron);
  ***********************************
  */
 
-// Remove element with class "alert" after 5 seconds (flash messages)
+// Remove element with class "alert" after 15 seconds (flash messages)
 window.setTimeout(function() {
     $(".alert").fadeTo(500, 0).slideUp(500, function(){
         $(this).remove();
     });
-}, 5000);
+}, 15000);
 
 /*
 ***********************************
@@ -49,46 +49,21 @@ if(jQuery('div#dashboard').length > 0) {
         2000
     )
 
-    // Summary  Knob
-    $(document).ready(function(){
-        // Knob - Posts of Current User
-        $(".posts").knob({
-            'min':0,
-            'max':user_posts,
-            'readOnly': true,
-            "thickness":.1,
-            //'format': function(v){ return v + '+';},
-            'change' : function (v) { console.log(v); }
-        });
-        // Animate number inside knob
-        $({value: 0}).animate({value: user_posts}, {
-            duration: 1000,
-            step: function()
-            {
-                $('.posts').val(Math.ceil(this.value)).trigger('change');
-            }
-        })
-    });
+    $('#user_posts').animateNumber(
+        {
+            number: user_posts,
+        },
+        1000
+    )
 
-    // Summary  Knob
-    $(document).ready(function(){
-        // Knob - Posts of Current User
-        $("#feedback").knob({
-            'min':0,
-            'max':feedback,
-            'readOnly': true,
-            "thickness":.1,
-            'change' : function (v) { console.log(v); }
-        });
-        // Animate number inside knob
-        $({value: 0}).animate({value: feedback}, {
-            duration: 1000,
-            step: function()
-            {
-                $('#feedback').val(Math.ceil(this.value)).trigger('change');
-            }
-        })
-    });
+    $('#feedback').animateNumber(
+        {
+            number: feedback,
+        },
+        1000
+    )
+
+
 
     // Site Trends - Highcharts
     $(function () {

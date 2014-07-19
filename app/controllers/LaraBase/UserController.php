@@ -3,14 +3,16 @@
 
 class UserController extends BaseController {
 
-    // Displays all Users
+
+    // Display all Users
     public function index()
     {
         $users = User::paginate(10);
         return View::make('user.index', compact('users'));
     }
 
-    // Displays the registration form for account creation
+
+    // Display the registration form for account creation
 
     public function register()
     {
@@ -18,7 +20,7 @@ class UserController extends BaseController {
     }
 
 
-    // Stores new account, completes registration and sends activation email
+    // Save registration details, create user account and send activation email
 
     public function processRegister()
     {
@@ -35,16 +37,16 @@ class UserController extends BaseController {
         $user->activation_code = $code;
         $user->activated =  0;
         $user->save();
+        $activation_link = URL::route('activate', $code);
         //$user->email is out of scope for the mail closure, hence to access it, we have defined "use ($user)"
-        Mail::send('emails.users.activate', ['link' => URL::route('activate', $code), 'username' => Input::get('username')], function($message) use ($user) {
+        Mail::send('emails.users.activate', ['link' => $activation_link, 'username' => Input::get('username')], function($message) use($user) {
             $message->to($user->email, $user->username)->subject('Activate Your Account');
         });
-        $notice = 'Your account was created. To activate your account, please check your email for instructions';
-        return Redirect::action('UserController@login')->withInfo($notice);
+        return Redirect::action('UserController@login')->withInfo('To Activate your account, please check your Email for instructions');
     }
 
 
-    // Displays the login form
+    // Display the Login form
 
     public function login()
     {
@@ -52,7 +54,7 @@ class UserController extends BaseController {
     }
 
 
-    // Attempt to do login
+    // Attempt to Login user
 
     public function processLogin()
     {
@@ -92,7 +94,7 @@ class UserController extends BaseController {
     }
 
 
-    // Logout the user out of the application.
+    // Logout the user
 
     public function logout()
     {

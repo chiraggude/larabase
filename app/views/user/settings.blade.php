@@ -8,8 +8,8 @@
 
         <h3><i class="fa fa-lock"></i> Security & Privacy</h3>
         {{ HTML::table($settings, ['Setting 1', 'Setting 2', 'Setting 3', 'Setting 4', 'Setting 5']) }}
-        <a href="{{ URL::to('#') }}" class="btn btn-sm btn-default pull-right"><i class="fa fa-edit"></i> Edit Security Settings</a>
         <a href="{{ URL::to('password/change') }}" class="btn btn-sm btn-default"><i class="fa fa-lock"></i> Change Account Password</a>
+        <a href="{{ URL::to('#') }}" class="btn btn-sm btn-default pull-right"><i class="fa fa-edit"></i> Edit Security Settings</a>
 
         {{ HTML::br(3) }}
 
