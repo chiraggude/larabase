@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-    {{ Form::model($post, array('route'=> array('posts.update', $post->id), 'method' => 'PUT')) }}
+    {{ Form::model($post, ['route'=> ['posts.update', $post->id], 'method' => 'PUT']) }}
 
     {{ Form::textField('title', 'Title', '') }}
 
@@ -15,7 +15,7 @@
 
     {{ Form::textField('visibility', 'Visibility', '') }}
 
-    <a href='{{URL::previous()}}' class='btn btn-default pull-right'>Cancel</a>
+    <a href='{{ URL::previous() }}' class='btn btn-default pull-right'>Cancel</a>
 
     {{ Form::submitField('Submit') }}
 

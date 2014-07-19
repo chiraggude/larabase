@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<a href="{{ URL::to('profile/edit') }}" class="btn btn-primary pull-right"><i class="fa fa-edit"></i> Edit Profile</a>
+
 <h1>Your Profile</h1>
 <hr>
 <div class="row">
@@ -12,7 +12,7 @@
             <li class="list-group-item"><h3>Email: {{ $user->email }}</h3></li>
         </ul>
 
-        <a href="{{ URL::to('users') }}/{{ $user->username}}" class="btn btn-primary"><i class="fa fa-user"></i> View Public Profile</a>
+        <a href="{{ URL::action('AccountController@profilePublic', [$user->username]) }}" class="btn btn-primary"><i class="fa fa-user"></i> View Public Profile</a>
         <a href="{{ URL::to('profile/edit') }}" class="btn btn-default pull-right"><i class="fa fa-edit"></i> Edit Profile</a>
 </div>
 @stop

@@ -11,6 +11,13 @@ Route::when('*', 'csrf', array('post', 'put', 'delete'));
 Route::resource('posts', 'PostController');
 
 
+// Admin Routes
+Route::group(['before' => 'auth|admin','prefix' => 'admin'], function()
+{
+    Route::get('users',       'AdminController@users');
+});
+
+
 // Routes for Authenticated Users
 Route::group(['before' => 'auth'], function()
 {
@@ -27,13 +34,6 @@ Route::group(['before' => 'auth'], function()
 });
 
 
-// Admin Routes
-Route::group(['before' => 'auth|admin','prefix' => 'admin'], function()
-{
-    Route::get('users',       'AdminController@users');
-});
-
-
 // Guest Routes
 Route::group(['before' => 'guest'], function()
 {
@@ -41,8 +41,8 @@ Route::group(['before' => 'guest'], function()
     Route::post('login',                  'UserController@processLogin');
     Route::get( 'register',               'UserController@register');
     Route::post('register',               'UserController@processRegister');
-    Route::get( 'activate/{code}',        array('as'=>'activate', 'uses' => 'UserController@activate'));
     Route::controller('password',         'RemindersController');
+    Route::get( 'activate/{code}',        ['as'=>'activate', 'uses' => 'UserController@activate']);
 });
 
 

@@ -8,3 +8,5 @@
 @endforeach
 {{ $users->links() }}
 @stop
+
+
