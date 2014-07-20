@@ -2,10 +2,10 @@
 @section('content')
 
 <h1>Register</h1>
-
+<br/>
 <div class="col-md-6">
 
-{{ Form::open(array('action' => 'UserController@processRegister','class' => 'form-horizontal')) }}
+    {{ Form::open(array('action' => 'UserController@processRegister','class' => 'form-horizontal')) }}
 
     {{ Form::textField('username', 'Username', null) }}
 
@@ -17,7 +17,7 @@
 
     {{ Form::submitField('Create new Account') }}
 
-{{ Form::close() }}
+    {{ Form::close() }}
 
 </div>
 

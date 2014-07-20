@@ -2,14 +2,14 @@
 @section('content')
 
 <h1>Feedback</h1>
-
+</br>
 <p>Please get in touch with us if you have any feedback, business inquiries or other questions</p>
-
+</br>
 <div class="col-md-6">
 
         {{ Form::open(array('action' => 'HomeController@feedbackSave' , 'class' => 'form-horizontal')) }}
 
-        {{ Form::textField('full_name', 'Your Full Name', 'John Doe') }}
+        {{ Form::textField('full_name', 'Your Name', 'John Doe') }}
 
         {{ Form::emailField('email', 'Your Email', 'name@example.com') }}
 
