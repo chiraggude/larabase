@@ -12,7 +12,7 @@ LaraBase is a starter app for speeding up the development of Laravel projects. W
 ## Features
 * Public pages: Home, Blog, About, FAQ's, Feedback/Contact Form
 * Authenticated User pages: Dashboard, Profile, Settings
-* User Registration & Login/Logout  (includes - "remember me" option)
+* Authentication: Login with email or username (with "remember me" option), Registration, Account Activation, Logout
 * Email Activation: An account activation email is sent the user's email for verification
 * Password Reset: Resets the user password after sends reset instructions to the user's email
 * User Profile: Users have a Public and Private profile (editable)
