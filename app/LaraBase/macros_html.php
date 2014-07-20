@@ -8,7 +8,7 @@ HTML::macro('br', function($count = 1)
 });
 
 // Table
-HTML::macro('table', function($data = array(), $fields = array())
+HTML::macro('table', function($current_settings = array(), $fields = array())
 {
     $table = '<div class="table-responsive"><table class="table table-bordered table-hover table-striped">';
     $table .='<tr>';
@@ -18,13 +18,13 @@ HTML::macro('table', function($data = array(), $fields = array())
         }
     $table .= '</tr>';
     $table .= '<tr>';
-        if ( $data == null){
-            foreach($fields as $key) {
+        if ( $current_settings == null){
+            foreach($fields as $value) {
                 $table .= '<td>Value</td>';
             }
         } else {
-            foreach($fields as $key) {
-                $table .= '<td>' . $data->$key . '</td>';
+            foreach($current_settings as $value) {
+                $table .= '<td>' .$value. '</td>';
             }
         }
     $table .= '</tr>';
