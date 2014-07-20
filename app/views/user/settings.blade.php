@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<h4 class="text-muted pull-right">Account Status <span class="label label-success">Active</span></h4>
+
 <h1><i class="fa fa-cog"></i> Settings</h1>
 <hr>
 <div class="row">
@@ -20,13 +20,18 @@
         {{ HTML::br(3) }}
 
         <h4 class="text-muted">Account Created: {{ $user->created_at->toDayDateTimeString() }} ({{ $user->created_at->diffForHumans() }})</h4>
-        <h4 class="text-muted">Last Updated: {{ $user->updated_at->toDayDateTimeString() }} ({{ $user->updated_at->diffForHumans() }})</h4>
-        <h4 class="text-muted">Current Time: {{ Carbon\Carbon::now()->toTimeString() }}</h4>
+
         @if ($user->activated=true)
-        <a class="btn btn-sm btn-default" href="{{ URL::to('#') }}"><i class="fa fa-power-off"></i> Deactivate Account</a>
+        <h4 class="text-muted"><span class="label label-success">Account Status: Active</span>
+            <a class="btn btn-xs btn-default" href="{{ URL::to('#') }}"><i class="fa fa-power-off"></i> Deactivate Account</a>
+        </h4>
         @else
-        <a class="btn btn-sm btn-success" href="{{ URL::to('#') }}">Reactivate Account</a>
+        <h4 class="text-muted"><span class="label label-danger">Account Status: Inactive</span>
+            <a class="btn btn-xs btn-success" href="{{ URL::to('#') }}">Reactivate Account</a>
+        </h4>
         @endif
+
+        <h4 class="text-muted">Current Time: {{ Carbon\Carbon::now()->toTimeString() }}</h4>
 
     </div>
 </div>
