@@ -20,9 +20,10 @@ LaraBase is a starter app for speeding up the development of Laravel projects. W
 * Unique Validation Rules for login and registration
 * Basic Admin Console to monitor Users (DataTables)
 * Dashboard Stats & Graphs
-* Feedback form submissions are saved in DB and emailed to the Admin
-* List of all Users with liks to their Public Profiles
+* Contact/Feedback form submissions are saved in DB and emailed to the Admin
+* List of all Users with links to their Public Profiles
 * Responsive HTML email templates
+* Users can set their Timezone preferences in Settings
 * Custom Error pages
 
 ## Installation and Setup
@@ -98,3 +99,4 @@ Admin Account - Email: `admin@gmail.com`   Password: `password`
 
 ##### Extra Resources
 [Mailchimp Email Blueprints](https://github.com/mailchimp/Email-Blueprints)
+[Timezones](https://github.com/tamaspap/timezones)

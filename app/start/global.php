@@ -95,3 +95,4 @@ require app_path().'/filters.php';
 require app_path().'/LaraBase/events.php';
 require app_path().'/LaraBase/macros_form.php';
 require app_path().'/LaraBase/macros_html.php';
+require app_path().'/LaraBase/timezones.php';

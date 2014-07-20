@@ -13,7 +13,16 @@
 
 App::before(function($request)
 {
-	//
+    if(Auth::check())
+    {
+        // Share User's Timezone across all views
+        View::share('user_timezone', Auth::user()->timezone);
+    }
+    else {
+        // Share Default Timezone across all views
+        View::share('user_timezone', 'UTC');
+    }
+
 });
 
 
