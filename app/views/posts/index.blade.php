@@ -7,7 +7,9 @@
 
     @foreach($posts as $post)
 
-        <h2> {{ link_to("/posts/{$post->id}", $post->title) }} <small>{{ $post->updated_at->diffForHumans() }}</small></h2>
+        <h2> {{ link_to("/posts/{$post->id}", $post->title) }}</h2>
+
+        <p class="text-muted">{{ mb_strtoupper($post->updated_at->diffForHumans()) }}</p>
 
         {{ str_limit($post->content, 480, "...") }}  </br>
 

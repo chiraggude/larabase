@@ -1,15 +1,35 @@
 <?php
 
-class AccountController extends BaseController {
+class AccountController extends \BaseController {
 
     //  Show Account Settings
 
 	public function settings()
 	{
         $user = Auth::user();
-        $settings = [];
-        return View::make('user.settings', compact('user', 'settings'));
+        $security_settings = [];
+        $personal_settings = [$user->timezone, 'Value', 'Value', 'Value', 'Value'];
+        return View::make('user.settings', compact('user', 'security_settings', 'personal_settings'));
 	}
+
+
+    public function settingsEdit()
+    {
+        $user = Auth::user();
+        // Use a helper function to get list of timezones
+        $timezones = getTimezones();
+        return View::make('user.settings_edit', compact('user', 'timezones'));
+    }
+
+
+    public function settingsSave()
+    {
+        $user = Auth::user();
+        $data = Input::all();
+        $user->timezone = Input::get('timezone');
+        $user->save();
+        return Redirect::to('settings/edit')->withSuccess('Your Settings were changed Successfully');
+    }
 
 
     //  Show User Dashboard
