@@ -98,5 +98,5 @@ Admin Account - Email: `admin@gmail.com`   Password: `password`
 * Composer
 
 ##### Extra Resources
-[Mailchimp Email Blueprints](https://github.com/mailchimp/Email-Blueprints)
-[Timezones](https://github.com/tamaspap/timezones)
+* [Mailchimp Email Blueprints](https://github.com/mailchimp/Email-Blueprints)
+* [Timezones List](https://github.com/tamaspap/timezones)
