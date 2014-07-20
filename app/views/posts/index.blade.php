@@ -1,7 +1,8 @@
 @extends('layouts.master')
 @section('content')
-<a class="btn btn-success pull-right" href="{{ URL::to('posts/create') }}"><i class="fa fa-plus-circle"></i> Create Post</a>
-<h1>Posts</h1>
+<a class="btn btn-sm btn-success pull-right" href="{{ URL::to('posts/create') }}"><i class="fa fa-plus-circle"></i> Create Post</a>
+<h1>Blog</h1>
+</br>
 
     @if(count($posts) > 0)
 
