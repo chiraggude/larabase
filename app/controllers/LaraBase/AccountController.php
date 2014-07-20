@@ -111,8 +111,8 @@ class AccountController extends \BaseController {
         else
         {
             $user = Auth::user();
-            $current_password = Input::get('current_password');
-            $new_password = Input::get('new_password');
+            $current_password = $data['current_password'];
+            $new_password = $data['new_password'];
             if(Hash::check($current_password, $user->getAuthPassword()))
             {
                 if ($current_password == $new_password) {
@@ -125,5 +125,5 @@ class AccountController extends \BaseController {
             return Redirect::back()->withError('Your Current Password is incorrect');
         }
     }
-
+    
 }

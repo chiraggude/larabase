@@ -2,7 +2,7 @@
 @section('content')
 <a class="btn btn-sm btn-success pull-right" href="{{ URL::to('posts/create') }}"><i class="fa fa-plus-circle"></i> Create Post</a>
 <h1>Blog</h1>
-</br>
+<hr>
 
     @if(count($posts) > 0)
 
@@ -12,7 +12,9 @@
 
         <p class="text-muted">{{ mb_strtoupper($post->updated_at->diffForHumans()) }}</p>
 
-        {{ str_limit($post->content, 480, "...") }}  </br>
+        {{ str_limit($post->content, 480, "...") }}
+
+        {{ HTML::br('2') }}
 
         <a class="btn btn-xs btn-success" href="{{ URL::to('posts/' . $post->id) }}">Read More</a>
         <a class="btn btn-xs btn-info" href="{{ URL::to('posts/' . $post->id . '/edit') }}">Edit</a>
