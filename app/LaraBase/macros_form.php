@@ -36,11 +36,24 @@ Form::macro('textareaField', function($name, $label, $placeholder)
     $value = Form::getValueAttribute($name);
     $element = Form::textarea($name, $value, array('placeholder'=>$placeholder, 'class'=>'form-control'));
     return "<div class='form-group " . errorClass($name) ."'>
-            <label class='control-label' for='{$label}'>{$label}</label>
+            <label class='control-label' for='{$name}'>{$label}</label>
             {$element}"
             . errorMessage($name).
             "</div>";
 });
+
+
+Form::macro('selectField', function($name, $options, $value, $label)
+{
+    $value = Form::getValueAttribute($name);
+    $element = Form::select($name, $options, $value, array('class'=>'form-control'));
+    return "<div class='form-group " . errorClass($name) ."'>
+            <label class='control-label' for='{$name}'>{$label}</label>
+            {$element}"
+    . errorMessage($name).
+    "</div>";
+});
+
 
 
 Form::macro('submitField', function($value, $btn_style = 'btn btn-primary')
