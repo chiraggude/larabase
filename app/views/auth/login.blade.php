@@ -7,7 +7,7 @@
 
     {{ Form::open(array('action'=>'UserController@processLogin', 'class' => 'form-horizontal')) }}
 
-    {{ Form::emailField('email', 'Email', null) }}
+    {{ Form::textField('email_or_username', 'Email or Username', null) }}
 
     {{ Form::passwordField('password', 'Password', null) }}
 

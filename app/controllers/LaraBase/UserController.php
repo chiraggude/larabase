@@ -64,18 +64,18 @@ class UserController extends BaseController {
             return Redirect::back()->withErrors($validator)->withInput(Input::except('password'));
         }
         else {
-            $user = User::where('email', '=', Input::get('email'))->first();
+            $user = User::where('email', '=', $data['email_or_username'])->orWhere('username', $data['email_or_username'])->first();
             if ( ! $user == null) {  // Check if user in DB
                 if ( $user->activated == 0)  {  // Check if user is activated
                     return Redirect::back()->withWarning('Account Activation is pending. We have already sent you an Activation Email. Resend activation email');
                 }
-                $attempt = Auth::attempt(['email' => $data['email'], 'password' => $data['password']], Input::get('remember'));
+                $attempt = Auth::attempt(['email' => $user->email, 'password' => $data['password']], Input::get('remember'));
                 if ( $attempt == true) {  // Check if user was authenticated
                     return Redirect::intended('dashboard')->withSuccess('Your have successfully logged in');
             }
-                return Redirect::back()->withInput(Input::except('password'))->withError('Invalid Credentials - Your email or password is incorrect.');
+                return Redirect::back()->withInput(Input::except('password'))->withError('Invalid Credentials - Your email/username or password is incorrect.');
             }
-            return Redirect::back()->withInput(Input::except('password'))->withError('Invalid Credentials - Your email or password is incorrect.');
+            return Redirect::back()->withInput(Input::except('password'))->withError('Invalid Credentials - Your email/username or password is incorrect.');
         }
     }
 

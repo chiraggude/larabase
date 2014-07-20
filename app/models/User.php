@@ -43,7 +43,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
     // Add your validation rules for user login
     public static $login_rules = [
-        'email' => 'required|email',
+        'email_or_username' => 'required|min:3',
         'password' => 'required'
     ];
 
