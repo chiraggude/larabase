@@ -22,6 +22,7 @@ Route::group(['before' => 'auth|admin','prefix' => 'admin'], function()
 Route::group(['before' => 'auth'], function()
 {
     Route::get('dashboard',         'AccountController@dashboard');
+    Route::get('users/{username}/posts',  'PostController@indexForUser');
     Route::get('users/{username}',  'AccountController@profilePublic');
     Route::get('profile',           'AccountController@profile');
     Route::get('settings',          'AccountController@settings');
@@ -58,3 +59,10 @@ Route::get('/',             'HomeController@home');
 
 // Developer Routes
 Route::get('hello',         'DevController@hello');
+
+
+// Dump SQL queries
+/*Event::listen('illuminate.query', function($query)
+{
+    var_dump($query);
+});*/

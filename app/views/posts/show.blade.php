@@ -9,7 +9,9 @@
 
     <p>{{ $post->content }}</p>
 
-    <p class="text-muted">PUBLISHED BY {{ link_to("/users/{$user->username}", mb_strtoupper($user->username)) }}</p>
+    <a href="{{ URL::to('users/'.$post->user->username) }}"><img src="{{ gravatar_url($post->user->email, 70) }}" alt="{{ gravatar_url($post->user->email, null) }}"></a>
+
+    <p class="text-muted">WRITTEN BY {{ link_to("/users/{$post->user->username}", mb_strtoupper($post->user->username)) }}</p>
 
     <p class="text-muted">CREATED ON {{ mb_strtoupper($post->created_at->setTimezone($user_timezone)->toDayDateTimeString()) }}</p>
 

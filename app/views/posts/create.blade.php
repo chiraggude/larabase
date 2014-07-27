@@ -5,15 +5,15 @@
 
     {{ Form::textField('title', 'Title', null) }}
 
-    {{ Form::textareaField('content', 'Content', 'Start writing...') }}
+    {{ Form::textareaField('content', 'Content', null) }}
 
     {{ Form::textField('category', 'Category', null) }}
 
     {{ Form::textField('tag', 'Tag', null) }}
 
-    {{ Form::textField('status', 'Status', null) }}
+    {{ Form::selectField('status', ['published' =>'Published','draft' =>'Draft'], 'published', 'Status') }}
 
-    {{ Form::textField('visibility', 'Visibility', null) }}
+    {{ Form::selectField('visibility', ['public' =>'Public','private' =>'Private'], 'public', 'Visibility') }}
 
     {{ Form::hidden('user_id', $user_id) }}
 
