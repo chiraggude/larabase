@@ -40,7 +40,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <h1><i class="fa fa-pencil"></i> <span id="user_posts">0</span> Posts</h1>
+                        <h1><a href="{{ URL::to('users/'.$user->username.'/posts') }}"> <i class="fa fa-pencil"></i> <span id="user_posts">0</span> Posts</a></h1>
                     </div>
                     <div class="col-md-6">
                         <h1><i class="fa fa-envelope"></i> <span id="feedback">0</span> Messages</h1>

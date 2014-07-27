@@ -7,4 +7,8 @@
 
     <h3 class="text-muted">Looks like something went wrong</h3>
 
+    @if($code == '500')
+        <p class="text-muted">The resource you were looking for was not found</p>
+    @endif
+
 @stop

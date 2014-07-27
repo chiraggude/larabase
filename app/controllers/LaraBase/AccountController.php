@@ -4,13 +4,13 @@ class AccountController extends \BaseController {
 
     //  Show Account Settings
 
-	public function settings()
-	{
+    public function settings()
+    {
         $user = Auth::user();
         $security_settings = [];
         $personal_settings = [$user->timezone, 'Value', 'Value', 'Value', 'Value'];
         return View::make('user.settings', compact('user', 'security_settings', 'personal_settings'));
-	}
+    }
 
 
     public function settingsEdit()
@@ -48,7 +48,7 @@ class AccountController extends \BaseController {
 
     public function profilePublic($username)
     {
-        $user = User::where('username', '=', $username)->firstOrFail();
+        $user = User::with('posts')->where('username', '=', $username)->firstOrFail();
         return View::make('user.profile_public', compact('user'));
     }
 
@@ -123,5 +123,5 @@ class AccountController extends \BaseController {
             return Redirect::back()->withError('Your Current Password is incorrect');
         }
     }
-    
+
 }
