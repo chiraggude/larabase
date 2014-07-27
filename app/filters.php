@@ -110,7 +110,7 @@ Route::filter('owner', function()
 {
     $resource_id = Request::segment(2);
     $resource = Request::segment(1);
-    $resource_singular = str_singular($resource);
+    $resource_singular = ucwords(str_singular($resource));
     $object = $resource_singular::whereId($resource_id)->first();
     if(Auth::user()->id != $object->user_id)
     {
