@@ -104,3 +104,16 @@ Route::filter('admin', function()
         return Redirect::to('dashboard')->withWarning('Your not the Admin');
     }
 });
+
+
+Route::filter('owner', function()
+{
+    $resource_id = Request::segment(2);
+    $resource = Request::segment(1);
+    $resource_singular = str_singular($resource);
+    $object = $resource_singular::whereId($resource_id)->first();
+    if(Auth::user()->id != $object->user_id)
+    {
+     return Redirect::back()->withWarning('Only owners of this '.$resource_singular .' can perform this action');
+    }
+});

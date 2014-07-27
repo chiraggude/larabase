@@ -9,7 +9,7 @@ class PostController extends \BaseController {
     public function __construct()
     {
         $this->beforeFilter('auth', array('except' => ['index', 'show']));
-        //$this->beforeFilter('owner', array('except' => ['index', 'show', 'create','indexForUser']));
+        $this->beforeFilter('owner', array('except' => ['index', 'show', 'create','indexForUser']));
     }
 
     /**
@@ -28,7 +28,7 @@ class PostController extends \BaseController {
      */
     public function indexForUser($username)
     {
-        $posts = User::whereUsername($username)->first()->posts()->paginate(5);
+        $posts = User::whereUsername($username)->first()->posts()->orderBy('updated_at', 'desc')->paginate(5);
         return View::make('posts.user_index', compact('posts','username'));
     }
 
@@ -92,7 +92,7 @@ class PostController extends \BaseController {
             return Redirect::back()->withErrors($validator)->withInput();
         }
         $post->update($data);
-        return Redirect::route('posts.index')->withInfo('Post Updated');
+        return Redirect::route('posts.show', $id)->withInfo('Post Updated');
     }
 
     /**
