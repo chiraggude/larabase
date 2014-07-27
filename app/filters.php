@@ -99,7 +99,7 @@ Route::filter('csrf', function()
 
 Route::filter('admin', function()
 {
-    if ( Auth::user()->id != 1 )
+    if ( Auth::user()->id !== 1 )
     {
         return Redirect::to('dashboard')->withWarning('Your not the Admin');
     }
@@ -112,7 +112,7 @@ Route::filter('owner', function()
     $resource = Request::segment(1);
     $resource_singular = ucwords(str_singular($resource));
     $object = $resource_singular::whereId($resource_id)->first();
-    if(Auth::user()->id != $object->user_id)
+    if(Auth::user()->id !== $object->user_id && Auth::user()->id !== 1 )
     {
      return Redirect::back()->withWarning('Only owners of this '.$resource_singular .' can perform this action');
     }

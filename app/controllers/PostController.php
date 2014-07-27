@@ -9,7 +9,7 @@ class PostController extends \BaseController {
     public function __construct()
     {
         $this->beforeFilter('auth', array('except' => ['index', 'show']));
-        $this->beforeFilter('owner', array('except' => ['index', 'show', 'create','indexForUser']));
+        $this->beforeFilter('owner', array('only' => ['edit', 'update', 'delete']));
     }
 
     /**
