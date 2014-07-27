@@ -9,8 +9,8 @@ class Post extends \Eloquent {
         'content' => 'required|min:10',
         'category' => 'required|min:3',
         'tag' => 'required|min:3',
-        'status' => 'required',
-        'visibility' => 'required'
+        'status' => 'required|in:published,draft',
+        'visibility' => 'required|in:public,private'
 	];
 
 	// data entities that can be saved to the database eg: title, content (leave empty for all)
