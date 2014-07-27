@@ -23,7 +23,9 @@ LaraBase is a starter app for speeding up the development of Laravel projects. W
 * Contact/Feedback form submissions are saved in DB and emailed to the Admin
 * List of all Users with links to their Public Profiles
 * Responsive HTML email templates
+* Simple activity based access control (ABAC) with the Owner filter
 * Users can set their Timezone preferences in Settings
+* Profile pictures via Gravatar
 * Custom Error pages
 
 ## Installation and Setup
@@ -77,7 +79,6 @@ Admin Account - Email: `admin@gmail.com`   Password: `password`
 ## Upcoming Features
 * Reports to be displayed in masonry-style grid
 * Allow users to destroy their account (soft delete)
-* Profile Pictures via Gravatar
 * OAuth 1 & 2 - Login via FaceBook, Twitter, LinkedIn, Google, Microsoft, GitHub
 * Tracks sign in count, last login,  timestamps and IP address
 * Expires sessions that have no activity in a specified period of time
