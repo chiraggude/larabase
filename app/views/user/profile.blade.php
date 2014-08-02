@@ -15,7 +15,7 @@
     </div>
 
     <div class="col-md-6">
-        <a href="{{ URL::to('users/'.$user->username) }}"><img src="{{ gravatar_url($user->email, 250) }}" alt="{{ gravatar_url($user->email, null) }}"></a>
+        <a href="{{ URL::to('users/'.$user->username) }}"><img src="{{ gravatar_url($user->email, 250) }}" alt="{{ $user->username }}"></a>
     </div>
 
 </div>

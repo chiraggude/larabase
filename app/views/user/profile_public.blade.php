@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-md-6">
         <div class="media">
-            <img src="{{ gravatar_url($user->email, 140) }}" alt="{{ gravatar_url($user->email, 140) }}" class="media-object pull-left">
+            <img src="{{ gravatar_url($user->email, 140) }}" alt="{{ $user->username }}" class="media-object pull-left">
             <div class="media-body">
                 <h3 class="media-heading">{{ $user->username }}</h3>
                 <h4>City, Country</h4>
