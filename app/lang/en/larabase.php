@@ -8,16 +8,20 @@ return [
 	*/
 
     // processRegister()
-    'registration_success' => 'To Activate your account, please check your Email for instructions',
+    'registration_success' => 'To activate your account, please check your email for instructions or ',
     // processLogin()
     'login_success' => 'Your have successfully logged in',
-    'unactivated_account' => 'Account Activation is pending. We have already sent you an Activation Email. Resend activation email',
+    'unactivated_account' => 'Account activation is Pending. Check your email for the activation code or',
     'invalid_credentials' => 'Invalid Credentials - Your email/username or password is incorrect',
     // Activate()
     'activation_success' => 'Your Account is now Activated',
-    'activation_failure' => 'Invalid Activation Code: Your account could not be activated. Resend activation email',
+    'activation_failure' => 'Invalid Activation Code: Your account could not be activated',
     // Logout()
     'logout' => 'You have logged out',
+    // ResendActivationCode()
+    'account_activated' => 'Your account is already activated',
+    'activation_code_resent' => 'Activation Code was sent to your email',
+    'email_not_found' => 'Your email is not registered',
 
     /*
 	|--------------------------------------------------------------------------

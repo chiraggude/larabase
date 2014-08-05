@@ -3,6 +3,7 @@
  Pages
  ***********************************
  */
+
 // Accordian on FAQ's page
 function toggleChevron(e) {
     $(e.target)
@@ -21,7 +22,7 @@ $('#accordion').on('shown.bs.collapse', toggleChevron);
 
 // Remove element with class "alert" after 15 seconds (flash messages)
 window.setTimeout(function() {
-    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+    $("div#alert").fadeTo(500, 0).slideUp(500, function(){
         $(this).remove();
     });
 }, 15000);

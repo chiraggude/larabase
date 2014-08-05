@@ -43,7 +43,7 @@ class UserController extends BaseController {
         Mail::send('emails.users.activate', ['link' => $activation_link, 'username' => Input::get('username')], function($message) use($user) {
             $message->to($user->email, $user->username)->subject('Activate Your Account');
         });
-        return Redirect::action('UserController@login')->withInfo(Lang::get('larabase.registration_success'));
+        return Redirect::action('UserController@login')->withActivationMessage(Lang::get('larabase.registration_success'));
     }
 
 
@@ -68,7 +68,7 @@ class UserController extends BaseController {
             $user = User::where('email', '=', $data['email_or_username'])->orWhere('username', $data['email_or_username'])->first();
             if ( ! $user == null) {  // Check if user in DB
                 if ( $user->activated == 0)  {  // Check if user is activated
-                    return Redirect::back()->withWarning(Lang::get('larabase.unactivated_account'));
+                    return Redirect::back()->withActivationMessage(Lang::get('larabase.unactivated_account'));
                 }
                 $attempt = Auth::attempt(['email' => $user->email, 'password' => $data['password']], Input::get('remember'));
                 if ( $attempt == true) {  // Check if user was authenticated
@@ -92,6 +92,38 @@ class UserController extends BaseController {
             return Redirect::to('login')->withSuccess(Lang::get('larabase.activation_success'));
         }
         return Redirect::to('login')->withError(Lang::get('larabase.activation_failure'));
+    }
+
+
+    // Show Resend Activation Code form
+
+    public function resendActivation()
+    {
+        return View::make('auth.resend_activation');
+    }
+
+
+    // Resend Activation Code
+
+    public function resendActivationCode()
+    {
+        $user = User::where('email', '=', Input::get('email'))->first();
+        if(! $user == null)
+        {
+            if($user->activated == 1)
+            {
+                return Redirect::back()->withWarning(Lang::get('larabase.account_activated'));
+            }
+            $code = str_random(32);
+            $user->activation_code = $code;
+            $user->save();
+            $activation_link = URL::route('activate', $code);
+            Mail::send('emails.users.activate', ['link' => $activation_link, 'username' => Input::get('username')], function($message) use($user) {
+                $message->to($user->email, $user->username)->subject('Activate your Account');
+            });
+            return Redirect::to('login')->withSuccess(Lang::get('larabase.activation_code_resent'));
+        }
+        return Redirect::back()->withError(Lang::get('larabase.email_not_found'));
     }
 
 
