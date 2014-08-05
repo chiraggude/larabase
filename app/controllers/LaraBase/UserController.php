@@ -5,6 +5,7 @@ class UserController extends BaseController {
 
 
     // Display all Users
+
     public function index()
     {
         $users = User::paginate(10);
@@ -42,7 +43,7 @@ class UserController extends BaseController {
         Mail::send('emails.users.activate', ['link' => $activation_link, 'username' => Input::get('username')], function($message) use($user) {
             $message->to($user->email, $user->username)->subject('Activate Your Account');
         });
-        return Redirect::action('UserController@login')->withInfo('To Activate your account, please check your Email for instructions');
+        return Redirect::action('UserController@login')->withInfo(Lang::get('larabase.registration_success'));
     }
 
 
@@ -67,15 +68,15 @@ class UserController extends BaseController {
             $user = User::where('email', '=', $data['email_or_username'])->orWhere('username', $data['email_or_username'])->first();
             if ( ! $user == null) {  // Check if user in DB
                 if ( $user->activated == 0)  {  // Check if user is activated
-                    return Redirect::back()->withWarning('Account Activation is pending. We have already sent you an Activation Email. Resend activation email');
+                    return Redirect::back()->withWarning(Lang::get('larabase.unactivated_account'));
                 }
                 $attempt = Auth::attempt(['email' => $user->email, 'password' => $data['password']], Input::get('remember'));
                 if ( $attempt == true) {  // Check if user was authenticated
-                    return Redirect::intended('dashboard')->withSuccess('Your have successfully logged in');
+                    return Redirect::intended('dashboard')->withSuccess(Lang::get('larabase.login_success'));
             }
-                return Redirect::back()->withInput(Input::except('password'))->withError('Invalid Credentials - Your email/username or password is incorrect.');
+                return Redirect::back()->withInput(Input::except('password'))->withError(Lang::get('larabase.invalid_credentials'));
             }
-            return Redirect::back()->withInput(Input::except('password'))->withError('Invalid Credentials - Your email/username or password is incorrect.');
+            return Redirect::back()->withInput(Input::except('password'))->withError(Lang::get('larabase.invalid_credentials'));
         }
     }
 
@@ -88,9 +89,9 @@ class UserController extends BaseController {
         if ( ! $user == null) {
             $user->activated = 1;
             $user->save();
-            return Redirect::to('login')->withSuccess('Your Account is now Activated');
+            return Redirect::to('login')->withSuccess(Lang::get('larabase.activation_success'));
         }
-        return Redirect::to('login')->withError('Invalid Activation Code: Your account could not be activated. Resend activation email');
+        return Redirect::to('login')->withError(Lang::get('larabase.activation_failure'));
     }
 
 
@@ -99,7 +100,7 @@ class UserController extends BaseController {
     public function logout()
     {
         Auth::logout();
-        return Redirect::to('login')->withInfo('You have logged out');
+        return Redirect::to('login')->withInfo(Lang::get('larabase.logout'));
     }
 
 
