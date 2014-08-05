@@ -22,7 +22,7 @@ class HomeController extends BaseController {
         }
         Feedback::create($data);
         Event::fire('feedback.submitted', array($data));
-        return Redirect::back()->withSuccess('Thanks for your feedback. We will be in touch soon!');
+        return Redirect::back()->withSuccess(Lang::get('larabase.feedback_submitted'));
     }
 
     public function about()

@@ -56,7 +56,7 @@ class PostController extends \BaseController {
         }
         Post::create($data);
         Event::fire('post.created', array($data));
-        return Redirect::route('posts.index')->withSuccess('Post created');
+        return Redirect::route('posts.index')->withSuccess(Lang::get('larabase.post_created'));
     }
 
     /**
@@ -92,7 +92,7 @@ class PostController extends \BaseController {
             return Redirect::back()->withErrors($validator)->withInput();
         }
         $post->update($data);
-        return Redirect::route('posts.show', $id)->withInfo('Post Updated');
+        return Redirect::route('posts.show', $id)->withInfo(Lang::get('larabase.post_updated'));
     }
 
     /**
@@ -102,7 +102,7 @@ class PostController extends \BaseController {
     public function destroy($id)
     {
         Post::destroy($id);
-        return Redirect::route('posts.index')->withInfo('Post Deleted');
+        return Redirect::route('posts.index')->withInfo(Lang::get('larabase.post_deleted'));
     }
 
 }

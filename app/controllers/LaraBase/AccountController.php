@@ -28,7 +28,7 @@ class AccountController extends \BaseController {
         $data = Input::all();
         $user->timezone = Input::get('timezone');
         $user->save();
-        return Redirect::to('settings/edit')->withSuccess('Your Settings were changed Successfully');
+        return Redirect::to('settings/edit')->withSuccess(Lang::get('larabase.settings_saved'));
     }
 
 
@@ -85,7 +85,7 @@ class AccountController extends \BaseController {
             return Redirect::back()->withInput()->withErrors($validator);
         }
         $user->update($data);
-        return Redirect::to('profile')->withSuccess('Profile was updated Successfully');
+        return Redirect::to('profile')->withSuccess(Lang::get('larabase.profile_updated'));
     }
 
 
@@ -116,13 +116,13 @@ class AccountController extends \BaseController {
             if(Hash::check($current_password, $user->getAuthPassword()))
             {
                 if ($current_password == $new_password) {
-                    return Redirect::back()->withWarning('Your Current Password and New Password are the same');
+                    return Redirect::back()->withWarning(Lang::get('larabase.unique_password_required'));
                 }
                 $user->password = Hash::make($new_password);
                 $user->save();
-                return Redirect::to('profile')->withSuccess('Your Password was changed Successfully');
+                return Redirect::to('profile')->withSuccess(Lang::get('larabase.profile_changed'));
             }
-            return Redirect::back()->withError('Your Current Password is incorrect');
+            return Redirect::back()->withError(Lang::get('larabase.password_incorrect'));
         }
     }
 
