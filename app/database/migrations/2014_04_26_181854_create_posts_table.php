@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration {
 			$table->string('status');
 			$table->string('visibility');
             $table->date('published_on')->nullable();
+            $table->softDeletes();
 			$table->timestamps();
 		});
 	}

@@ -88,6 +88,7 @@ class UserController extends BaseController {
         $user = User::where('activation_code', '=', $code)->where('activated', '=', 0)->first();
         if ( ! $user == null) {
             $user->activated = 1;
+            $user->activation_code = null;
             $user->save();
             return Redirect::to('login')->withSuccess(Lang::get('larabase.activation_success'));
         }

@@ -45,7 +45,7 @@ App::after(function($request, $response)
 Route::filter('auth', function()
 {
 	if (Auth::guest())
-        return Redirect::guest('login')->withInfo('You need to login');
+        return Redirect::guest('login')->withInfo(Lang::get('larabase.only_auth'));
 });
 
 Route::filter('auth.basic', function()
@@ -67,7 +67,7 @@ Route::filter('auth.basic', function()
 Route::filter('guest', function()
 {
 	if (Auth::check())
-        return Redirect::to('dashboard')->withInfo('Your already logged in');
+        return Redirect::to('dashboard')->withInfo(Lang::get('larabase.only_guest'));
 });
 
 /*
@@ -101,7 +101,7 @@ Route::filter('admin', function()
 {
     if ( Auth::user()->id !== 1 )
     {
-        return Redirect::to('dashboard')->withWarning('Your not the Admin');
+        return Redirect::to('dashboard')->withWarning(Lang::get('larabase.only_admin'));
     }
 });
 
@@ -114,6 +114,7 @@ Route::filter('owner', function()
     $object = $resource_singular::whereId($resource_id)->first();
     if(Auth::user()->id !== $object->user_id && Auth::user()->id !== 1 )
     {
-     return Redirect::back()->withWarning('Only owners of this '.$resource_singular .' can perform this action');
+     return Redirect::back()->withWarning(Lang::get('larabase.only_owner', ['resource_singular'=> $resource_singular]));
     }
 });
+

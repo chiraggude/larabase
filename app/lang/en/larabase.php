@@ -3,6 +3,21 @@
 return [
     /*
 	|--------------------------------------------------------------------------
+	| Filters
+	|--------------------------------------------------------------------------
+	*/
+
+    // Guest filter
+    'only_guest' => 'Your already logged in',
+    // Auth filter
+    'only_auth' => 'You need to login',
+    // Admin filter
+    'only_admin' => 'Your not the admin',
+    // Owner filter
+    'only_owner' => 'Only owners of this :resource_singular can perform this action',
+
+    /*
+	|--------------------------------------------------------------------------
 	| UserController
 	|--------------------------------------------------------------------------
 	*/
@@ -37,6 +52,8 @@ return [
     'unique_password_required' => 'Your Current Password and New Password are the same',
     'password_saved' => 'Your Password was changed Successfully',
     'password_incorrect' => 'Your Current Password is incorrect',
+    // deleteAccount()
+    'account_deleted' => 'Your account and all associated data has been deleted',
 
     /*
 	|--------------------------------------------------------------------------
@@ -52,6 +69,14 @@ return [
 	| HomeController
 	|--------------------------------------------------------------------------
 	*/
+    // feedbackSave()
     'feedback_submitted' => 'Thanks for your feedback. We will be in touch soon!',
 
+    /*
+	|--------------------------------------------------------------------------
+	| AdminController
+	|--------------------------------------------------------------------------
+	*/
+    // restoreUser()
+    'user_restored' => 'User account and data has been restored',
 ];
