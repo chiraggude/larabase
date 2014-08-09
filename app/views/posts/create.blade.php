@@ -17,7 +17,7 @@
 
     {{ Form::hidden('user_id', $user_id) }}
 
-    <a href='{{ URL::previous() }}' class='btn btn-default pull-right'>Cancel</a>
+    {{ cancel_button() }}
 
     {{ Form::submitField('Submit') }}
 

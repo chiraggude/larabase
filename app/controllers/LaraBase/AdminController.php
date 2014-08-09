@@ -13,7 +13,7 @@ class AdminController extends BaseController {
     public function deletedUsers()
     {
         $users = User::onlyTrashed()->get()->lists('username', 'id');
-        return View::make('admin.deleted-users', compact('users'));
+        return View::make('admin.deleted_users', compact('users'));
     }
 
     public function restoreUser()

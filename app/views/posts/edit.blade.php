@@ -15,7 +15,7 @@
 
     {{ Form::selectField('visibility', ['public' =>'Public','private' =>'Private'], 'public', 'Visibility') }}
 
-    <a href='{{ URL::previous() }}' class='btn btn-default pull-right'>Cancel</a>
+    {{ cancel_button() }}
 
     {{ Form::submitField('Submit') }}
 
