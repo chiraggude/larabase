@@ -15,7 +15,7 @@
 
     {{ Form::emailField('email', 'Email', '') }}
 
-    <a href='{{ URL::previous() }}' class='btn btn-default pull-right'>Cancel</a>
+    {{ cancel_button() }}
 
     {{ Form::submitField('Save Profile') }}
 

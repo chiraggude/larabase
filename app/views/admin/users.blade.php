@@ -30,8 +30,8 @@
     [ "{{ $user->username }}",
       "{{ $user->first_name }}",
       "{{ $user->last_name }}",
-      "{{$user->email }}",
-      "{{$user->updated_at->diffForHumans() }}",
+      "{{ $user->email }}",
+      "{{ $user->updated_at->diffForHumans() }}",
       "<a href='{{ URL::to('users') }}/{{ $user->username}}' class='btn btn-xs btn-default'><i class='fa fa-user'></i></a>"
     ],
     @endforeach

@@ -17,7 +17,7 @@
 
         {{ Form::textareaField('message_body', 'Your Message', 'Start writing...') }}
 
-        <a href='{{URL::previous()}}' class='btn btn-default pull-right'>Cancel</a>
+        {{ cancel_button() }}
 
         {{ Form::submitField('Submit Feedback') }}
 

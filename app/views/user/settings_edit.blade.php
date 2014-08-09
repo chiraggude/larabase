@@ -16,7 +16,7 @@
 
         {{ HTML::br('2') }}
 
-        <a href='{{ URL::to("settings") }}' class='btn btn-default pull-right'>Back to Settings</a>
+        {{ cancel_button() }}
 
         {{ Form::submitField('Save Changes') }}
 
