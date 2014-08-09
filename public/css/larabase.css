@@ -1,9 +1,10 @@
+/* Global */
 html {position:relative !important; min-height:100% !important;}
-
 body {background-color:#f7f7f7 !important; margin-bottom:60px !important}
-
 .jumbotron {margin-top:-20px}
-
+.top-gap {margin-top: 21px !important;}
+.alert {border-radius: 0px !important;}
+.navbar {margin-bottom: 0px !important;}
 #footer {height:60px; background-color:#f5f5f5; border-top:1px solid #ddd; padding-top: 20px; position:absolute; bottom:0; width:100%}
 
 

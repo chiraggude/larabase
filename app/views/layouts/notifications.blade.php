@@ -1,49 +1,63 @@
 @if (Session::has('message'))
 <div class="alert alert-info alert-dismissable" id="alert">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>{{ Session::get('message') }}</strong>
+    <div class="container">
+        <strong>{{ Session::get('message') }}</strong>
+    </div>
 </div>
 @endif
 
 @if (Session::has('info'))
 <div class="alert alert-info alert-dismissable" id="alert">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>{{ Session::get('info') }}</strong>
+    <div class="container">
+        <strong>{{ Session::get('info') }}</strong>
+    </div>
 </div>
 @endif
 
 @if (Session::has('success'))
 <div class="alert alert-success alert-dismissable" id="alert">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>{{ Session::get('success') }}</strong>
+    <div class="container">
+        <strong>{{ Session::get('success') }}</strong>
+    </div>
 </div>
 @endif
 
 @if (Session::has('errors'))
 <div class="alert alert-danger alert-dismissable" id="alert">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>{{ HTML::ul($errors->all()) }}</strong>
+    <div class="container">
+        <strong>{{ HTML::ul($errors->all()) }}</strong>
+    </div>
 </div>
 @endif
 
 @if (Session::has('error'))
 <div class="alert alert-danger alert-dismissable" id="alert">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>{{ Session::get('error') }}</strong>
+    <div class="container">
+        <strong>{{ Session::get('error') }}</strong>
+    </div>
 </div>
 @endif
 
 @if (Session::has('warning'))
 <div class="alert alert-warning alert-dismissable" id="alert">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>{{ Session::get('warning') }}</strong>
+    <div class="container">
+        <strong>{{ Session::get('warning') }}</strong>
+    </div>
 </div>
 @endif
 
 @if (Session::has('activation_message'))
 <div class="alert alert-info alert-dismissable">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>{{ Session::get('activation_message') }}</strong>
-    <strong><a href="{{ URL::to('resend-activation') }}" class="btn btn-warning btn-xs">Resend Activation Code</a></strong>
+    <div class="container">
+        <strong>{{ Session::get('activation_message') }}</strong>
+        <strong><a href="{{ URL::to('resend-activation') }}" class="btn btn-warning btn-xs">Resend Activation Code</a></strong>
+    </div>
 </div>
 @endif
