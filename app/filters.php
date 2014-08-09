@@ -15,8 +15,11 @@ App::before(function($request)
 {
     if(Auth::check())
     {
+        $user = Auth::user();
+        // Log last User Activity
+        Event::fire('last.activity', array($user));
         // Share User's Timezone across all views
-        View::share('user_timezone', Auth::user()->timezone);
+        View::share('user_timezone', $user->timezone);
     }
     else {
         // Share Default Timezone across all views

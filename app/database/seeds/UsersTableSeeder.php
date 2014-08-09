@@ -29,7 +29,7 @@ class UsersTableSeeder extends Seeder {
             'activation_code' => $faker->md5,
             'activated' => true,
             'first_name' => $faker->firstName,
-            'last_name' => $faker->lastName
+            'last_name' => $faker->lastName,
             ]);
 		}
 	}
