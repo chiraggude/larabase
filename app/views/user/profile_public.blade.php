@@ -2,7 +2,7 @@
 @section('content')
 
 @if ( ! $user->first_name == null )
-    <h1>{{ $user->first_name }} {{ $user->last_name }} <small>Some random status message by the user...</small></h1>
+    <h1>{{ $user->full_name }} <small>Some random status message by the user...</small></h1>
 @else
     <h1>{{ $user->username }} <small>Some random status message by the user...</small></h1>
 @endif

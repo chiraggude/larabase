@@ -24,23 +24,25 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
     protected $hidden = array('password', 'remember_token');
 
-
     /**
      * LaraBase
      *
      */
-
     protected $dates = ['deleted_at'];
 
     // data entities that can be saved to the database via Mass Assginments
     protected $fillable = ['username','email','password','first_name','last_name'];
 
-    // Mutator to automatically hash the password whenever it is saved to DB (via migrations, controllers etc.)
-    // Commented out because some passwords were hashed twice. Before uncommenting remove all mentions of Hash::make across codebase
+    // Mutator method to automatically hash the password
     /*public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = Hash::make('$password');
     }*/
+
+    // Accessor method to get User's full name
+    public function getFullNameAttribute() {
+        return $this->first_name . ' ' . $this->last_name;
+    }
 
     // Validation rules for user login
     public static $login_rules = [
@@ -55,7 +57,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         'password' => 'required|min:8',
         'password_confirm' => 'required|same:password'
     ];
-
 
     // Validation rules for user initiated password change
     public static $change_password_rules = [
@@ -90,7 +91,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 
     // Eloquent Relationships
-
     public function posts()
     {
         return $this->hasMany('Post');

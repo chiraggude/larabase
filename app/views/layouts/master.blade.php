@@ -19,10 +19,11 @@
 
 @include("layouts/navigation")
 
-<div class="container">
+@include("layouts/notifications")
+
+<div class="container top-gap">
     <div class="row">
         <div class="container">
-            @include("layouts/notifications")
             @yield('content')
         </div>
     </div>
