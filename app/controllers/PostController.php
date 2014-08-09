@@ -65,7 +65,7 @@ class PostController extends \BaseController {
      */
     public function show($id)
     {
-        $post = Post::whereId($id)->first();
+        $post = Post::with('user')->find($id);
         return View::make('posts.show', compact('post'));
     }
 

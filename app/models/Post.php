@@ -1,7 +1,12 @@
 <?php
 
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
+
 class Post extends \Eloquent {
 
+    use SoftDeletingTrait;
+
+    protected $dates = ['deleted_at'];
 
 	// Add your validation rules for this Model
 	public static $rules = [
@@ -18,7 +23,7 @@ class Post extends \Eloquent {
 
     // The guarded property specifies which attributes should not be mass-assignable -
     // Increases security when storing data with Input::all()
-    protected $guarded = array('id', 'created_at', 'updated_at');
+    protected $guarded = array('id', 'created_at', 'updated_at', 'deleted_at');
 
     // Creating a method for the Controller to call to and pass the data
     // public static so that we can call this Model from the Controller

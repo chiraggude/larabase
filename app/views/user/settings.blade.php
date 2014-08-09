@@ -9,30 +9,25 @@
         <h3><i class="fa fa-lock"></i> Security & Privacy</h3>
         {{ HTML::table($security_settings, ['Setting 1', 'Setting 2', 'Setting 3', 'Setting 4', 'Setting 5']) }}
 
-        {{ HTML::br(1) }}
+
 
         <h3><i class="fa fa-exchange"></i> Personalisation</h3>
         {{ HTML::table($personal_settings, ['Timezone', 'Setting 2', 'Setting 3', 'Setting 4', 'Setting 5']) }}
 
-        {{ HTML::br(1) }}
+        {{ HTML::br(2) }}
 
-        <a href="{{ URL::to('/settings/edit') }}" class="btn btn-sm btn-default"><i class="fa fa-edit"></i> Edit Setting</a>
+        <a href="{{ URL::to('/settings/edit') }}" class="btn btn-sm btn-default"><i class="fa fa-edit"></i> Edit Settings</a>
         <a href="{{ URL::to('password/change') }}" class="btn btn-sm btn-default"><i class="fa fa-lock"></i> Change Account Password</a>
 
         {{ HTML::br(3) }}
 
         <h4 class="text-muted">Account Created: {{ $user->created_at->setTimezone($user_timezone)->toDayDateTimeString() }} ({{ $user->created_at->diffForHumans() }})</h4>
 
-        @if ($user->activated=true)
-        <h4 class="text-muted"><span class="label label-success">Account Status: Active</span>
-            <a class="btn btn-xs btn-default" href="{{ URL::to('#') }}"><i class="fa fa-power-off"></i> Deactivate Account</a>
+        <h4 class="text-muted">
+            <span class="label label-success">Account Status - Active</span>
+            <button class="btn btn-xs btn-default" data-toggle="modal" data-target="#delete-account"><i class="fa fa-power-off"></i> Delete Account</button>
+            {{ HTML::deleteAccountModal('delete-account') }}
         </h4>
-        @else
-        <h4 class="text-muted"><span class="label label-danger">Account Status: Inactive</span>
-            <a class="btn btn-xs btn-success" href="{{ URL::to('#') }}">Reactivate Account</a>
-        </h4>
-        @endif
-
 
     </div>
 </div>

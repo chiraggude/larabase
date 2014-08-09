@@ -30,11 +30,11 @@
 
 <div class="row">
     <div class="col-md-6">
-        @if(count($user->posts) > 0)
-            <h3>Posts <span class="badge">{{ count($user->posts) }} </span><small><a href="{{ URL::to('users/'.$user->username.'/posts') }}"> (see all)</a></small></h3>
+        @if(count($posts) > 0)
+            <h3>Posts <span class="badge">{{ count($posts) }} </span><small><a href="{{ URL::to('users/'.$user->username.'/posts') }}"> (see all)</a></small></h3>
             <div class="list-group">
-            @foreach($user->posts as $user->post)
-                <a href="{{ URL::to('posts/' . $user->  post->id) }}" class="list-group-item">{{ $user->post->title }}</a>
+            @foreach($posts as $post)
+                <a href="{{ URL::to('posts/' . $post->id) }}" class="list-group-item">{{ $post->title }}</a>
             @endforeach
             </div>
         @else

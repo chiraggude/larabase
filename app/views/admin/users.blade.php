@@ -17,6 +17,8 @@
     </div>
 </div>
 
+<a href="{{ URL::to('admin/deleted-users') }}" class="btn btn-default"><i class="fa fa-trash-o"></i> Deleted Users</a>
+
 @stop
 
 

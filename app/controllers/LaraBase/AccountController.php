@@ -38,7 +38,7 @@ class AccountController extends \BaseController {
     {
         $user = Auth::user();
         $users = DB::table('users')->count();
-        $user_posts = DB::table('posts')->where('user_id', '=', $user->id)->count();
+        $user_posts = $user->posts->count();
         $posts = Post::all()->count();
         $feedback = Feedback::all()->count();
         return View::make('user.dashboard', compact('user','posts','users','user_posts', 'feedback'));
@@ -48,8 +48,8 @@ class AccountController extends \BaseController {
 
     public function profilePublic($username)
     {
-        $user = User::with('posts')->where('username', '=', $username)->firstOrFail();
-        return View::make('user.profile_public', compact('user'));
+        $user = User::with('posts')->whereUsername($username)->firstOrFail();
+        return View::make('user.profile_public', ['user' => $user, 'posts' => $user->posts]);
     }
 
 
@@ -124,6 +124,16 @@ class AccountController extends \BaseController {
             }
             return Redirect::back()->withError(Lang::get('larabase.password_incorrect'));
         }
+    }
+
+
+    public function deleteAccount()
+    {
+        $user = Auth::user();
+        Post::whereUserId($user->id)->delete();
+        Auth::logout();
+        if($user->delete())
+        return Redirect::to('login')->withInfo(Lang::get('larabase.account_deleted'));
     }
 
 }

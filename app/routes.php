@@ -14,26 +14,29 @@ Route::resource('posts', 'PostController');
 // Admin Routes
 Route::group(['before' => 'auth|admin','prefix' => 'admin'], function()
 {
-    Route::get('users',       'AdminController@users');
+    Route::get('users',             'AdminController@users');
+    Route::get('deleted-users',     'AdminController@deletedUsers');
+    Route::post('restore-user',     'AdminController@restoreUser');
 });
 
 
 // Routes for Authenticated Users
 Route::group(['before' => 'auth'], function()
 {
-    Route::get('dashboard',         'AccountController@dashboard');
-    Route::get('users/{username}/posts',  'PostController@indexForUser');
-    Route::get('users/{username}',  'AccountController@profilePublic');
-    Route::get('profile',           'AccountController@profile');
-    Route::get('settings',          'AccountController@settings');
-    Route::get('settings/edit',     'AccountController@settingsEdit');
-    Route::post('settings/edit',    'AccountController@settingsSave');
-    Route::get('password/change',   'AccountController@passwordChange');
-    Route::post('password/change',  'AccountController@passwordSave');
-    Route::get('profile/edit',      'AccountController@profileEdit');
-    Route::post('profile/edit',     'AccountController@profileSave');
-    Route::get('users',             'UserController@index');
-    Route::get('logout',            'UserController@logout');
+    Route::get('dashboard',                 'AccountController@dashboard');
+    Route::get('users/{username}/posts',    'PostController@indexForUser');
+    Route::get('users/{username}',          'AccountController@profilePublic');
+    Route::get('profile',                   'AccountController@profile');
+    Route::get('settings',                  'AccountController@settings');
+    Route::get('settings/edit',             'AccountController@settingsEdit');
+    Route::post('settings/edit',            'AccountController@settingsSave');
+    Route::get('password/change',           'AccountController@passwordChange');
+    Route::post('password/change',          'AccountController@passwordSave');
+    Route::get('profile/edit',              'AccountController@profileEdit');
+    Route::post('profile/edit',             'AccountController@profileSave');
+    Route::post('delete-account',           'AccountController@deleteAccount');
+    Route::get('users',                     'UserController@index');
+    Route::get('logout',                    'UserController@logout');
 });
 
 
@@ -62,9 +65,8 @@ Route::get('/',             'HomeController@home');
 // Developer Routes
 Route::get('hello',         'DevController@hello');
 
-
-// Dump SQL queries
-/*Event::listen('illuminate.query', function($query)
+// Display all SQL executed in Eloquent
+Event::listen('illuminate.query', function($query)
 {
     var_dump($query);
-});*/
+});
