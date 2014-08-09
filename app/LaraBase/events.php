@@ -1,9 +1,16 @@
 <?php
 
-// Log last activity timestamp for Authenticated users
+// Log last login for User
+Event::listen('auth.login', function($user)
+{
+    $user->last_login = new DateTime;
+    $user->save();
+});
+
+// Log last activity for Authenticated user
 Event::listen('last.activity', function($user)
 {
-    $user->updated_at = new DateTime;
+    $user->last_activity = new DateTime;
     $user->save();
 });
 
