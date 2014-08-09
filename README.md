@@ -12,8 +12,8 @@ LaraBase is a starter app for speeding up the development of Laravel projects. W
 ## Features
 * Public pages: Home, Blog, About, FAQ's, Feedback/Contact Form
 * Authenticated User pages: Dashboard, Profile, Settings
-* Authentication: Login with email or username (with "remember me" option), Registration, Account Activation, Logout
-* Email Activation: An account activation email is sent the user's email for verification
+* Authentication: Login with email or username (with "remember me" option), Registration, Account Activation, Resend Activation code, Logout
+* Email Activation: An account activation email is sent to the user's email for verification 
 * Password Reset: Resets the user password after sends reset instructions to the user's email
 * User Profile: Users have a Public and Private profile (editable)
 * Change Password: User can change password while logged in from Settings page
@@ -25,6 +25,8 @@ LaraBase is a starter app for speeding up the development of Laravel projects. W
 * Responsive HTML email templates
 * Simple activity based access control (ABAC) with the Owner filter
 * Users can set their Timezone preferences in Settings
+* Users can delete their account and Admins can restore them
+* User activity is logged to updated_at column
 * Profile pictures via Gravatar
 * Custom Error pages
 
@@ -78,9 +80,8 @@ Admin Account - Email: `admin@gmail.com`   Password: `password`
 
 ## Upcoming Features
 * Reports to be displayed in masonry-style grid
-* Allow users to destroy their account (soft delete)
 * OAuth 1 & 2 - Login via FaceBook, Twitter, LinkedIn, Google, Microsoft, GitHub
-* Tracks sign in count, last login,  timestamps and IP address
+* Track last login time, log in count and IP address
 * Expires sessions that have no activity in a specified period of time
 * User Suspension: A user can be temporarily banned from logging in to the app for a small interval (eg. 7 days)
 * User Banning: Admins can add a user's email to a banned list. A banned user will not be allowed to create a new account with their existing emails or social accounts (potentially)
