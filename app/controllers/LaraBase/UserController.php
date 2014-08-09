@@ -72,6 +72,7 @@ class UserController extends BaseController {
                 }
                 $attempt = Auth::attempt(['email' => $user->email, 'password' => $data['password']], Input::get('remember'));
                 if ( $attempt == true) {  // Check if user was authenticated
+                    Event::fire('auth.login', array($user));
                     return Redirect::intended('dashboard')->withSuccess(Lang::get('larabase.login_success'));
             }
                 return Redirect::back()->withInput(Input::except('password'))->withError(Lang::get('larabase.invalid_credentials'));

@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration {
             $table->string('activation_code', 32);
             $table->string('remember_token', 100)->nullable();
             $table->string('timezone')->default('UTC');
+            $table->timestamp('last_activity')->nullable();
+            $table->timestamp('last_login')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -37,6 +39,7 @@ class CreateUsersTable extends Migration {
             $table->string('token', 50);
             $table->timestamp('created_at');
         });
+
     }
 
     /**
