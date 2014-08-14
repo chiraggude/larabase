@@ -65,8 +65,10 @@ Route::get('/',             'HomeController@home');
 // Developer Routes
 Route::get('hello',         'DevController@hello');
 
-// Display all SQL executed in Eloquent
-Event::listen('illuminate.query', function($query)
-{
-    var_dump($query);
-});
+// Display all SQL executed in Eloquent if Debug mode is set to true
+if (Config::get('app.debug')) {
+    Event::listen('illuminate.query', function($query)
+    {
+        var_dump($query);
+    });
+}

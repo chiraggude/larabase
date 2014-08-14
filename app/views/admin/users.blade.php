@@ -41,9 +41,9 @@
         { "title": "Username" },
         { "title": "First Name", "class": "text-center" },
         { "title": "Last Name", "class": "text-center" },
-        { "title":"Email", "class": "text-center" },
-        { "title":"Last Active", "class": "text-center" },
-        { "title":"Action", "class": "text-center"}
+        { "title": "Email", "class": "text-center" },
+        { "title": "Last Active", "class": "text-center" },
+        { "title": "Action", "class": "text-center"}
     ];
 
 </script>
