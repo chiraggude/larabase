@@ -25,10 +25,7 @@
 		],
         "psr-4": {
             "LaraBase\\": "app/LaraBase"
-        },
-        "files": [
-            "app/LaraBase/helpers.php"
-        ]
+        }
 	},
 
 	"scripts": {
