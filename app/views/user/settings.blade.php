@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-<h1><i class="fa fa-cog"></i> Settings</h1>
+<h1><i class="fa fa-cog"></i> Settings </h1>
 <hr>
 <div class="row">
     <div class="col-md-12">
@@ -17,14 +17,14 @@
         {{ HTML::br(2) }}
 
         <a href="{{ URL::to('/settings/edit') }}" class="btn btn-sm btn-default"><i class="fa fa-edit"></i> Edit Settings</a>
-        <a href="{{ URL::to('password/change') }}" class="btn btn-sm btn-default"><i class="fa fa-lock"></i> Change Account Password</a>
+        <a href="{{ URL::to('password/change') }}" class="btn btn-sm btn-default pull-right"><i class="fa fa-lock"></i> Change Account Password</a>
 
         {{ HTML::br(3) }}
 
-        <h4 class="text-muted">Account Created: {{ $user->created_at->setTimezone($user_timezone)->toDayDateTimeString() }} ({{ $user->created_at->diffForHumans() }})</h4>
+        <p class="text-muted">Account created on {{ $user->created_at->setTimezone($user_timezone)->toDayDateTimeString() }} ({{ $user->created_at->diffForHumans() }}) </p>
 
         <h4 class="text-muted">
-            <span class="label label-success">Account Status - Active</span>
+
             <button class="btn btn-xs btn-default" data-toggle="modal" data-target="#delete-account"><i class="fa fa-power-off"></i> Delete Account</button>
             {{ HTML::deleteAccountModal('delete-account') }}
         </h4>

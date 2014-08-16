@@ -15,10 +15,13 @@
 
     <hr>
 
-    <a class="btn btn-xs btn-info" href="{{ URL::to('posts/' . $post->id . '/edit') }}">Edit</a>
-
-    <button class="btn btn-xs btn-warning pull-right" data-toggle="modal" data-target="#delete">Delete</button>
-    {{ HTML::deleteModal('delete','posts','Post', $post->id) }}
+    @if (Auth::check())
+    @if (is_owner_or_admin(Auth::user(), $post))
+        <a class="btn btn-xs btn-info" href="{{ URL::to('posts/' . $post->id . '/edit') }}"><i class="fa fa-edit"></i> Edit</a>
+        <button class="btn btn-xs btn-warning pull-right" data-toggle="modal" data-target="#delete"><i class="fa fa-trash-o"></i> Delete</button>
+        {{ HTML::deleteModal('delete','posts','Post', $post->id) }}
+    @endif
+    @endif
 
     {{ HTML::br('2') }}
 

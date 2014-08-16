@@ -7,13 +7,16 @@
 
     {{ Form::textareaField('content', 'Content', null) }}
 
-    {{ Form::textField('category', 'Category', null) }}
-
-    {{ Form::textField('tag', 'Tag', null) }}
-
-    {{ Form::selectField('status', ['published' =>'Published','draft' =>'Draft'], 'published', 'Status') }}
-
-    {{ Form::selectField('visibility', ['public' =>'Public','private' =>'Private'], 'public', 'Visibility') }}
+    <div class="row">
+        <div class="col-md-6">
+            {{ Form::textField('category', 'Category', null) }}
+            {{ Form::selectField('status', ['published' =>'Published','draft' =>'Draft'], 'published', 'Status') }}
+        </div>
+        <div class="col-md-6">
+            {{ Form::textField('tag', 'Tag', null) }}
+            {{ Form::selectField('visibility', ['public' =>'Public','private' =>'Private'], 'public', 'Visibility') }}
+        </div>
+    </div>
 
     {{ Form::hidden('user_id', $user_id) }}
 

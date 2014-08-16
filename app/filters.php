@@ -13,16 +13,13 @@
 
 App::before(function($request)
 {
-    if(Auth::check())
+    if ( Auth::check() )
     {
-        $user = Auth::user();
-        // Log last User Activity
-        Event::fire('last.activity', array($user));
-        // Share User's Timezone across all views
-        View::share('user_timezone', $user->timezone);
+        // Share user's Timezone across all views
+        View::share('user_timezone', Auth::user()->timezone);
     }
     else {
-        // Share Default Timezone across all views
+        // Share default Timezone across all views
         View::share('user_timezone', 'UTC');
     }
 
@@ -31,7 +28,12 @@ App::before(function($request)
 
 App::after(function($request, $response)
 {
-	//
+    if ( Auth::check() )
+    {
+        // Log last User Activity
+        Event::fire('last.activity', array(Auth::user()));
+    }
+
 });
 
 /*
@@ -115,7 +117,7 @@ Route::filter('owner', function()
     $resource = Request::segment(1);
     $resource_singular = ucwords(str_singular($resource));
     $object = $resource_singular::whereId($resource_id)->first();
-    if(Auth::user()->id !== $object->user_id && Auth::user()->id !== 1 )
+    if( ! is_owner_or_admin(Auth::user(), $object))
     {
      return Redirect::back()->withWarning(Lang::get('larabase.only_owner', ['resource_singular'=> $resource_singular]));
     }
