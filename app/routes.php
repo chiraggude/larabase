@@ -17,6 +17,8 @@ Route::group(['before' => 'auth|admin','prefix' => 'admin'], function()
     Route::get('users',             'AdminController@users');
     Route::get('deleted-users',     'AdminController@deletedUsers');
     Route::post('restore-user',     'AdminController@restoreUser');
+    Route::get('posts',             'AdminController@posts');
+    Route::get('api/posts',         'AdminController@postsApi');
 });
 
 
@@ -66,9 +68,9 @@ Route::get('/',             'HomeController@home');
 Route::get('hello',         'DevController@hello');
 
 // Display all SQL executed in Eloquent if Debug mode is set to true
-if (Config::get('app.debug')) {
+/*if (Config::get('app.debug')) {
     Event::listen('illuminate.query', function($query)
     {
         var_dump($query);
     });
-}
+}*/

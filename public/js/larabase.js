@@ -104,12 +104,10 @@ if(jQuery('div#dashboard').length > 0) {
  ***********************************
  */
 
-// Users DataTables
-if(jQuery('table#users-datatable').length > 0) { //checks if div element exists
-
+// Users DataTable
+if(jQuery('table#admin-users-datatable').length > 0) { //checks if div element exists
     $(document).ready(function() {
-        // Initialize Datatables in <table> with class "datatable"
-        $('table#users-datatable').dataTable( {
+        $('table#admin-users-datatable').dataTable( {
             "autoWidth": false,
             "scrollX": true,
             "dom": 'T<"clear">lfrtip',
@@ -121,7 +119,6 @@ if(jQuery('table#users-datatable').length > 0) { //checks if div element exists
             "stateSave": true, // user preferences are saved even on page reload
             "tableTools": {
                 "sSwfPath": "../js/datatables/copy_csv_xls_pdf.swf",
-                "sRowSelect": "multi",
                 "aButtons": [ "csv","xls","pdf","print"]
             },
             "lengthMenu": [[10 ,10, 25, 50, -1], ['Show', 10, 25, 50, "All"]],
@@ -131,5 +128,50 @@ if(jQuery('table#users-datatable').length > 0) { //checks if div element exists
         $('.dataTables_filter input').removeClass('input-sm').addClass('input').attr("placeholder", "Search");
         $('.dataTables_length select').removeClass('input-sm').addClass('input');
     });
+}
 
+// Posts DataTable
+if(jQuery('table#admin-posts-datatable').length > 0) { //checks if div element exists
+    $(document).ready(function() {
+        $('#admin-posts-datatable').dataTable( {
+            "autoWidth": false,
+            "scrollX": true,
+            "dom": 'T<"clear">lfrtip',
+            "oLanguage": {
+                "sSearch": "", // remove label for search box
+                "oPaginate": { "sFirst": "First", "sLast": "Last", "sNext": ">", "sPrevious": "<" }, // pagination
+                "sLengthMenu": "_MENU_" // no label
+            },
+            "stateSave": true, // user preferences are saved even on page reload
+            "tableTools": {
+                "sSwfPath": "../js/datatables/copy_csv_xls_pdf.swf",
+                "aButtons": [ "csv","xls","pdf","print"]
+            },
+            "lengthMenu": [[10 ,10, 25, 50, -1], ['Show', 10, 25, 50, "All"]],
+            "ajax": {
+                "url": admin_api_posts,
+                "dataSrc": "" // the data source is not an object but an JSON array
+            },
+            "deferRender": true,
+            "columns": [
+                { "data": "title" },
+                { "data": "category" },
+                { "data": "tag" },
+                { "data": "status"},
+                { "data": "user.username",
+                    "mRender": function (data, type, full)  {
+                        return  '<a href="' +users+ '/' +data+ '">' +data+ '</a> '
+                    }
+                },
+                { "data": "id", "class": "text-center",
+                    "mRender": function (data, type, full)  {
+                        return  '<a href="'+posts+'/'+data+'" class="btn btn-default btn-xs"><i class="fa fa-link"></i></a> ' +
+                            '<a href="'+posts+'/'+data+'/edit" class="btn btn-default btn-xs"><i class="fa fa-edit"></i></a>';
+                    }
+                }
+            ]
+        });
+        $('.dataTables_filter input').removeClass('input-sm').addClass('input').attr("placeholder", "Search");
+        $('.dataTables_length select').removeClass('input-sm').addClass('input');
+    });
 }

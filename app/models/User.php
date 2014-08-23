@@ -30,6 +30,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      */
     protected $dates = ['deleted_at'];
 
+    // Date Mutator to convert the following fields into instances of Carbon
+    public function getDates()
+    {
+        return array('created_at', 'updated_at', 'last_activity', 'last_login');
+    }
+
     // data entities that can be saved to the database via Mass Assginments
     protected $fillable = ['username','email','password','first_name','last_name'];
 

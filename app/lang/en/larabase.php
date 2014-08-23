@@ -29,7 +29,7 @@ return [
     'unactivated_account' => 'Account activation is Pending. Check your email for the activation code or',
     'invalid_credentials' => 'Invalid Credentials - Your email/username or password is incorrect',
     // Activate()
-    'activation_success' => 'Your Account is now Activated',
+    'activation_success' => 'Your account is now Activated',
     'activation_failure' => 'Invalid Activation Code: Your account could not be activated',
     // Logout()
     'logout' => 'You have logged out',
@@ -45,12 +45,12 @@ return [
 	*/
 
     // settingsSave()
-    'settings_saved' => 'Your Settings were changed Successfully',
+    'settings_saved' => 'Your Settings were changed successfully',
     // profileSave()
-    'profile_updated' => 'Profile was updated Successfully',
+    'profile_updated' => 'Profile was updated successfully',
     // passwordSave()
-    'unique_password_required' => 'Your Current Password and New Password are the same',
-    'password_saved' => 'Your Password was changed Successfully',
+    'unique_password_required' => 'Your Current password and New password are the same',
+    'password_saved' => 'Your Password was changed successfully',
     'password_incorrect' => 'Your Current Password is incorrect',
     // deleteAccount()
     'account_deleted' => 'Your account and all associated data has been deleted',
@@ -70,7 +70,7 @@ return [
 	|--------------------------------------------------------------------------
 	*/
     // feedbackSave()
-    'feedback_submitted' => 'Thanks for your feedback. We will be in touch soon!',
+    'feedback_submitted' => 'Thanks for your feedback. We will be in touch soon',
 
     /*
 	|--------------------------------------------------------------------------
