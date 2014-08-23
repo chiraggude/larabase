@@ -24,4 +24,15 @@ class AdminController extends BaseController {
         return Redirect::to('dashboard')->withSuccess(Lang::get('larabase.user_restored'));
     }
 
+    public function posts()
+    {
+        return View::make('admin.posts');
+    }
+
+    public function postsApi()
+    {
+        $posts = Post::with('user')->get();
+        return Response::json($posts);
+    }
+
 }

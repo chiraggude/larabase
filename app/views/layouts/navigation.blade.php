@@ -27,9 +27,10 @@
                 @if ( Auth::check())
                 @if ( Auth::user()->id == 1)
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-th-list"></i> Admin <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-database"></i> Admin <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li class="{{ active('admin/users') }}"><a href="{{ URL::to('admin/users') }}">Users</a></li>
+                        <li class="{{ active('admin/posts') }}"><a href="{{ URL::to('admin/posts') }}">Posts</a></li>
                     </ul>
                 </li>
                 @endif

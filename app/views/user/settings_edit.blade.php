@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-<h1><i class="fa fa-cog"></i> Edit Settings</h1>
+<h1>Edit Settings</h1>
 <hr>
 
     <div class="col-md-6">

@@ -8,6 +8,16 @@ class Post extends \Eloquent {
 
     protected $dates = ['deleted_at'];
 
+    // Accessor method to get URL of Post
+    public function getUrlAttribute() {
+        return URL::to('posts/'. $this->id);
+    }
+
+    // Accessor method to get URL for editing Post
+    public function getEditUrlAttribute() {
+        return URL::to('posts/' .$this->id. '/edit');
+    }
+
 	// Add your validation rules for this Model
 	public static $rules = [
         'title' => 'required|min:3',

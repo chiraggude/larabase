@@ -13,7 +13,7 @@
         <p class="panel-title">Users</p>
     </div>
     <div class="panel-body">
-        <table id="users-datatable" width="100%" class="table table-striped table-hover table-bordered"></table>
+        <table id="admin-users-datatable" width="100%" class="table table-striped table-hover table-bordered"></table>
     </div>
 </div>
 

@@ -13,6 +13,8 @@
 
     {{ Form::passwordField('new_password_confirmation', 'Confirm New Password', null) }}
 
+    {{ cancel_button() }}
+
     {{ Form::submitField('Save new Password') }}
 
     {{ Form::close() }}
