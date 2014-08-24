@@ -17,14 +17,12 @@
 
             <a class="btn btn-xs btn-default" href="{{ URL::to('posts/' . $post->id) }}">Read More</a>
 
-            @if (Auth::check())
-            @if (is_owner_or_admin(Auth::user(), $post))
+            @if (Auth::check() && is_owner_or_admin(Auth::user(), $post))
             <div class="pull-right">
                 <a class="btn btn-xs btn-info" href="{{ URL::to('posts/' . $post->id . '/edit') }}"><i class="fa fa-edit"></i> Edit</a>
                 <button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#delete"><i class="fa fa-trash-o"></i> Delete</button>
                 {{ HTML::deleteModal('delete','posts','Post', $post->id) }}
             </div>
-            @endif
             @endif
 
             <hr>
