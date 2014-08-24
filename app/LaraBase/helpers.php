@@ -35,3 +35,14 @@ function is_owner_or_admin($user, $object)
     }
     return false;
 }
+
+// Check if authenticated user is Admin
+// Used in navigation.blade.php
+function is_admin($user)
+{
+    if( $user->id == '1' )
+    {
+        return true;
+    }
+    return false;
+}

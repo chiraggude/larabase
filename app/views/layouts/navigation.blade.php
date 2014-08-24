@@ -21,11 +21,9 @@
                         <li class="{{ active('feedback') }}"><a href="{{ URL::to('feedback') }}">Feedback</a></li>
                     </ul>
                 </li>
-                @if ( Auth::user())
-                <li class="{{ active('users') }}"><a href="{{ URL::to('users') }}"><i class="fa fa-users"></i> Users</a></li>
-                @endif
                 @if ( Auth::check())
-                @if ( Auth::user()->id == 1)
+                <li class="{{ active('users') }}"><a href="{{ URL::to('users') }}"><i class="fa fa-users"></i> Users</a></li>
+                @if ( is_admin(Auth::user()) )
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-database"></i> Admin <b class="caret"></b></a>
                     <ul class="dropdown-menu">

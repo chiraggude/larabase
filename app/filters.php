@@ -104,7 +104,7 @@ Route::filter('csrf', function()
 
 Route::filter('admin', function()
 {
-    if ( Auth::user()->id !== 1 )
+    if ( ! is_admin(Auth::user()) )
     {
         return Redirect::to('dashboard')->withWarning(Lang::get('larabase.only_admin'));
     }

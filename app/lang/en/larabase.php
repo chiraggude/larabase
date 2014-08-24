@@ -26,11 +26,11 @@ return [
     'registration_success' => 'To activate your account, please check your email for instructions or ',
     // processLogin()
     'login_success' => 'Your have successfully logged in',
-    'unactivated_account' => 'Account activation is Pending. Check your email for the activation code or',
+    'unactivated_account' => 'Account activation is Pending. Check your email for the activation code or ',
     'invalid_credentials' => 'Invalid Credentials - Your email/username or password is incorrect',
     // Activate()
     'activation_success' => 'Your account is now Activated',
-    'activation_failure' => 'Invalid Activation Code: Your account could not be activated',
+    'activation_failure' => 'Invalid activation code. Your account could not be activated',
     // Logout()
     'logout' => 'You have logged out',
     // ResendActivationCode()
@@ -51,7 +51,7 @@ return [
     // passwordSave()
     'unique_password_required' => 'Your Current password and New password are the same',
     'password_saved' => 'Your Password was changed successfully',
-    'password_incorrect' => 'Your Current Password is incorrect',
+    'password_incorrect' => 'Your Current password is incorrect',
     // deleteAccount()
     'account_deleted' => 'Your account and all associated data has been deleted',
 
