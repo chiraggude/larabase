@@ -15,7 +15,6 @@ class UsersTableSeeder extends Seeder {
             'last_name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('password'),
-            'activation_code' => 'de99a620c50f2990e87144735cd357e7',
             'activated' => true,
         ));
 
@@ -26,7 +25,6 @@ class UsersTableSeeder extends Seeder {
             'username' => $faker->unique()->userName,
             'password'=> Hash::make('password'),
             'email'=> $faker->unique()->freeEmail,
-            'activation_code' => $faker->md5,
             'activated' => true,
             'first_name' => $faker->firstName,
             'last_name' => $faker->lastName,

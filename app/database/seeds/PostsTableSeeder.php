@@ -13,7 +13,7 @@ class PostsTableSeeder extends Seeder {
 		foreach(range(1, 20) as $index)
 		{
             Post::create([
-            'user_id' => $faker->numberBetween(1,3),
+            'user_id' => $faker->numberBetween(1,4),
             'title'=> $faker->paragraph(1),
             'content'=> $faker->paragraph(40),
             'category'=> $faker->word(1),

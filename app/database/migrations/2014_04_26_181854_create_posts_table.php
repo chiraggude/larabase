@@ -16,12 +16,12 @@ class CreatePostsTable extends Migration {
 			$table->increments('id');
 			$table->string('title');
 			$table->text('content');
-			$table->integer('user_id');
+			$table->integer('user_id')->unsigned();
 			$table->string('category');
 			$table->string('tag');
-			$table->string('status');
-			$table->string('visibility');
-            $table->date('published_on')->nullable();
+			$table->string('status', 50);
+			$table->string('visibility', 50);
+            $table->timestamp('published_on')->nullable();
             $table->softDeletes();
 			$table->timestamps();
 		});
