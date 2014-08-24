@@ -16,19 +16,19 @@ class CreateUsersTable extends Migration {
         Schema::create('users', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->string('username', 100)->unique();
-            $table->string('email', 100)->unique();
-            $table->string('first_name', 50)->nullable();
-            $table->string('last_name', 100)->nullable();
+            $table->string('username', 50)->unique();
+            $table->string('email', 50)->unique();
+            $table->string('first_name', 50);
+            $table->string('last_name', 50);
+            $table->string('timezone', 50)->default('UTC');
             $table->boolean('activated')->default(false);
-            $table->string('password', 70);
-            $table->string('activation_code', 32);
-            $table->string('remember_token', 100)->nullable();
-            $table->string('timezone')->default('UTC');
             $table->timestamp('last_activity')->nullable();
             $table->timestamp('last_login')->nullable();
             $table->softDeletes();
             $table->timestamps();
+            $table->string('activation_code', 32);
+            $table->string('password', 70);
+            $table->string('remember_token', 50);
         });
 
         // Creates password reminders table
