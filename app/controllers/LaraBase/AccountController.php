@@ -48,8 +48,9 @@ class AccountController extends \BaseController {
 
     public function profilePublic($username)
     {
-        $user = User::with('posts')->whereUsername($username)->firstOrFail();
-        return View::make('user.profile_public', ['user' => $user, 'posts' => $user->posts]);
+        $user = User::whereUsername($username)->firstOrFail();
+        $posts = $user->posts()->get(['id', 'title']);
+        return View::make('user.profile_public', compact('user', 'posts'));
     }
 
 

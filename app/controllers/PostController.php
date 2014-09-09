@@ -28,7 +28,8 @@ class PostController extends \BaseController {
      */
     public function indexForUser($username)
     {
-        $posts = User::whereUsername($username)->first()->posts()->orderBy('updated_at', 'desc')->paginate(5);
+        $user = User::whereUsername($username)->first();
+        $posts = $user->posts()->orderBy('updated_at', 'desc')->paginate(5);
         return View::make('posts.user_index', compact('posts','username'));
     }
 
