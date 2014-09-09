@@ -4,7 +4,7 @@
 // Regex \d+ means 1 or more digits
 Route::pattern('id', '\d+');
 
-// Filter every POST, PUT, DELETE request for the CSRF token (Patter based Filter)
+// Filter every POST, PUT, DELETE request for the CSRF token (Pattern based Filter)
 Route::when('*', 'csrf', array('post', 'put', 'delete'));
 
 // RESTful resources

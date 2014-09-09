@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration {
             $table->string('last_name', 50);
             $table->string('timezone', 50)->default('UTC');
             $table->boolean('activated')->default(false);
+            $table->boolean('suspended')->default(false);
+            $table->boolean('banned')->default(false);
             $table->timestamp('last_activity')->nullable();
             $table->timestamp('last_login')->nullable();
             $table->softDeletes();

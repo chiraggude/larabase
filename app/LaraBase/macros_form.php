@@ -6,16 +6,17 @@ Form::macro('textField', function($name, $label, $placeholder)
     return "<div class='form-group " . errorClass($name) ."'>
             <label class='control-label' for='{$name}'>{$label}</label>
             <input type='text' name='{$name}' class='form-control' id='{$name}' value='{$value}' placeholder='{$placeholder}'>"
-            . errorMessage($name).
+            .errorMessage($name).
             "</div>";
 });
+
 
 Form::macro('passwordField', function($name, $label, $placeholder)
 {
     return "<div class='form-group " . errorClass($name) ."'>
             <label class='control-label' for='{$name}'>{$label}</label>
             <input type='password' name='{$name}' class='form-control' id='{$name}' placeholder='{$placeholder}'>"
-            . errorMessage($name).
+            .errorMessage($name).
             "</div>";
 });
 
@@ -26,7 +27,7 @@ Form::macro('emailField', function($name, $label, $placeholder)
     return "<div class='form-group " . errorClass($name) ."'>
             <label class='control-label' for='{$name}'>{$label}</label>
             <input type='email' name='{$name}' class='form-control' id='{$name}' value='{$value}' placeholder='{$placeholder}'>"
-            . errorMessage($name).
+            .errorMessage($name).
             "</div>";
 });
 
@@ -34,11 +35,11 @@ Form::macro('emailField', function($name, $label, $placeholder)
 Form::macro('textareaField', function($name, $label, $placeholder)
 {
     $value = Form::getValueAttribute($name);
-    $element = Form::textarea($name, $value, array('placeholder'=>$placeholder, 'class'=>'form-control'));
+    $element = Form::textarea($name, $value, array('placeholder'=> $placeholder, 'class'=>'form-control'));
     return "<div class='form-group " . errorClass($name) ."'>
             <label class='control-label' for='{$name}'>{$label}</label>
             {$element}"
-            . errorMessage($name).
+            .errorMessage($name).
             "</div>";
 });
 
@@ -50,10 +51,9 @@ Form::macro('selectField', function($name, $options, $value, $label)
     return "<div class='form-group " . errorClass($name) ."'>
             <label class='control-label' for='{$name}'>{$label}</label>
             {$element}"
-    . errorMessage($name).
-    "</div>";
+            .errorMessage($name).
+            "</div>";
 });
-
 
 
 Form::macro('submitField', function($value, $btn_style = 'btn btn-primary')
@@ -71,6 +71,7 @@ if (! function_exists ( 'errorMessage' )) {
         }
     }
 }
+
 
 if (! function_exists ( 'errorClass' )) {
     function errorClass($name) {
