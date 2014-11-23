@@ -106,7 +106,7 @@ if(jQuery('div#dashboard').length > 0) {
 
 // Users DataTable
 if(jQuery('table#admin-users-datatable').length > 0) { //checks if div element exists
-    $(document).ready(function() {
+    $(function(){
         $('table#admin-users-datatable').dataTable( {
             "autoWidth": false,
             "scrollX": true,
@@ -132,7 +132,7 @@ if(jQuery('table#admin-users-datatable').length > 0) { //checks if div element e
 
 // Posts DataTable
 if(jQuery('table#admin-posts-datatable').length > 0) { //checks if div element exists
-    $(document).ready(function() {
+    $(function(){
         $('#admin-posts-datatable').dataTable( {
             "autoWidth": false,
             "scrollX": true,
@@ -156,7 +156,6 @@ if(jQuery('table#admin-posts-datatable').length > 0) { //checks if div element e
             "columns": [
                 { "data": "title" },
                 { "data": "category" },
-                { "data": "tag" },
                 { "data": "status"},
                 { "data": "user.username",
                     "mRender": function (data, type, full)  {
@@ -173,5 +172,29 @@ if(jQuery('table#admin-posts-datatable').length > 0) { //checks if div element e
         });
         $('.dataTables_filter input').removeClass('input-sm').addClass('input').attr("placeholder", "Search");
         $('.dataTables_length select').removeClass('input-sm').addClass('input');
+    });
+}
+
+/*
+ ***********************************
+ Tags
+ ***********************************
+ */
+if(jQuery('#post-tags').length > 0) { //checks if div element exists
+    $(function(){
+        $('#post-tags').magicSuggest({
+            allowFreeEntries: false,
+            expandOnFocus: true,
+            style: 'height: 43px; padding: 10px 15px;',
+            placeholder: 'Tag your Post',
+            useTabKey: true,
+            useCommaKey: true,
+            required: true,
+            value: placeholder_tag,
+            method: 'get',
+            data: tags,
+            valueField: 'id',
+            displayField: 'name'
+        });
     });
 }

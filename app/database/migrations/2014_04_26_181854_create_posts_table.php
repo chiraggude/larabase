@@ -18,7 +18,6 @@ class CreatePostsTable extends Migration {
 			$table->text('content');
 			$table->integer('user_id')->unsigned();
 			$table->string('category');
-			$table->string('tag');
 			$table->string('status', 50);
 			$table->string('visibility', 50);
             $table->timestamp('published_on')->nullable();

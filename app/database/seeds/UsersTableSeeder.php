@@ -7,7 +7,9 @@ class UsersTableSeeder extends Seeder {
 	public function run()
 	{
         //removes existing users from table
-        User::truncate();
+        // truncate() is better than delete()
+        // truncate() should not be used for tables in a Pivot table
+        DB::table('users')->truncate();
 
         User::create(array(
             'username' => 'admin',

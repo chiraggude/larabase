@@ -23,7 +23,7 @@ class Post extends \Eloquent {
         'title' => 'required|min:3',
         'content' => 'required|min:10',
         'category' => 'required|min:3',
-        'tag' => 'required|min:3',
+        'tags' => 'required',
         'status' => 'required|in:published,draft',
         'visibility' => 'required|in:public,private'
 	];
@@ -46,6 +46,11 @@ class Post extends \Eloquent {
     public function user()
     {
         return $this->belongsTo('User');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany('Tag')->withTimestamps();
     }
 
 }

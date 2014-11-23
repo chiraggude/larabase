@@ -8,7 +8,7 @@ class PostController extends \BaseController {
      */
     public function __construct()
     {
-        $this->beforeFilter('auth', array('except' => ['index', 'show']));
+        $this->beforeFilter('auth', array('except' => ['index', 'show', 'postsForTag']));
         $this->beforeFilter('owner', array('only' => ['edit', 'update', 'destroy']));
     }
 
@@ -23,14 +23,28 @@ class PostController extends \BaseController {
     }
 
     /**
-     * Display a listing of posts for a User
+     * Display a list of posts for a User
      *
      */
-    public function indexForUser($username)
+    public function postsForUser($username)
     {
         $user = User::whereUsername($username)->first();
         $posts = $user->posts()->orderBy('updated_at', 'desc')->paginate(5);
-        return View::make('posts.user_index', compact('posts','username'));
+        return View::make('posts.post_user', compact('posts','username'));
+    }
+
+    /**
+     * Display a list of posts for a Tag
+     *
+     */
+    public function postsForTag($tag)
+    {
+        $tag_model = Tag::where('name', $tag)->firstOrFail();
+        $posts = Post::whereHas('tags', function($q) use ($tag_model)
+        {
+            $q->where('tag_id', $tag_model['id']);
+        })->orderBy('updated_at', 'desc')->paginate(5);
+        return View::make('posts.post_tag', compact('posts', 'tag'));
     }
 
     /**
@@ -40,7 +54,9 @@ class PostController extends \BaseController {
     public function create()
     {
         $user_id = Auth::user()->id;
-        return View::make('posts.create', compact('user_id'));
+        $default_tag_id = [4];
+        $tags = Tag::all();
+        return View::make('posts.create', compact('user_id', 'default_tag_id', 'tags'));
     }
 
     /**
@@ -55,7 +71,11 @@ class PostController extends \BaseController {
         {
             return Redirect::back()->withErrors($validator)->withInput();
         }
-        Post::create($data);
+        // remove quotes from tag_ids
+        $tag_ids = array_map('intval', $data['tags']);
+        $post = Post::create(['user_id'=>$data['user_id'], 'title'=>$data['title'], 'content'=>$data['content'], 'category'=>$data['category'], 'status'=>$data['status'], 'visibility'=>$data['visibility']]);
+        $post->save();
+        $post->tags()->sync($tag_ids);
         Event::fire('post.created', array($data));
         return Redirect::route('posts.index')->withSuccess(Lang::get('larabase.post_created'));
     }
@@ -77,7 +97,9 @@ class PostController extends \BaseController {
     public function edit($id)
     {
         $post = Post::find($id);
-        return View::make('posts.edit', compact('post'));
+        $tags = Tag::all();
+        $selected_tags = $post->tags->lists('id');
+        return View::make('posts.edit', compact('post', 'tags', 'selected_tags'));
     }
 
     /*
@@ -86,13 +108,17 @@ class PostController extends \BaseController {
      */
     public function update($id)
     {
+        $data = Input::all();
         $post = Post::findOrFail($id);
-        $validator = Validator::make($data = Input::all(), Post::$rules);
+        $validator = Validator::make($data, Post::$rules);
         if ($validator->fails())
         {
             return Redirect::back()->withErrors($validator)->withInput();
         }
-        $post->update($data);
+        // remove quotes from tag_ids
+        $tag_ids = array_map('intval', $data['tags']);
+        $post->update(['title'=>$data['title'], 'content'=>$data['content'], 'category'=>$data['category'], 'status'=>$data['status'], 'visibility'=>$data['visibility']]);
+        $post->tags()->sync($tag_ids);
         return Redirect::route('posts.show', $id)->withInfo(Lang::get('larabase.post_updated'));
     }
 
@@ -102,6 +128,8 @@ class PostController extends \BaseController {
      */
     public function destroy($id)
     {
+        // Delete all records on the pivot table for the Post
+        Post::find($id)->tags()->detach();
         Post::destroy($id);
         return Redirect::route('posts.index')->withInfo(Lang::get('larabase.post_deleted'));
     }

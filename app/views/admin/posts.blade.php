@@ -18,7 +18,6 @@
             <tr>
                 <th>Title</th>
                 <th>Category</th>
-                <th>Tag</th>
                 <th>Status</th>
                 <th>Author</th>
                 <th>Actions</th>
