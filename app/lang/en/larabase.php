@@ -23,7 +23,7 @@ return [
 	*/
 
     // processRegister()
-    'registration_success' => 'To activate your account, please check your email for instructions or ',
+    'signup_success' => 'To activate your account, please check your email for instructions or ',
     // processLogin()
     'login_success' => 'Your have successfully logged in',
     'unactivated_account' => 'Account activation is Pending. Check your email for the activation code or ',

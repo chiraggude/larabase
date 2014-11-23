@@ -15,15 +15,15 @@ class UserController extends BaseController {
 
     // Display the registration form for account creation
 
-    public function register()
+    public function signUp()
     {
-        return View::make('auth.register');
+        return View::make('auth.sign-up');
     }
 
 
     // Save registration details, create user account and send activation email
 
-    public function processRegister()
+    public function processSignUp()
     {
         $data = Input::all();
         $validator = User::validate_registration($data);
@@ -43,7 +43,7 @@ class UserController extends BaseController {
         Mail::send('emails.users.activate', ['link' => $activation_link, 'username' => Input::get('username')], function($message) use($user) {
             $message->to($user->email, $user->username)->subject('Activate Your Account');
         });
-        return Redirect::action('UserController@login')->withActivationMessage(Lang::get('larabase.registration_success'));
+        return Redirect::action('UserController@login')->withActivationMessage(Lang::get('larabase.signup_success'));
     }
 
 
@@ -101,7 +101,7 @@ class UserController extends BaseController {
 
     public function resendActivation()
     {
-        return View::make('auth.resend_activation');
+        return View::make('auth.resend-activation');
     }
 
 

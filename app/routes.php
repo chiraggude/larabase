@@ -47,8 +47,8 @@ Route::group(['before' => 'guest'], function()
 {
     Route::get( 'login',                  'UserController@login');
     Route::post('login',                  'UserController@processLogin');
-    Route::get( 'register',               'UserController@register');
-    Route::post('register',               'UserController@processRegister');
+    Route::get( 'sign-up',               'UserController@signup');
+    Route::post('sign-up',               'UserController@processSignup');
     Route::controller('password',         'RemindersController');
     Route::get('activate/{code}',         ['as'=>'activate', 'uses' => 'UserController@activate']);
     Route::get('resend-activation',       'UserController@resendActivation');
