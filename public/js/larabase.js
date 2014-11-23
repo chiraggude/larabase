@@ -184,8 +184,6 @@ if(jQuery('#post-tags').length > 0) { //checks if div element exists
     $(function(){
         $('#post-tags').magicSuggest({
             allowFreeEntries: false,
-            expandOnFocus: true,
-            style: 'height: 43px; padding: 10px 15px;',
             placeholder: 'Tag your Post',
             useTabKey: true,
             useCommaKey: true,
