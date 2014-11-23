@@ -13,6 +13,12 @@
 
     <p class="text-muted">CREATED ON {{ mb_strtoupper($post->created_at->setTimezone($user_timezone)->toDayDateTimeString()) }}</p>
 
+    <p class="text-muted">
+    @foreach($post->tags as $tag)
+        <a href="{{ url("/posts/tag/{$tag->name}") }}" class="btn btn-default btn-xs">#{{ $tag->name }}</a>
+    @endforeach
+    </p>
+
     <hr>
 
     @if (Auth::check() && is_owner_or_admin(Auth::user(), $post))

@@ -33,8 +33,10 @@ class AdminController extends BaseController {
     {
         $posts = Post::with(['user'=> function($query)
         {
-            $query->select(['id', 'username']); // getting the ID field is necessary
-        }])->get(['id', 'title', 'category', 'tag', 'status', 'user_id']); // user_id is required to enable eager loading
+            // getting the ID field is necessary
+            $query->select(['id', 'username']);
+            // user_id is required to enable eager loading
+        }])->get(['id', 'title', 'category', 'status', 'user_id']);
         return Response::json($posts);
     }
 
