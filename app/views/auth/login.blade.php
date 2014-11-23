@@ -16,7 +16,7 @@
     <label>{{ Form::checkbox('remember') }} Remember me</label>
     </div>
 
-    <a href="{{ URL::to('register') }}" class="btn btn-sm btn-default pull-right">Sign up for new account</a>
+    <a href="{{ URL::to('sign-up') }}" class="btn btn-default pull-right">Sign up for new account</a>
 
     {{ Form::submitField('Login' ,'btn btn-success') }}
 

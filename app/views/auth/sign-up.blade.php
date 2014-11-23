@@ -1,11 +1,11 @@
 @extends('layouts.master')
 @section('content')
 
-<h1>Register</h1>
+<h1>Sign Up</h1>
 <br/>
 <div class="col-md-6">
 
-    {{ Form::open(array('action' => 'UserController@processRegister','class' => 'form-horizontal')) }}
+    {{ Form::open(array('action' => 'UserController@processSignup','class' => 'form-horizontal')) }}
 
     {{ Form::textField('username', 'Username', null) }}
 
