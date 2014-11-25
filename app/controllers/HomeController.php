@@ -35,4 +35,14 @@ class HomeController extends BaseController {
         return View::make('pages.faqs');
     }
 
+    public function terms()
+    {
+        return View::make('pages.terms');
+    }
+
+    public function privacy()
+    {
+        return View::make('pages.privacy');
+    }
+
 }
