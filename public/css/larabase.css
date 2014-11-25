@@ -1,6 +1,7 @@
 /* Global */
 html {position:relative; min-height:100%}
 body {background-color:#f7f7f7; margin-bottom:70px}
+
 .jumbotron {margin-top:-20px}
 .navbar {margin-bottom: 0px}
 .top-gap {margin-top: 21px}
@@ -36,3 +37,9 @@ h2 a:visited {color:#B3B3B3}
 }
 /* Info text - Showing 1 to 10 of x entries */
 div.dataTables_info {color:#b4bcc2;}
+
+/* Tabs */
+.tab-content>.active {background-color: #fff; padding: 20px 20px 5px 20px;}
+.tab-pane {border: 1px solid #ecf0f1; border-top-color: transparent;}
+.nav-tabs>li>a {background-color: #ecf0f1;}
+.nav-tabs>li>a:hover {color: #333;}
