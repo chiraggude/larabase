@@ -13,12 +13,14 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="{{ active('posts') }}"><a href="{{ URL::to('posts') }}">Blog</a></li>
+                <li class="{{ active('feedback') }}"><a href="{{ URL::to('feedback') }}">Feedback</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li class="{{ active('about') }}"><a href="{{ URL::to('about') }}">About</a></li>
                         <li class="{{ active('faqs') }}"><a href="{{ URL::to('faqs') }}">FAQ's</a></li>
-                        <li class="{{ active('feedback') }}"><a href="{{ URL::to('feedback') }}">Feedback</a></li>
+                        <li class="{{ active('privacy') }}"><a href="{{ URL::to('privacy') }}">Privacy Policy</a></li>
+                        <li class="{{ active('terms') }}"><a href="{{ URL::to('terms') }}">Terms of Service</a></li>
                     </ul>
                 </li>
                 @if ( Auth::check())

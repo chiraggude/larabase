@@ -47,8 +47,8 @@ Route::group(['before' => 'guest'], function()
 {
     Route::get( 'login',                  'UserController@login');
     Route::post('login',                  'UserController@processLogin');
-    Route::get( 'sign-up',               'UserController@signup');
-    Route::post('sign-up',               'UserController@processSignup');
+    Route::get( 'sign-up',                'UserController@signup');
+    Route::post('sign-up',                'UserController@processSignup');
     Route::controller('password',         'RemindersController');
     Route::get('activate/{code}',         ['as'=>'activate', 'uses' => 'UserController@activate']);
     Route::get('resend-activation',       'UserController@resendActivation');
@@ -59,6 +59,8 @@ Route::group(['before' => 'guest'], function()
 // Public Routes
 Route::get('feedback',      'HomeController@feedbackShow');
 Route::post('feedback',     'HomeController@feedbackSave');
+Route::get('terms',         'HomeController@terms');
+Route::get('privacy',       'HomeController@privacy');
 Route::get('faqs',          'HomeController@faqs');
 Route::get('about',         'HomeController@about');
 Route::get('/',             'HomeController@home');
