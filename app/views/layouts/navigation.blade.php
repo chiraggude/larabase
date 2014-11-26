@@ -42,15 +42,14 @@
                 <li class="{{ active('login') }}"><a href="{{ URL::to('login') }}"> Login</a></li>
                 <li class="{{ active('sign-up') }}"><a href="{{ URL::to('sign-up') }}"> Sign Up</a></li>
                 @else
-                <li class="{{ active('dashboard') }}"><a href="{{ URL::to('dashboard') }}"><i class="fa fa-bar-chart"></i> Dashboard</a></li>
+                <li class="{{ active('dashboard') }}"><a href="{{ URL::to('dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->full_name ?: Auth::user()->username }} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-header">ACCOUNT</li>
-                        <li class="{{ active('profile') }}"><a href="{{ URL::to('profile') }}"><i class="fa fa-user"></i> Profile</a></li>
-                        <li class="{{ active('settings') }}"><a href="{{ URL::to('settings') }}"> <i class="fa fa-cog"></i> Settings</a></li>
+                        <li class="{{ active('profile') }}"><a href="{{ URL::to('profile') }}"><i class="fa fa-user fa-fw"></i> Profile</a></li>
+                        <li class="{{ active('settings') }}"><a href="{{ URL::to('settings') }}"> <i class="fa fa-cog fa-fw"></i> Settings</a></li>
                         <li class="divider"></li>
-                        <li><a href="{{ URL::to('logout') }}"> <i class="fa fa-power-off"></i> Logout</a></li>
+                        <li><a href="{{ URL::to('logout') }}"> <i class="fa fa-power-off fa-fw"></i> Logout</a></li>
                     </ul>
                 </li>
                 @endif
