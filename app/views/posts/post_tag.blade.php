@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<h1>#{{ $tag }}</h1>
+<h1>#{{ $tag_name }}</h1>
 <hr>
 
     @forelse($posts as $post)
