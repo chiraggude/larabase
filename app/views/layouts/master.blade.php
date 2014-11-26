@@ -7,9 +7,9 @@
 
     <title>LaraBase</title>
 
-    {{ HTML::style('//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/flatly/bootstrap.min.css') }}
+    {{ HTML::style('//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/flatly/bootstrap.min.css') }}
     {{ HTML::style('css/larabase.css') }}
-    {{ HTML::style('//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css') }}
+    {{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css') }}
     {{ HTML::style('css/magicsuggest.min.css') }}
 
     {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js') }}
@@ -33,7 +33,7 @@
 
 @include("layouts/footer")
 
-{{ HTML::script('//cdn.jsdelivr.net/bootstrap/3.2.0/js/bootstrap.min.js', ['async' => 'async']) }}
+{{ HTML::script('//cdn.jsdelivr.net/bootstrap/3.3.0/js/bootstrap.min.js', ['async' => 'async']) }}
 
 @yield('footer-js')
 

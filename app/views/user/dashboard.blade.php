@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-<h1><i class="fa fa-bar-chart"></i> Dashboard</h1>
+<h1><i class="fa fa-dashboard"></i> Dashboard</h1>
 <hr>
 <div class="row" id="dashboard">
 
