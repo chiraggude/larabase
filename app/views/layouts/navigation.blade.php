@@ -24,10 +24,10 @@
                     </ul>
                 </li>
                 @if ( Auth::check())
-                <li class="{{ active('users') }}"><a href="{{ URL::to('users') }}"><i class="fa fa-users"></i> Users</a></li>
+                <li class="{{ active('users') }}"><a href="{{ URL::to('users') }}"> Users</a></li>
                 @if ( is_admin(Auth::user()) )
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-database"></i> Admin <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Admin <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li class="{{ active('admin/users') }}"><a href="{{ URL::to('admin/users') }}">Users</a></li>
                         <li class="{{ active('admin/posts') }}"><a href="{{ URL::to('admin/posts') }}">Posts</a></li>
@@ -42,7 +42,7 @@
                 <li class="{{ active('login') }}"><a href="{{ URL::to('login') }}"> Login</a></li>
                 <li class="{{ active('sign-up') }}"><a href="{{ URL::to('sign-up') }}"> Sign Up</a></li>
                 @else
-                <li class="{{ active('dashboard') }}"><a href="{{ URL::to('dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                <li class="{{ active('dashboard') }}"><a href="{{ URL::to('dashboard') }}"> Dashboard</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->full_name ?: Auth::user()->username }} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
