@@ -37,14 +37,11 @@ class PostController extends \BaseController {
      * Display a list of posts for a Tag
      *
      */
-    public function postsForTag($tag)
+    public function postsForTag($tag_name)
     {
-        $tag_model = Tag::where('name', $tag)->firstOrFail();
-        $posts = Post::whereHas('tags', function($q) use ($tag_model)
-        {
-            $q->where('tag_id', $tag_model['id']);
-        })->orderBy('updated_at', 'desc')->paginate(5);
-        return View::make('posts.post_tag', compact('posts', 'tag'));
+        $tag = Tag::where('name', $tag_name)->firstOrFail();
+        $posts = $tag->posts()->orderBy('updated_at', 'desc')->paginate(5);
+        return View::make('posts.post_tag', compact('posts', 'tag_name'));
     }
 
     /**
@@ -54,8 +51,8 @@ class PostController extends \BaseController {
     public function create()
     {
         $user_id = Auth::user()->id;
-        $default_tag_id = [4];
-        $tags = Tag::all();
+        $tags = DB::table('tags')->get(['id', 'name']);
+        $default_tag_id = [Tag::first()->id];
         return View::make('posts.create', compact('user_id', 'default_tag_id', 'tags'));
     }
 
@@ -74,7 +71,7 @@ class PostController extends \BaseController {
         // remove quotes from tag_ids
         $tag_ids = array_map('intval', $data['tags']);
         $post = Post::create(['user_id'=>$data['user_id'], 'title'=>$data['title'], 'content'=>$data['content'], 'category'=>$data['category'], 'status'=>$data['status'], 'visibility'=>$data['visibility']]);
-        $post->save();
+        //$post->save();
         $post->tags()->sync($tag_ids);
         Event::fire('post.created', array($data));
         return Redirect::route('posts.index')->withSuccess(Lang::get('larabase.post_created'));

@@ -1,18 +1,26 @@
 <?php
 
+use Faker\Factory as Faker;
+
 class PostTagTableSeeder extends Seeder {
 
 	public function run()
 	{
 		DB::table('post_tag')->truncate();
 
+		$post_ids = Post::lists('id');
+		$tag_ids = Tag::lists('id');
+		$now = date('Y-m-d H:i:s');
+
+		$faker = Faker::create();
+
 		foreach(range(1, 20) as $index)
 		{
-			// Numbers in rand() are thr ID's of Posts and Tags
-			// These ID's should be present in the Posts and Tags table
 			DB::table('post_tag')->insert([
-				'post_id' => rand(1, 20),
-				'tag_id' => rand(1,4)
+				'post_id' => $faker->randomElement($post_ids),
+				'tag_id' => $faker->randomElement($tag_ids),
+				'created_at' => $now,
+				'updated_at' => $now
 			]);
 		}
 	}
