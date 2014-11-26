@@ -42,9 +42,9 @@
                 <li class="{{ active('login') }}"><a href="{{ URL::to('login') }}"> Login</a></li>
                 <li class="{{ active('sign-up') }}"><a href="{{ URL::to('sign-up') }}"> Sign Up</a></li>
                 @else
-                <li class="{{ active('dashboard') }}"><a href="{{ URL::to('dashboard') }}"><i class="fa fa-bar-chart-o"></i> Dashboard</a></li>
+                <li class="{{ active('dashboard') }}"><a href="{{ URL::to('dashboard') }}"><i class="fa fa-bar-chart"></i> Dashboard</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi,  {{ Auth::user()->first_name ?: Auth::user()->username }} <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->full_name ?: Auth::user()->username }} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li class="dropdown-header">ACCOUNT</li>
                         <li class="{{ active('profile') }}"><a href="{{ URL::to('profile') }}"><i class="fa fa-user"></i> Profile</a></li>

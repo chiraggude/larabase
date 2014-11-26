@@ -18,7 +18,7 @@ class AccountController extends \BaseController {
         $user = Auth::user();
         // Use a helper function to get list of timezones
         $timezones = getTimezones();
-        return View::make('user.settings_edit', compact('user', 'timezones'));
+        return View::make('user.settings-edit', compact('user', 'timezones'));
     }
 
 
@@ -50,7 +50,7 @@ class AccountController extends \BaseController {
     {
         $user = User::whereUsername($username)->firstOrFail();
         $posts = $user->posts()->get(['id', 'title']);
-        return View::make('user.profile_public', compact('user', 'posts'));
+        return View::make('user.profile-public', compact('user', 'posts'));
     }
 
 
@@ -69,7 +69,7 @@ class AccountController extends \BaseController {
     public function profileEdit()
     {
         $user = Auth::user();
-        return View::make('user.profile_edit', compact('user'));
+        return View::make('user.profile-edit', compact('user'));
     }
 
 
@@ -94,7 +94,7 @@ class AccountController extends \BaseController {
 
     public function passwordChange()
     {
-        return View::make('user.password_change');
+        return View::make('user.password-change');
     }
 
 

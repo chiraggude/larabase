@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-<h1>Your Profile</h1>
+<h1><i class="fa fa-user"></i> Profile</h1>
 <hr>
 <div class="row">
     <div class="col-md-3">
