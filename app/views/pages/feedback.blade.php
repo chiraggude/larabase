@@ -1,8 +1,8 @@
 @extends('layouts.master')
 @section('content')
 
-<h1>Feedback</h1>
-<br>
+<h1><i class="fa fa-envelope"></i> Feedback</h1>
+<hr>
 <p>Get in touch with us if you have any feedback or questions</p>
 <br>
 <div class="col-md-6">

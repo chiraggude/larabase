@@ -8,7 +8,7 @@ class UserController extends BaseController {
 
     public function index()
     {
-        $users = User::paginate(10);
+        $users = User::paginate(12);
         return View::make('user.index', compact('users'));
     }
 
