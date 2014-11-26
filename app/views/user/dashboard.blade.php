@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-<h1>Dashboard <small>Hi, {{ $user->first_name ?: $user->username }}</small></h1>
+<h1><i class="fa fa-bar-chart"></i> Dashboard</h1>
 <hr>
 <div class="row" id="dashboard">
 
@@ -35,12 +35,12 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Your Summary</h3>
+                <h3 class="panel-title"> Your Summary</h3>
             </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <h1><a href="{{ URL::to('users/'.$user->username.'/posts') }}"> <i class="fa fa-pencil"></i> <span id="user_posts">0</span> Posts</a></h1>
+                        <h1><a href="{{ URL::to('users/'.$user->username.'/posts') }}"> <i class="fa fa-file-text"></i> <span id="user_posts">0</span> Posts</a></h1>
                     </div>
                     <div class="col-md-6">
                         <h1><i class="fa fa-envelope"></i> <span id="feedback">0</span> Messages</h1>

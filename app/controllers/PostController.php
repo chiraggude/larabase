@@ -71,7 +71,6 @@ class PostController extends \BaseController {
         // remove quotes from tag_ids
         $tag_ids = array_map('intval', $data['tags']);
         $post = Post::create(['user_id'=>$data['user_id'], 'title'=>$data['title'], 'content'=>$data['content'], 'category'=>$data['category'], 'status'=>$data['status'], 'visibility'=>$data['visibility']]);
-        //$post->save();
         $post->tags()->sync($tag_ids);
         Event::fire('post.created', array($data));
         return Redirect::route('posts.index')->withSuccess(Lang::get('larabase.post_created'));
@@ -125,7 +124,7 @@ class PostController extends \BaseController {
      */
     public function destroy($id)
     {
-        // Delete all records on the pivot table for the Post
+        // Delete all records on the Post-Tag pivot table
         Post::find($id)->tags()->detach();
         Post::destroy($id);
         return Redirect::route('posts.index')->withInfo(Lang::get('larabase.post_deleted'));
