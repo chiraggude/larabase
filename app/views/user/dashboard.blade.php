@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-<h1><i class="fa fa-dashboard"></i> Dashboard</h1>
+<h1>Dashboard</h1>
 <hr>
 <div class="row" id="dashboard">
 
@@ -56,7 +56,7 @@
             <a href="#" class="list-group-item">Dapibus ac facilisis in <span class="label label-default pull-right">5 days ago</span></a>
         </div>
 
-        <h3>Timeline</h3>
+        <h3>Activity Timeline</h3>
         <ul class="list-group">
             <li class="list-group-item">Dapibus ac facilisis in <span class="label label-default pull-right">3 mins ago</span></li>
             <li class="list-group-item">Porta ac consectetur ac <span class="label label-default pull-right">1 hour ago</span></li>

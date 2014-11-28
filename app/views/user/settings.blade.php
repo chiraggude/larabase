@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('content')
-
-<h1><i class="fa fa-cog"></i> Settings </h1>
+<h1>Settings</h1>
 <hr>
 <div class="row">
     <div class="col-md-12">
@@ -10,10 +9,10 @@
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active">
-                <a href="#security" aria-controls="security" role="tab" data-toggle="tab"><i class="fa fa-lock"></i> Security</a>
+                <a href="#security" aria-controls="security" role="tab" data-toggle="tab"><i class="fa fa-lock"></i> Security & Privacy</a>
             </li>
             <li role="presentation">
-                <a href="#general" aria-controls="general" role="tab" data-toggle="tab"><i class="fa fa-exchange"></i> General</a>
+                <a href="#general" aria-controls="general" role="tab" data-toggle="tab"><i class="fa fa-cogs"></i> General</a>
             </li>
           </ul>
 
@@ -30,9 +29,9 @@
 
         {{ HTML::br(1) }}
 
-        <a href="{{ URL::to('/settings/edit') }}" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> Edit Settings</a>
+        <a href="{{ URL::to('/settings/edit') }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit Settings</a>
 
-        <a href="{{ URL::to('password/change') }}" class="btn btn-default btn-sm pull-right"><i class="fa fa-lock"></i> Change Password</a>
+        <a href="{{ URL::to('password/change') }}" class="btn btn-primary btn-sm pull-right"><i class="fa fa-lock"></i> Change Password</a>
 
         {{ HTML::br(3) }}
 

@@ -9,10 +9,9 @@ function active($path, $active = 'active')
 
 // Generate the Gravatar url for given email
 // Used in posts>show.blade.php and user>profile_public.blade.php
-function gravatar_url($email, $size)
+function gravatar_url($email, $size = "150")
 {
-    if($size == null)
-    {
+    if($size == null) {
         return 'http://www.gravatar.com/avatar/'.md5($email) ;
     }
     return 'http://www.gravatar.com/avatar/'. md5($email) .'?s='. $size ;
@@ -20,9 +19,9 @@ function gravatar_url($email, $size)
 
 // Generate back button
 // Used in post.edit, post.create, deleted_users, settings_edit, profile_edit, feedback
-function cancel_button($text = 'Cancel')
+function cancel_button($text = "Cancel")
 {
-    return "<a href=' ".URL::previous()." ' class='btn btn-default pull-right'>$text</a>";
+    return "<a href=' " . URL::previous() . " ' class='btn btn-default pull-right'>$text</a>";
 }
 
 // Check if authenticated user is Owner or Admin for given resource object
