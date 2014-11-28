@@ -28,7 +28,7 @@ class AccountController extends \BaseController {
         $data = Input::all();
         $user->timezone = Input::get('timezone');
         $user->save();
-        return Redirect::to('settings/edit')->withSuccess(Lang::get('larabase.settings_saved'));
+        return Redirect::to('settings')->withSuccess(Lang::get('larabase.settings_saved'));
     }
 
 
