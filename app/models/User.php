@@ -47,6 +47,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
     // Accessor method to get User's full name
     public function getFullNameAttribute() {
+
+        if($this->first_name == null || $this->last_name == null)
+        {
+            return $this->username;
+        }
         return $this->first_name . ' ' . $this->last_name;
     }
 

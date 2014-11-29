@@ -5,9 +5,9 @@
 
 <div class="col-sm-6">
 
-    {{ Form::open(array('action' => 'UserController@resendActivationCode','class' => 'form-horizontal')) }}
+    {{ Form::open(['action' => 'AuthController@resendActivationCode','class' => 'form-horizontal']) }}
 
-    {{ Form::emailField('email', 'Your Email', null) }}
+    {{ Form::emailField('email', 'Confirm your Email', null) }}
 
     {{ Form::submitField('Send Activation email') }}
 

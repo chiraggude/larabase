@@ -8,26 +8,18 @@ Route::pattern('id', '\d+');
 Route::when('*', 'csrf', array('post', 'put', 'delete'));
 
 // Posts
-Route::resource('posts', 'PostController');
-Route::get('posts/tag/{name}', 'PostController@postsForTag');
-Route::get('users/{username}/posts',    'PostController@postsForUser');
-
-// Admin Routes
-Route::group(['before' => 'auth|admin','prefix' => 'admin'], function()
-{
-    Route::get('users',             'AdminController@users');
-    Route::get('deleted-users',     'AdminController@deletedUsers');
-    Route::post('restore-user',     'AdminController@restoreUser');
-    Route::get('posts',             'AdminController@posts');
-    Route::get('api/posts',         'AdminController@postsApi');
-});
+Route::resource('posts', 'PostsController');
+Route::get('posts/tag/{name}', 'PostsController@postsForTag');
+Route::get('posts/category/{name}', 'PostsController@postsForCategory');
+Route::get('posts/user/{username}', 'PostsController@postsForUser');
 
 
 // Routes for Authenticated Users
 Route::group(['before' => 'auth'], function()
 {
-    Route::get('dashboard',                 'AccountController@dashboard');
+    Route::get('users',                     'UsersController@index');
     Route::get('users/{username}',          'AccountController@profilePublic');
+    Route::get('dashboard',                 'AccountController@dashboard');
     Route::get('profile',                   'AccountController@profile');
     Route::get('settings',                  'AccountController@settings');
     Route::get('settings/edit',             'AccountController@settingsEdit');
@@ -37,33 +29,47 @@ Route::group(['before' => 'auth'], function()
     Route::get('profile/edit',              'AccountController@profileEdit');
     Route::post('profile/edit',             'AccountController@profileSave');
     Route::post('delete-account',           'AccountController@deleteAccount');
-    Route::get('users',                     'UserController@index');
-    Route::get('logout',                    'UserController@logout');
+    Route::get('logout',                    'AuthController@logout');
 });
 
 
 // Guest only Routes
 Route::group(['before' => 'guest'], function()
 {
-    Route::get( 'login',                  'UserController@login');
-    Route::post('login',                  'UserController@processLogin');
-    Route::get( 'sign-up',                'UserController@signup');
-    Route::post('sign-up',                'UserController@processSignup');
+    Route::get('login',                   'AuthController@login');
+    Route::post('login',                  'AuthController@processLogin');
+    Route::get('sign-up',                 'AuthController@signUp');
+    Route::post('sign-up',                'AuthController@processSignUp');
     Route::controller('password',         'RemindersController');
-    Route::get('activate/{code}',         ['as'=>'activate', 'uses' => 'UserController@activate']);
-    Route::get('resend-activation',       'UserController@resendActivation');
-    Route::post('resend-activation',      'UserController@resendActivationCode');
+    Route::get('activate/{code}',         ['as'=>'activate', 'uses' => 'AuthController@activate']);
+    Route::get('resend-activation',       'AuthController@resendActivation');
+    Route::post('resend-activation',      'AuthController@resendActivationCode');
+});
+
+
+// Admin Routes
+Route::group(['before' => 'auth|admin','prefix' => 'admin'], function()
+{
+    Route::group(['namespace' => 'Admin'], function()
+    {
+        Route::get('users', 'UsersController@users');
+        Route::post('restore-user', 'UsersController@restoreUser');
+        Route::get('posts', 'PostsController@posts');
+        Route::get('api/posts', 'PostsController@postsApi');
+    });
+    Route::resource('tags', 'TagsController', ['except'=> ['show', 'create']]);
+    Route::resource('categories', 'CategoriesController', ['except'=> ['show', 'create']]);
 });
 
 
 // Public Routes
-Route::get('feedback',      'HomeController@feedbackShow');
-Route::post('feedback',     'HomeController@feedbackSave');
-Route::get('terms',         'HomeController@terms');
-Route::get('privacy',       'HomeController@privacy');
-Route::get('faqs',          'HomeController@faqs');
-Route::get('about',         'HomeController@about');
-Route::get('/',             'HomeController@home');
+Route::get('feedback',      'PagesController@feedback');
+Route::post('feedback',     'PagesController@saveFeedback');
+Route::get('terms',         'PagesController@terms');
+Route::get('privacy',       'PagesController@privacy');
+Route::get('faqs',          'PagesController@faqs');
+Route::get('about',         'PagesController@about');
+Route::get('/',             'PagesController@home');
 
 
 // Developer Routes

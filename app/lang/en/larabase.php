@@ -22,7 +22,7 @@ return [
 	|--------------------------------------------------------------------------
 	*/
 
-    // processRegister()
+    // processSignUp()
     'signup_success' => 'To activate your account, please check your email for instructions or ',
     // processLogin()
     'login_success' => 'Your have successfully logged in',
@@ -35,7 +35,7 @@ return [
     'logout' => 'You have logged out',
     // ResendActivationCode()
     'account_activated' => 'Your account is already activated',
-    'activation_code_resent' => 'Activation Code was sent to your email',
+    'activation_code_resent' => 'Activation Code was resent to your email',
     'email_not_found' => 'Your email is not registered',
 
     /*
@@ -57,7 +57,7 @@ return [
 
     /*
 	|--------------------------------------------------------------------------
-	| PostController
+	| PostsController
 	|--------------------------------------------------------------------------
 	*/
     'post_created' => 'Post created',
@@ -66,7 +66,7 @@ return [
 
     /*
 	|--------------------------------------------------------------------------
-	| HomeController
+	| PagesController
 	|--------------------------------------------------------------------------
 	*/
     // feedbackSave()
@@ -74,7 +74,7 @@ return [
 
     /*
 	|--------------------------------------------------------------------------
-	| AdminController
+	| PostsController
 	|--------------------------------------------------------------------------
 	*/
     // restoreUser()

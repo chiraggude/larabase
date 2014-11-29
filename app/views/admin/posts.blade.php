@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('header-js')
-{{ HTML::style('//cdn.datatables.net/plug-ins/be7019ee387/integration/bootstrap/3/dataTables.bootstrap.css') }}
-{{ HTML::script('//cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js') }}
-{{ HTML::script('//cdn.datatables.net/tabletools/2.2.1/js/dataTables.tableTools.min.js') }}
-{{ HTML::script('//cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.js') }}
+    {{ HTML::style('//cdn.datatables.net/plug-ins/be7019ee387/integration/bootstrap/3/dataTables.bootstrap.css') }}
+    {{ HTML::script('//cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js') }}
+    {{ HTML::script('//cdn.datatables.net/tabletools/2.2.1/js/dataTables.tableTools.min.js') }}
+    {{ HTML::script('//cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.js') }}
 @stop
 
 @section('content')
@@ -17,7 +17,6 @@
             <thead>
             <tr>
                 <th>Title</th>
-                <th>Category</th>
                 <th>Status</th>
                 <th>Author</th>
                 <th>Actions</th>

@@ -1,21 +1,22 @@
 <?php
 
-class HomeController extends BaseController {
+class PagesController extends \BaseController {
 
 	public function home()
 	{
-		return View::make('home');
+		return View::make('pages.home');
 	}
 
-    public function feedbackShow()
+
+    public function feedback()
     {
         return View::make('pages.feedback');
     }
 
-    public function feedbackSave()
+
+    public function saveFeedback()
     {
-        $data = Input::all();
-        $validator = Feedback::validate($data);
+        $validator = Feedback::validate($data = Input::all());
         if ($validator->fails())
         {
             return Redirect::back()->withErrors($validator)->withInput();
@@ -25,20 +26,24 @@ class HomeController extends BaseController {
         return Redirect::back()->withSuccess(Lang::get('larabase.feedback_submitted'));
     }
 
+
     public function about()
     {
         return View::make('pages.about');
     }
+
 
     public function faqs()
     {
         return View::make('pages.faqs');
     }
 
+
     public function terms()
     {
         return View::make('pages.terms');
     }
+
 
     public function privacy()
     {

@@ -9,13 +9,13 @@
 
     {{ Form::hidden('token', $token) }}
 
-    {{ Form::emailField('email', 'Your Email', null) }}
+    {{ Form::emailField('email', 'Confirm your Email', null) }}
 
     {{ Form::passwordField('password', 'New Password', null) }}
 
     {{ Form::passwordField('password_confirmation', 'Confirm New Password', null) }}
 
-    {{ Form::submitField('Reset') }}
+    {{ Form::submitField('Save new Password') }}
 
     {{ Form::close() }}
 

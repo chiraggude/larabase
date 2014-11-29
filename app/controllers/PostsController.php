@@ -1,9 +1,9 @@
 <?php
 
-class PostController extends \BaseController {
+class PostsController extends \BaseController {
 
     /**
-     * This Constructor is called after the creation of a new PostController object
+     * This Constructor is called after the creation of a new PostsController object
      *
      */
     public function __construct()
@@ -34,6 +34,17 @@ class PostController extends \BaseController {
     }
 
     /**
+     * Display a list of posts for a Category
+     *
+     */
+    public function postsForCategory($category_name)
+    {
+        $category = Category::where('name', $category_name)->firstOrFail();
+        $posts = $category->posts()->orderBy('updated_at', 'desc')->paginate(5);
+        return View::make('posts.post_category', compact('posts', 'category_name'));
+    }
+
+    /**
      * Display a list of posts for a Tag
      *
      */
@@ -51,9 +62,11 @@ class PostController extends \BaseController {
     public function create()
     {
         $user_id = Auth::user()->id;
+        $categories = DB::table('categories')->lists('name','id');
+        $default_category_id = Category::first()->id;
         $tags = DB::table('tags')->get(['id', 'name']);
         $default_tag_id = [Tag::first()->id];
-        return View::make('posts.create', compact('user_id', 'default_tag_id', 'tags'));
+        return View::make('posts.create', compact('user_id', 'categories', 'default_category_id', 'default_tag_id', 'tags'));
     }
 
     /**
@@ -62,16 +75,16 @@ class PostController extends \BaseController {
      */
     public function store()
     {
-        $data = Input::all();
-        $validator = Post::validate($data);
+        $validator = Post::validate($data = Input::all());
         if ($validator->fails())
         {
             return Redirect::back()->withErrors($validator)->withInput();
         }
-        // remove quotes from tag_ids
+        // We remove quotes from tag_ids with array_map intval
         $tag_ids = array_map('intval', $data['tags']);
-        $post = Post::create(['user_id'=>$data['user_id'], 'title'=>$data['title'], 'content'=>$data['content'], 'category'=>$data['category'], 'status'=>$data['status'], 'visibility'=>$data['visibility']]);
+        $post = Post::create(['user_id'=>$data['user_id'], 'title'=>$data['title'], 'content'=>$data['content'], 'status'=>$data['status']]);
         $post->tags()->sync($tag_ids);
+        $post->categories()->attach($data['category']);
         Event::fire('post.created', array($data));
         return Redirect::route('posts.index')->withSuccess(Lang::get('larabase.post_created'));
     }
@@ -94,8 +107,10 @@ class PostController extends \BaseController {
     {
         $post = Post::find($id);
         $tags = Tag::all();
+        $categories = DB::table('categories')->lists('name','id');
+        $selected_category = $post->categories->lists('id');
         $selected_tags = $post->tags->lists('id');
-        return View::make('posts.edit', compact('post', 'tags', 'selected_tags'));
+        return View::make('posts.edit', compact('post', 'categories', 'selected_category', 'tags', 'selected_tags'));
     }
 
     /*
@@ -104,16 +119,16 @@ class PostController extends \BaseController {
      */
     public function update($id)
     {
-        $data = Input::all();
         $post = Post::findOrFail($id);
-        $validator = Validator::make($data, Post::$rules);
+        $validator = Validator::make($data = Input::all(), Post::$rules);
         if ($validator->fails())
         {
             return Redirect::back()->withErrors($validator)->withInput();
         }
-        // remove quotes from tag_ids
+        // We remove quotes from tag_ids with array_map intval
         $tag_ids = array_map('intval', $data['tags']);
-        $post->update(['title'=>$data['title'], 'content'=>$data['content'], 'category'=>$data['category'], 'status'=>$data['status'], 'visibility'=>$data['visibility']]);
+        $post->update(['title'=>$data['title'], 'content'=>$data['content'], 'status'=>$data['status']]);
+        $post->categories()->sync([$data['category']]);
         $post->tags()->sync($tag_ids);
         return Redirect::route('posts.show', $id)->withInfo(Lang::get('larabase.post_updated'));
     }
@@ -124,8 +139,9 @@ class PostController extends \BaseController {
      */
     public function destroy($id)
     {
-        // Delete all records on the Post-Tag pivot table
+        // Delete all records on the Post-Tag and Post-Category pivot table
         Post::find($id)->tags()->detach();
+        Post::find($id)->categories()->detach();
         Post::destroy($id);
         return Redirect::route('posts.index')->withInfo(Lang::get('larabase.post_deleted'));
     }

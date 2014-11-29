@@ -7,13 +7,11 @@
 
     {{ Form::textareaField('content', 'Content', null) }}
 
-    {{ Form::textField('category', 'Category', null) }}
+    {{ Form::selectField('category', $categories, $selected_category, 'Category') }}
 
     {{ Form::selectTag('tags', 'post-tags', 'Tags') }}
 
     {{ Form::selectField('status', ['published' =>'Published','draft' =>'Draft'], 'published', 'Status') }}
-
-    {{ Form::selectField('visibility', ['public' =>'Public','private' =>'Private'], 'public', 'Visibility') }}
 
     {{ cancel_button() }}
 

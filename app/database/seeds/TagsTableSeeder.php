@@ -8,7 +8,6 @@ class TagsTableSeeder extends Seeder {
 
 		Tag::create(['name'=>'Announcements']);
 		Tag::create(['name'=>'Engineering']);
-		Tag::create(['name'=>'Support']);
 		Tag::create(['name'=>'Features']);
 
 	}

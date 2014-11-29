@@ -155,7 +155,6 @@ if(jQuery('table#admin-posts-datatable').length > 0) { //checks if div element e
             "deferRender": true,
             "columns": [
                 { "data": "title" },
-                { "data": "category" },
                 { "data": "status"},
                 { "data": "user.username",
                     "mRender": function (data, type, full)  {

@@ -3,11 +3,11 @@
 
 <h1>Feedback</h1>
 <hr>
-<p>Get in touch with us if you have any feedback or questions</p>
-<br>
+<p class="text-muted">Get in touch with us if you have any feedback or questions</p>
+
 <div class="col-md-6">
 
-        {{ Form::open(array('action' => 'HomeController@feedbackSave' , 'class' => 'form-horizontal')) }}
+        {{ Form::open(['action' => 'PagesController@saveFeedback' , 'class' => 'form-horizontal']) }}
 
         {{ Form::textField('full_name', 'Your Name', 'Name') }}
 

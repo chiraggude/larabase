@@ -1,11 +1,12 @@
 <?php
 
-class Tag extends \Eloquent {
+class Category extends \Eloquent {
 
-	protected $fillable = ['name'];
+	protected $fillable = ['name', 'description'];
 
 	public static $rules = [
-		'name' => 'required|min:3'
+		'name' => 'required|min:3',
+		'description' => 'required|min:5'
 	];
 
 	public static function validate($data){

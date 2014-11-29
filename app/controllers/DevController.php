@@ -1,6 +1,6 @@
 <?php
 
-class DevController extends BaseController {
+class DevController extends \BaseController {
 
 
     // Laravel start page with some config checks
