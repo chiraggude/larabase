@@ -15,15 +15,15 @@ Event::listen('last.activity', function($user)
 });
 
 // Send notification email to Admin when a Post is created
-Event::listen('report.created', function($data)
+Event::listen('post.created', function($data)
 {
     Mail::send('emails.notifications.report_created', $data, function($message)
     {
-        $message->to(Config::get('larabase.admin_email'), 'Admin')->subject('Notification - Report Created');
+        $message->to(Config::get('larabase.admin_email'), 'Admin')->subject('Notification - Post Created');
     });
 });
 
-// Send notification email to Admin when Feedback is submitted
+// Send notification email to Admin when Feedback form is submitted
 Event::listen('feedback.submitted', function($data)
 {
     Mail::send('emails.notifications.feedback', $data, function($message)

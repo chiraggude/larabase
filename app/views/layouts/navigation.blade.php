@@ -23,14 +23,16 @@
                         <li class="{{ active('terms') }}"><a href="{{ URL::to('terms') }}">Terms of Service</a></li>
                     </ul>
                 </li>
-                @if ( Auth::check())
+                @if(Auth::check())
                 <li class="{{ active('users') }}"><a href="{{ URL::to('users') }}"> Users</a></li>
-                @if ( is_admin(Auth::user()) )
+                @if(is_admin(Auth::user()))
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Admin <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li class="{{ active('admin/users') }}"><a href="{{ URL::to('admin/users') }}">Users</a></li>
                         <li class="{{ active('admin/posts') }}"><a href="{{ URL::to('admin/posts') }}">Posts</a></li>
+                        <li class="{{ active('admin/tags') }}"><a href="{{ URL::to('admin/tags') }}">Tags</a></li>
+                        <li class="{{ active('admin/categories') }}"><a href="{{ URL::to('admin/categories') }}">Categories</a></li>
                     </ul>
                 </li>
                 @endif
@@ -38,13 +40,13 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                @if ( Auth::guest())
+                @if(Auth::guest())
                 <li class="{{ active('login') }}"><a href="{{ URL::to('login') }}"> Login</a></li>
                 <li class="{{ active('sign-up') }}"><a href="{{ URL::to('sign-up') }}"> Sign Up</a></li>
                 @else
                 <li class="{{ active('dashboard') }}"><a href="{{ URL::to('dashboard') }}"> Dashboard</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->full_name ?: Auth::user()->username }} <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->full_name }} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li class="{{ active('profile') }}"><a href="{{ URL::to('profile') }}"><i class="fa fa-user fa-fw"></i> Profile</a></li>
                         <li class="{{ active('settings') }}"><a href="{{ URL::to('settings') }}"> <i class="fa fa-cog fa-fw"></i> Settings</a></li>

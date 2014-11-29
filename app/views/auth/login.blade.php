@@ -5,7 +5,7 @@
 <br/>
 <div class="col-md-6">
 
-    {{ Form::open(array('action'=>'UserController@processLogin', 'class' => 'form-horizontal')) }}
+    {{ Form::open(['action'=>'AuthController@processLogin', 'class' => 'form-horizontal']) }}
 
     {{ Form::textField('email_or_username', 'Email or Username', null) }}
 

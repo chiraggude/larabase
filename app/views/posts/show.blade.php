@@ -9,9 +9,13 @@
 
     <p>{{ $post->content }}</p>
 
-    <p class="text-muted">WRITTEN BY {{ link_to("/users/{$post->user->username}", mb_strtoupper($post->user->username)) }}</p>
+    <p class="text-muted">WRITTEN BY {{ link_to("/users/{$post->user->username}", mb_strtoupper($post->user->username)) }} ({{ link_to("posts/user/{$post->user->username}", "see all posts") }})</p>
 
     <p class="text-muted">CREATED ON {{ mb_strtoupper($post->created_at->setTimezone($user_timezone)->toDayDateTimeString()) }}</p>
+
+    @foreach($post->categories as $category)
+        <p class="text-muted">POSTED UNDER <a href="{{ url("/posts/category/{$category->name}") }}">{{ $category->name  }}</a></p>
+    @endforeach
 
     <p class="text-muted">
     @foreach($post->tags as $tag)

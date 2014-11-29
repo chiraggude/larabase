@@ -22,10 +22,9 @@ class Post extends \Eloquent {
 	public static $rules = [
         'title' => 'required|min:3',
         'content' => 'required|min:10',
-        'category' => 'required|min:3',
+        'category' => 'required',
         'tags' => 'required',
-        'status' => 'required|in:published,draft',
-        'visibility' => 'required|in:public,private'
+        'status' => 'required|in:published,draft'
 	];
 
 	// data entities that can be saved to the database eg: title, content (leave empty for all)
@@ -51,6 +50,11 @@ class Post extends \Eloquent {
     public function tags()
     {
         return $this->belongsToMany('Tag')->withTimestamps();
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany('Category')->withTimestamps();
     }
 
 }

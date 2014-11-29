@@ -7,13 +7,11 @@
 
     {{ Form::textareaField('content', 'Content', null) }}
 
-    {{ Form::textField('category', 'Category', null) }}
-
-    {{ Form::selectField('status', ['published' =>'Published','draft' =>'Draft'], 'published', 'Status') }}
+    {{ Form::selectField('category', $categories, $default_category_id, 'Category') }}
 
     {{ Form::selectTag('tags', 'post-tags', 'Tags') }}
 
-    {{ Form::selectField('visibility', ['public' =>'Public','private' =>'Private'], 'public', 'Visibility') }}
+    {{ Form::selectField('status', ['published' =>'Published','draft' =>'Draft'], 'published', 'Status') }}
 
     {{ Form::hidden('user_id', $user_id) }}
 

@@ -46,7 +46,7 @@ HTML::macro('deleteModal', function($modalID, $resource, $resource_name, $resour
                         <h4 class="modal-title" id="deleteModal">Delete '.$resource_name.'</h4>
                     </div>
                     <div class="modal-body">
-                        <h4>Are you sure you want to delete this '.$resource_name.'?</h4>
+                        <h4>Are you sure you want to permanently delete this '.$resource_name.'?</h4>
                         <br>
                         <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancel</button>
                         '.$form_open.'
