@@ -10,7 +10,6 @@
 <div class="row" id="dashboard">
 
     <div class="col-md-6">
-
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Sitewide Trends</h3>
@@ -25,14 +24,11 @@
                         <h1><i class="fa fa-users"></i> <span id="users">0</span> Users</h1>
                     </div>
                 </div>
-
             </div>
         </div>
-
     </div>
 
     <div class="col-md-6">
-
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title"> Your Summary</h3>
@@ -48,20 +44,22 @@
                 </div>
             </div>
         </div>
-
-        <h3>Notifications <span class="badge">3</span></h3>
-        <div class="list-group">
-            <a href="#" class="list-group-item">Porta ac consectetur ac <span class="label label-default pull-right">6 hours ago</span></a>
-            <a href="#" class="list-group-item">Vestibulum at eros <span class="label label-default pull-right">2 days ago</span></a>
-            <a href="#" class="list-group-item">Dapibus ac facilisis in <span class="label label-default pull-right">5 days ago</span></a>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"> Activity Timeline</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">Dapibus ac facilisis in Vestibulum scaevola <span class="text-muted"><i class="fa fa-clock-o"></i> 3 mins ago</span></li>
+                    <li class="list-group-item">Porta ac consectetur ac facilisis inashem <span class="text-muted"><i class="fa fa-clock-o"></i> 1 hour ago</span></li>
+                    <li class="list-group-item">Nec quando facilis ne, simul interpretaris te per <span class="text-muted"><i class="fa fa-clock-o"></i> 6 hours ago</span></li>
+                    <li class="list-group-item">Vestibulum at eros ac facilisis <span class="text-muted"><i class="fa fa-clock-o"></i> 7 hour ago</span></li>
+                    <li class="list-group-item">Eu his sonet hendrerit. Integre voluptatibus in duo <span class="text-muted"><i class="fa fa-clock-o"></i> 2 days ago</span></li>
+                    <li class="list-group-item">Mei et assueverit vituperatoribus, eos cu reprehendunt <span class="text-muted"><i class="fa fa-clock-o"></i> 5 days ago</span></li>
+                    <li class="list-group-item">Dapibus ac facilisis in Porta acumpos delicatissimi <span class="text-muted"><i class="fa fa-clock-o"></i> 8 days ago</span></li>
+                </ul>
+            </div>
         </div>
-
-        <h3>Activity Timeline</h3>
-        <ul class="list-group">
-            <li class="list-group-item">Dapibus ac facilisis in <span class="label label-default pull-right">3 mins ago</span></li>
-            <li class="list-group-item">Porta ac consectetur ac <span class="label label-default pull-right">1 hour ago</span></li>
-            <li class="list-group-item">Vestibulum at eros <span class="label label-default pull-right">7 hour ago</span></li>
-
     </div>
 
 </div>
