@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('...layouts.master')
 @section('content')
 
 <h1>{{ $user->full_name }}</h1>

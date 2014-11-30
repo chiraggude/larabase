@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('...layouts.master')
 @section('content')
 
 <h1><i class="fa fa-users"></i> Users</h1>

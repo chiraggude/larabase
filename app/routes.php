@@ -18,7 +18,7 @@ Route::get('posts/user/{username}', 'PostsController@postsForUser');
 Route::group(['before' => 'auth'], function()
 {
     Route::get('users',                     'UsersController@index');
-    Route::get('users/{username}',          'AccountController@profilePublic');
+    Route::get('users/{username}',          'UsersController@profile');
     Route::get('dashboard',                 'AccountController@dashboard');
     Route::get('profile',                   'AccountController@profile');
     Route::get('settings',                  'AccountController@settings');
