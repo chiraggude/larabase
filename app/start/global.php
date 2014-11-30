@@ -69,7 +69,7 @@ App::error(function(Exception $exception, $code)
 
 App::down(function()
 {
-	return Response::make("Be right back!", 503);
+	return Response::view('pages.maintenance', ['time'=> Config::get('larabase.maintenance_time')], 503);
 });
 
 /*
