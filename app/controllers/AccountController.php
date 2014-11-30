@@ -2,35 +2,6 @@
 
 class AccountController extends \BaseController {
 
-    //  Show Account Settings
-
-    public function settings()
-    {
-        $user = Auth::user();
-        $security_settings = [];
-        $personal_settings = [$user->timezone, 'Value', 'Value', 'Value', 'Value'];
-        return View::make('user.settings', compact('user', 'security_settings', 'personal_settings'));
-    }
-
-
-    public function settingsEdit()
-    {
-        $user = Auth::user();
-        // Use a helper function to get list of timezones
-        $timezones = getTimezones();
-        return View::make('user.settings-edit', compact('user', 'timezones'));
-    }
-
-
-    public function settingsSave()
-    {
-        $user = Auth::user();
-        $data = Input::all();
-        $user->timezone = Input::get('timezone');
-        $user->save();
-        return Redirect::to('settings')->withSuccess(Lang::get('larabase.settings_saved'));
-    }
-
 
     //  Show User Dashboard
 
@@ -41,16 +12,7 @@ class AccountController extends \BaseController {
         $user_posts = $user->posts->count();
         $posts = Post::all()->count();
         $feedback = Feedback::all()->count();
-        return View::make('user.dashboard', compact('user','posts','users','user_posts', 'feedback'));
-    }
-
-    // Show Public Profile of user
-
-    public function profilePublic($username)
-    {
-        $user = User::whereUsername($username)->firstOrFail();
-        $posts = $user->posts()->get(['id', 'title']);
-        return View::make('user.profile-public', compact('user', 'posts'));
+        return View::make('account.dashboard', compact('user','posts','users','user_posts', 'feedback'));
     }
 
 
@@ -59,8 +21,7 @@ class AccountController extends \BaseController {
     public function profile()
     {
         $user = Auth::user();
-        return View::make('user.profile', compact('user'));
-
+        return View::make('account.profile', compact('user'));
     }
 
 
@@ -69,7 +30,7 @@ class AccountController extends \BaseController {
     public function profileEdit()
     {
         $user = Auth::user();
-        return View::make('user.profile-edit', compact('user'));
+        return View::make('account.profile-edit', compact('user'));
     }
 
 
@@ -93,7 +54,7 @@ class AccountController extends \BaseController {
 
     public function passwordChange()
     {
-        return View::make('user.password-change');
+        return View::make('account.password-change');
     }
 
 
@@ -123,6 +84,35 @@ class AccountController extends \BaseController {
             }
             return Redirect::back()->withError(Lang::get('larabase.password_incorrect'));
         }
+    }
+
+
+    //  Show Account Settings
+
+    public function settings()
+    {
+        $user = Auth::user();
+        $security_settings = [];
+        $personal_settings = [$user->timezone, 'Value', 'Value', 'Value', 'Value'];
+        return View::make('account.settings', compact('user', 'security_settings', 'personal_settings'));
+    }
+
+
+    public function settingsEdit()
+    {
+        $user = Auth::user();
+        // Use a helper function to get list of timezones
+        $timezones = getTimezones();
+        return View::make('account.settings-edit', compact('user', 'timezones'));
+    }
+
+
+    public function settingsSave()
+    {
+        $user = Auth::user();
+        $user->timezone = Input::get('timezone');
+        $user->save();
+        return Redirect::to('settings')->withSuccess(Lang::get('larabase.settings_saved'));
     }
 
 
