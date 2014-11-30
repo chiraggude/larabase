@@ -1,34 +1,36 @@
 LaraBase
 ========
 
-LaraBase is a starter app for speeding up the development of Laravel projects. With basic knowledge of Laravel, LaraBase can be adapted and customized to your needs. The frontend of LaraBase is built with Bootstrap 3.2 and the authentication system was built in such a way that you could use it right away or modify UserController.php to change the control flow. LaraBase does not include external packages/libraries as dependencies.
+LaraBase is a starter app for speeding up the development of Laravel projects. With basic knowledge of Laravel's conventions, LaraBase can be adapted and customized to your needs. The frontend of LaraBase is built with Bootstrap 3.3 and the authentication system was built in such a way that you could use it right away or modify AuthController.php to change the control flow. LaraBase does not include external packages/libraries as dependencies.
 
-### Live Demo: [http://larabase.turizon.co.in/](http://larabase.turizon.co.in/)
-
-**Admin Account** - Email:`admin@gmail.com`   Password:`password`
-
-### Learn More: [LaraBase Wiki](https://github.com/chiraggude/larabase/wiki)
+### [Live Demo](http://larabase.turizon.co.in/) 
+**Demo Admin Account**
+ ```
+ Email: admin@gmail.com   
+ Password: password
+ ```
 
 ## Features
-* Public pages: Home, Blog, About, FAQ's, Feedback/Contact Form
-* Authenticated User pages: Dashboard, Profile, Settings
 * Authentication: Login with email or username (with "remember me" option), Registration, Account Activation, Resend Activation code, Logout
 * Email Activation: An account activation email is sent to the user's email for verification 
 * Password Reset: Resets the user password after sends reset instructions to the user's email
+* Pages for authenticated Users: Dashboard, Profile, Settings
+* Public pages: Home, About, FAQ's, Feedback Form, Privacy Policy, TOS
+* Blog: Users can create and manage posts, categories, tags
 * User Profile: Users have a Public and Private profile (editable)
 * Change Password: User can change password while logged in from Settings page
-* Unique Validation Rules for login and registration
-* Basic Admin Console to monitor Users (DataTables)
+* Basic Admin area to monitor Users (DataTables)
 * Dashboard Stats & Graphs
 * Contact/Feedback form submissions are saved in DB and emailed to the Admin
-* List of all Users with links to their Public Profiles
+* User Directory - List of all users with links to their Public Profiles
 * Responsive HTML email templates
 * Simple activity based access control (ABAC) with the Owner filter
 * Users can set their Timezone preferences in Settings
 * Users can delete their account and Admins can restore them
 * User activity is logged to updated_at column
 * Profile pictures via Gravatar
-* Custom Error pages
+* Custom Error page
+* Maintenance mode with Countdown timer
 
 ## Installation and Setup
 
@@ -67,8 +69,8 @@ Seed the database: `php artisan db:seed`
 ### Step 5: Setup extra Dev Tools (optional)
 Add the following line to the list of Service Providers in `/app/config/local/app.php`
 ```
-        // Larabase
-        'Way\Generators\GeneratorsServiceProvider',
+// Larabase
+'Way\Generators\GeneratorsServiceProvider',
 ```
 
 ### Step 6: Start using LaraBase
@@ -79,7 +81,6 @@ Admin Account - Email: `admin@gmail.com`   Password: `password`
 **Note**: The URL depends on how you have configured your webserver.
 
 ## Upcoming Features
-* Reports to be displayed in masonry-style grid
 * OAuth 1 & 2 - Login via FaceBook, Twitter, LinkedIn, Google, Microsoft, GitHub
 * Track last login time, log in count and IP address
 * Expires sessions that have no activity in a specified period of time
@@ -91,13 +92,14 @@ Admin Account - Email: `admin@gmail.com`   Password: `password`
 
 ## Pending
 * Code refactoring (reduce ickiness)
-* Make code base more generic 
-* Write tests
+* Write tests (reduce guilt)
 
 ## Requirements
 * PHP >= 5.4.0
 * MCrypt PHP Extension
 * Composer
+
+### Learn More: [LaraBase Wiki](https://github.com/chiraggude/larabase/wiki)
 
 ##### Extra Resources
 * [Mailchimp Email Blueprints](https://github.com/mailchimp/Email-Blueprints)
