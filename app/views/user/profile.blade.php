@@ -4,7 +4,9 @@
 <hr>
 <div class="row">
     <div class="col-md-3">
-        <a href="{{ URL::to('users/'.$user->username) }}"><img src="{{ gravatar_url($user->email, 240) }}" alt="{{ $user->username }}"></a>
+        <a href="{{ URL::to('users/'.$user->username) }}">
+            <img src="{{ gravatar_url($user->email, 240) }}" alt="{{ $user->username }}" class="img-thumbnail">
+        </a>
         <br><br>
         <a href="{{ URL::to('#') }}" class="btn btn-default btn-sm"><i class="fa fa-picture-o"></i> Change Picture</a>
     </div>
