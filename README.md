@@ -1,14 +1,10 @@
 LaraBase
 ========
 
-LaraBase is a starter app for speeding up the development of Laravel projects. With basic knowledge of Laravel's conventions, LaraBase can be adapted and customized to your needs. The frontend of LaraBase is built with Bootstrap 3.3 and the authentication system was built in such a way that you could use it right away or modify AuthController.php to change the control flow. LaraBase does not include external packages/libraries as dependencies.
+> LaraBase is a starter app for speeding up the development of Laravel projects. Most SaaS apps require user authentication, email activation, feedback forms, dashboard, user profiles, setting, blog etc. With basic knowledge of Laravel's conventions, LaraBase can be adapted and customized to your needs. The frontend is built with Bootstrap 3.3 and the authentication system was built in such a way that you could use it right away or modify AuthController.php to change the control flow. LaraBase does not include external packages/libraries as dependencies.
 
 ### [Live Demo](http://larabase.turizon.co.in/) 
-**Demo Admin Account**
- ```
- Email: admin@gmail.com   
- Password: password
- ```
+**Demo Admin account** - Email: `admin@gmail.com` Password: `password`
 
 ## Features
 * Authentication: Login with email or username (with "remember me" option), Registration, Account Activation, Resend Activation code, Logout
@@ -22,7 +18,7 @@ LaraBase is a starter app for speeding up the development of Laravel projects. W
 * Basic Admin area to monitor Users (DataTables)
 * Dashboard Stats & Graphs
 * Contact/Feedback form submissions are saved in DB and emailed to the Admin
-* User Directory - List of all users with links to their Public Profiles
+* User Directory - List of all users with links to their public profiles
 * Responsive HTML email templates
 * Simple activity based access control (ABAC) with the Owner filter
 * Users can set their Timezone preferences in Settings
