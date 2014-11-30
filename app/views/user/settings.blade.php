@@ -8,21 +8,21 @@
       <div role="tabpanel">
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active">
-                <a href="#security" aria-controls="security" role="tab" data-toggle="tab"><i class="fa fa-lock"></i> Security & Privacy</a>
-            </li>
-            <li role="presentation">
-                <a href="#general" aria-controls="general" role="tab" data-toggle="tab"><i class="fa fa-cogs"></i> General</a>
-            </li>
+              <li role="presentation" class="active">
+                  <a href="#general" aria-controls="general" role="tab" data-toggle="tab"><i class="fa fa-cogs"></i> General</a>
+              </li>
+              <li role="presentation">
+                   <a href="#security" aria-controls="security" role="tab" data-toggle="tab"><i class="fa fa-lock"></i> Security & Privacy</a>
+              </li>
           </ul>
 
           <!-- Tab panes -->
           <div class="tab-content">
-              <div role="tabpanel" class="tab-pane active" id="security">
-                    {{ HTML::table($security_settings, ['Setting 1', 'Setting 2', 'Setting 3', 'Setting 4', 'Setting 5']) }}
+              <div role="tabpanel" class="tab-pane active" id="general">
+                    {{ HTML::table($personal_settings, ['Timezone', 'Setting 2', 'Setting 3', 'Setting 4', 'Setting 5']) }}
               </div>
-              <div role="tabpanel" class="tab-pane" id="general">
-                     {{ HTML::table($personal_settings, ['Timezone', 'Setting 2', 'Setting 3', 'Setting 4', 'Setting 5']) }}
+              <div role="tabpanel" class="tab-pane" id="security">
+                    {{ HTML::table($security_settings, ['Setting 1', 'Setting 2', 'Setting 3', 'Setting 4', 'Setting 5']) }}
               </div>
           </div>
         </div>
