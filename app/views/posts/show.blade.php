@@ -4,26 +4,24 @@
 <div class="panel panel-default">
   <div class="panel-body">
 
+    @foreach($post->categories as $category)
+       <a href="{{ url("/posts/category/{$category->name}") }}">{{ mb_strtoupper($category->name) }}</a>
+    @endforeach
+
     <h2>{{ $post->title }}</h2>
 
     <p class="text-muted">
-        Written {{ $post->updated_at->diffForHumans() }}
-        by <a href="{{ url("/users/{$post->user->username}") }}">{{ $post->user->full_name }}</a>
-        under
-        @foreach($post->categories as $category)
-           <a href="{{ url("/posts/category/{$category->name}") }}">{{ mb_strtoupper($category->name) }}</a>
-        @endforeach
+        {{ mb_strtoupper($post->updated_at->diffForHumans()) }} |
+        <a href="{{ url("/users/{$post->user->username}") }}">{{ mb_strtoupper($post->user->full_name) }}</a>
     </p>
 
     <p>{{ $post->content }}</p>
 
-    <p class="text-muted">Read more posts by <a href="{{ url("/posts/user/{$post->user->username}") }}">{{ $post->user->full_name }}</a></p>
-
-    <p class="text-muted">
+    <ul class="list-inline">
         @foreach($post->tags as $tag)
-            <a href="{{ url("/posts/tag/{$tag->name}") }}">#{{ $tag->name }}</a>
+            <li><a href="{{ url("/posts/tag/{$tag->name}") }}">#{{ $tag->name }}</a></li>
         @endforeach
-    </p>
+    </ul>
 
     @if (Auth::check() && is_owner_or_admin(Auth::user(), $post))
         <a class="btn btn-xs btn-info" href="{{ $post->edit_url }}"><i class="fa fa-edit"></i> Edit</a>
