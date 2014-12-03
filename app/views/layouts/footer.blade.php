@@ -6,6 +6,6 @@
           <li><a href="{{ URL::to('terms') }}">Terms of Service</a></li>
           <li><a href="{{ URL::to('faqs') }}">FAQ's</a></li>
         </ul>
-        <p class="text-muted credit">©{{ Carbon\Carbon::now()->year }} LaraBase</p>
+        <p class="text-muted credit">©{{ Carbon\Carbon::now()->year }} LARABASE</p>
     </div>
 </div>

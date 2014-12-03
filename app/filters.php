@@ -13,7 +13,7 @@
 
 App::before(function($request)
 {
-    if ( Auth::check() )
+    if (Auth::check())
     {
         // Share user's Timezone across all views
         View::share('user_timezone', Auth::user()->timezone);
@@ -28,7 +28,7 @@ App::before(function($request)
 
 App::after(function($request, $response)
 {
-    if ( Auth::check() )
+    if (Auth::check())
     {
         // Log last User Activity
         Event::fire('last.activity', array(Auth::user()));
@@ -104,7 +104,7 @@ Route::filter('csrf', function()
 
 Route::filter('admin', function()
 {
-    if ( ! is_admin(Auth::user()) )
+    if (!is_admin(Auth::user()))
     {
         return Redirect::to('dashboard')->withWarning(Lang::get('larabase.only_admin'));
     }
@@ -117,7 +117,7 @@ Route::filter('owner', function()
     $resource = Request::segment(1);
     $resource_singular = ucwords(str_singular($resource));
     $object = $resource_singular::whereId($resource_id)->first();
-    if( ! is_owner_or_admin(Auth::user(), $object))
+    if(!is_owner_or_admin(Auth::user(), $object))
     {
      return Redirect::back()->withWarning(Lang::get('larabase.only_owner', ['resource_singular'=> $resource_singular]));
     }
