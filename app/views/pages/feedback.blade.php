@@ -7,7 +7,7 @@
 
 <div class="col-md-6">
 
-        {{ Form::open(['action' => 'PagesController@saveFeedback' , 'class' => 'form-horizontal']) }}
+        {{ Form::open(['action' => 'PagesController@saveFeedback' , 'class' => 'form-horizontal', 'data-remote']) }}
 
         {{ Form::textField('full_name', 'Your Name', 'Name') }}
 

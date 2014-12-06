@@ -14,6 +14,46 @@ function toggleChevron(e) {
 $('#accordion').on('hidden.bs.collapse', toggleChevron);
 $('#accordion').on('shown.bs.collapse', toggleChevron);
 
+// Form on Feedback page
+$(function() {
+    $('form[data-remote]').on('submit', function(e) {
+        var form = $(this);
+        var method = form.find('input[name="_method"]').val() || 'POST';
+        var url = form.prop('action');
+        var info = $('#ajax-info');
+        var suc = $('#ajax-success');
+        var err = $('#ajax-error');
+        $.ajax({
+            type: method,
+            url: url,
+            data: form.serialize(),
+            success: function(data) {
+                // Empty out old values
+                info.hide().find('ul').empty();
+                if(!data.valid){
+                    $.each(data.errors, function(index, error){
+                        info.find('ul').append('<li>'+error+'</li>');
+                    });
+                    info.fadeIn(300);
+                } else {
+                    var msg = data.message;
+                    suc.find('strong').empty().append(msg);
+                    suc.fadeIn(300);
+                    suc.delay(5000).slideUp(500);
+                }
+            },
+            error: function() {
+                var message = 'Your message was not sent (500 Internal Server Error)';
+                err.find('strong').empty().append(message);
+                err.fadeIn(300);
+                err.delay(5000).slideUp(500);
+            }
+        });
+        form.reset();
+        e.preventDefault();
+    });
+});
+
 /*
  ***********************************
  Global

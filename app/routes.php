@@ -5,7 +5,7 @@
 Route::pattern('id', '\d+');
 
 // Filter every POST, PUT, DELETE request for the CSRF token (Pattern based Filter)
-Route::when('*', 'csrf', array('post', 'put', 'delete'));
+Route::when('*', 'csrf', ['post', 'put', 'delete']);
 
 // Posts
 Route::resource('posts', 'PostsController');
