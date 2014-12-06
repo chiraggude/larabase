@@ -19,11 +19,11 @@ class PagesController extends \BaseController {
         $validator = Feedback::validate($data = Input::all());
         if ($validator->fails())
         {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(['valid'=> false, 'errors' => $validator->errors()->toArray()]);
         }
         Feedback::create($data);
-        Event::fire('feedback.submitted', array($data));
-        return Redirect::back()->withSuccess(Lang::get('larabase.feedback_submitted'));
+        return Response::json(['valid'=> true,'message' => Lang::get('larabase.feedback_submitted')]);
+        Event::fire('feedback.submitted', [$data]);
     }
 
 

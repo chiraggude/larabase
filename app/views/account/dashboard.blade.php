@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('header-js')
-    {{ HTML::script('//cdn.jsdelivr.net/highcharts/4.0.1/highcharts.js') }}
-    {{ HTML::script('//cdn.jsdelivr.net/highcharts/4.0.1/modules/exporting.js') }}
+    {{ HTML::script('//cdn.jsdelivr.net/highcharts/4.0.3/highcharts.js') }}
+    {{ HTML::script('//cdn.jsdelivr.net/highcharts/4.0.3/modules/exporting.js') }}
 @stop
 
 @section('content')
@@ -17,12 +17,16 @@
             <div class="panel-body">
                 <div id="trends"></div>
                 <div class="row">
-                    <div class="col-md-6">
-                        <h1><i class="fa fa-file-text"></i> <span id="posts">0</span> Posts</h1>
+                    <div class="col-md-4 col-xs-4">
+                        <h2><i class="fa fa-file-text"></i> <span id="posts" class="label label-info counter">0</span> Posts</h2>
                     </div>
-                    <div class="col-md-6">
-                        <h1><i class="fa fa-users"></i> <span id="users">0</span> Users</h1>
+                    <div class="col-md-4 col-xs-4">
+                        <h2><i class="fa fa-users"></i> <span id="users" class="label label-info counter">0</span> Users</h2>
                     </div>
+                    <div class="col-md-4 col-xs-4">
+                        <h2><i class="fa fa-envelope"></i> <span id="feedback" class="label label-info counter">0</span> Msgs</h2>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -36,10 +40,10 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <h1><a href="{{ url("/posts/user/{$user->username}") }}"> <i class="fa fa-file-text"></i> <span id="user_posts">0</span> Posts</a></h1>
-                    </div>
-                    <div class="col-md-6">
-                        <h1><i class="fa fa-envelope"></i> <span id="feedback">0</span> Messages</h1>
+                        <h1>
+                            <span id="user_posts">0</span>
+                            <a href="{{ url("/posts/user/{$user->username}") }}"> Posts</a>
+                        </h1>
                     </div>
                 </div>
             </div>
