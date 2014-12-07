@@ -21,7 +21,8 @@
                     <td>{{ $category->description }}</td>
                     <td class="col-md-2">
                         <a class="btn btn-xs btn-default" href="{{ route('admin.categories.edit', $category->id) }}"><i class="fa fa-edit"></i> Edit</a>
-                        <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#delete"><i class="fa fa-trash-o"></i> Delete</button>
+                        <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#{{ $category->name }}"><i class="fa fa-trash-o"></i> Delete</button>
+                        {{ HTML::deleteModal($category->name,'admin.categories','Category', $category->id) }}
                     </td>
                 </tr>
                 @empty
@@ -32,7 +33,7 @@
   </div>
 </div>
 
-{{ HTML::deleteModal('delete','admin.categories','Category', $category->id) }}
+
 
 <hr>
 
