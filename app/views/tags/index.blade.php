@@ -19,7 +19,8 @@
                     <td>{{ $tag->name }}</td>
                     <td class="col-md-2">
                         <a class="btn btn-xs btn-default" href="{{ route('admin.tags.edit', $tag->id) }}"><i class="fa fa-edit"></i> Edit</a>
-                        <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#delete"><i class="fa fa-trash-o"></i> Delete</button>
+                        <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#{{ $tag->name }}"><i class="fa fa-trash-o"></i> Delete</button>
+                        {{ HTML::deleteModal($tag->name,'admin.tags','tag', $tag->id) }}
                     </td>
                 </tr>
                 @empty
@@ -29,8 +30,6 @@
         </table>
   </div>
 </div>
-
-{{ HTML::deleteModal('delete','admin.tags','tag', $tag->id) }}
 
 <hr>
 

@@ -35,7 +35,7 @@ HTML::macro('table', function($current_settings = array(), $fields = array())
 // Delete Modal
 HTML::macro('deleteModal', function($modalID, $resource, $resource_name, $resource_id)
 {
-    $form_open = Form::open(array('route' => [''.$resource.'.destroy', $resource_id], 'method' => 'DELETE'));
+    $form_open = Form::open(['route' => [''.$resource.'.destroy', $resource_id], 'method' => 'DELETE']);
     $form_submit = Form::submitField("Delete", "btn btn-danger");
     $form_close =  Form::close();
     return '<div class="modal fade" id="'.$modalID.'" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
