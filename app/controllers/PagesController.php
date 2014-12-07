@@ -19,7 +19,7 @@ class PagesController extends \BaseController {
         $validator = Feedback::validate($data = Input::all());
         if ($validator->fails())
         {
-            return Response::json(['valid'=> false, 'errors' => $validator->errors()->toArray()]);
+            return Response::json(['valid'=> false, 'errors' => $validator->errors()]);
         }
         Feedback::create($data);
         return Response::json(['valid'=> true,'message' => Lang::get('larabase.feedback_submitted')]);

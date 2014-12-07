@@ -21,9 +21,11 @@
 </head>
 <body>
 
-@include("layouts/navigation")
+@include('layouts/navigation')
 
-@include("layouts/notifications")
+@include('layouts/notifications')
+
+@yield('ajax-notifications')
 
 <div class="container top-gap">
     <div class="row">
@@ -33,7 +35,7 @@
     </div>
 </div>
 
-@include("layouts/footer")
+@include('layouts/footer')
 
 {{ HTML::script('//cdn.jsdelivr.net/bootstrap/3.3.0/js/bootstrap.min.js', ['async' => 'async']) }}
 
