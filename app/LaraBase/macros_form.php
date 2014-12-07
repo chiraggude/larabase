@@ -35,7 +35,7 @@ Form::macro('emailField', function($name, $label, $placeholder)
 Form::macro('textareaField', function($name, $label, $placeholder)
 {
     $value = Form::getValueAttribute($name);
-    $element = Form::textarea($name, $value, array('placeholder'=> $placeholder, 'class'=>'form-control'));
+    $element = Form::textarea($name, $value, ['placeholder'=> $placeholder, 'class'=>'form-control', 'id'=>$name]);
     return "<div class='form-group " . errorClass($name) ."'>
             <label class='control-label' for='{$name}'>{$label}</label>
             {$element}"
@@ -65,19 +65,20 @@ Form::macro('selectTag', function($name, $id, $label)
 });
 
 
-Form::macro('submitField', function($value, $btn_style = 'btn btn-primary')
+Form::macro('submitField', function($value = 'Submit', $btn_style = 'btn btn-primary')
 {
     return "<div class='form-group'>
-            <input class='{$btn_style}' type='submit' value='{$value}'>
+            <button type='submit' class='{$btn_style}'>{$value}</button>
             </div>";
 });
 
 
 if (! function_exists ( 'errorMessage' )) {
     function errorMessage($name) {
-        if ($errors = Session::get ( 'errors' )) {
+        if ($errors = Session::get('errors' )) {
             return $errors->first($name, '<p class="help-block">:message</p>');
         }
+        return "<p class='help-block' id='{$name}'></p>";
     }
 }
 

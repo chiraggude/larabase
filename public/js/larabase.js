@@ -17,12 +17,13 @@ $('#accordion').on('shown.bs.collapse', toggleChevron);
 // Form on Feedback page
 $(function() {
     $('form[data-remote]').on('submit', function(e) {
+        e.preventDefault();
         var form = $(this);
         var method = form.find('input[name="_method"]').val() || 'POST';
         var url = form.prop('action');
         var info = $('#ajax-info');
-        var suc = $('#ajax-success');
-        var err = $('#ajax-error');
+        var success = $('#ajax-success');
+        var error = $('#ajax-error');
         $.ajax({
             type: method,
             url: url,
@@ -31,25 +32,34 @@ $(function() {
                 // Empty out old values
                 info.hide().find('ul').empty();
                 if(!data.valid){
-                    $.each(data.errors, function(index, error){
+                    $('.form-group').removeClass('has-error');
+                    $('.help-block').html('<i class="fa fa-check text-success"></i>');
+                    $.each(data.errors, function(index, error) {
+                        var item = '#'+index;
+                        // Add the error message to the p tag with class help-block
+                        form.find(item).next().html(error);
+                        // Add the error class to the div up the DOM tree
+                        form.find(item).closest('.form-group').addClass('has-error');
+                        // Add error message to notifications
                         info.find('ul').append('<li>'+error+'</li>');
                     });
                     info.fadeIn(300);
                 } else {
+                    $('.form-group').addClass('has-success');
                     var msg = data.message;
-                    suc.find('strong').empty().append(msg);
-                    suc.fadeIn(300);
-                    suc.delay(5000).slideUp(500);
+                    success.find('strong').empty().append(msg);
+                    success.fadeIn(300);
+                    form.find('button[type=submit]').attr('disabled', 'disabled').addClass('btn-success').html("Submitted");
+                    success.delay(5000).slideUp(800);
                 }
             },
             error: function() {
-                var message = 'Your message was not sent (500 Internal Server Error)';
-                err.find('strong').empty().append(message);
-                err.fadeIn(300);
-                err.delay(5000).slideUp(500);
+                var msg = 'Your message was not sent (500 Internal Server Error)';
+                error.find('strong').empty().append(msg);
+                error.fadeIn(300);
+                form.find('button[type=submit]').attr('disabled', 'disabled').addClass('btn-danger').html("Something Broke!");
             }
         });
-        e.preventDefault();
     });
 });
 

@@ -61,24 +61,3 @@
         </div>
     </div>
 @endif
-
-<div class="alert alert-info alert-dismissable" id="ajax-info" style="display:none">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <div class="container">
-        <ul></ul>
-    </div>
-</div>
-
-<div class="alert alert-success alert-dismissable" id="ajax-success" style="display:none">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <div class="container">
-        <strong></strong>
-    </div>
-</div>
-
-<div class="alert alert-danger alert-dismissable" id="ajax-error" style="display:none">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <div class="container">
-        <strong></strong>
-    </div>
-</div>

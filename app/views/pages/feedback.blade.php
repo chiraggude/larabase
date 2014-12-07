@@ -1,28 +1,30 @@
 @extends('layouts.master')
+
+@section('ajax-notifications')
+        @include("layouts/notifications-ajax")
+@stop
+
 @section('content')
+        <h1>Feedback</h1>
+        <hr>
+        <p class="text-muted">Get in touch with us if you have any feedback or questions</p>
+        <div class="col-md-6">
 
-<h1>Feedback</h1>
-<hr>
-<p class="text-muted">Get in touch with us if you have any feedback or questions</p>
+                {{ Form::open(['action' => 'PagesController@saveFeedback' , 'class' => 'form-horizontal', 'data-remote']) }}
 
-<div class="col-md-6">
+                {{ Form::textField('full_name', 'Your Name', 'Name') }}
 
-        {{ Form::open(['action' => 'PagesController@saveFeedback' , 'class' => 'form-horizontal', 'data-remote']) }}
+                {{ Form::emailField('email', 'Your Email', 'Email') }}
 
-        {{ Form::textField('full_name', 'Your Name', 'Name') }}
+                {{ Form::textField('topic', 'Topic', 'What is your message about?') }}
 
-        {{ Form::emailField('email', 'Your Email', 'Email') }}
+                {{ Form::textareaField('message_body', 'Your Message', 'Start writing...') }}
 
-        {{ Form::textField('topic', 'Topic', 'What is your message about?') }}
+                {{ cancel_button() }}
 
-        {{ Form::textareaField('message_body', 'Your Message', 'Start writing...') }}
+                {{ Form::submitField('Submit Feedback') }}
 
-        {{ cancel_button() }}
+                {{ Form::close() }}
 
-        {{ Form::submitField('Submit Feedback') }}
-
-        {{ Form::close() }}
-
-</div>
-
+        </div>
 @stop
