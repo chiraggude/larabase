@@ -31,7 +31,8 @@ $(function() {
             success: function(data) {
                 // Empty out old values
                 info.hide().find('ul').empty();
-                if(!data.valid){
+                if(!data.valid) {
+                    // setting initial state for form elements
                     $('.form-group').removeClass('has-error');
                     $('.help-block').html('<i class="fa fa-check text-success"></i>');
                     $.each(data.errors, function(index, error) {
