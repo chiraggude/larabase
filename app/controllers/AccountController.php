@@ -38,14 +38,15 @@ class AccountController extends \BaseController {
 
     public function profileSave()
     {
-        return Redirect::back()->withWarning('This feature is disabled for the live demo'); // Remove for production
         $user = Auth::user();
         $data = Input::all();
         $validator = User::validate_profile($data, $user);
+        $validator = User::validate_profile($data = Input::all(), $user = Auth::user());
         if ($validator->fails())
         {
             return Redirect::back()->withInput()->withErrors($validator);
         }
+        return Redirect::back()->withWarning('This feature is disabled for the live demo'); // Remove for production
         $user->update($data);
         return Redirect::to('profile')->withSuccess(Lang::get('larabase.profile_updated'));
     }
@@ -63,29 +64,25 @@ class AccountController extends \BaseController {
 
     public function passwordSave()
     {
-        return Redirect::back()->withWarning('This feature is disabled for the live demo'); // Remove for production
-        $data = Input::all();
-        $validator = User::validate_change_password($data);
+        $validator = User::validate_change_password($data = Input::all());
         if ($validator->fails())
         {
             return Redirect::back()->withErrors($validator);
         }
-        else
+        $user = Auth::user();
+        $current_password = $data['current_password'];
+        $new_password = $data['new_password'];
+        if(Hash::check($current_password, $user->getAuthPassword()))
         {
-            $user = Auth::user();
-            $current_password = $data['current_password'];
-            $new_password = $data['new_password'];
-            if(Hash::check($current_password, $user->getAuthPassword()))
-            {
-                if ($current_password == $new_password) {
-                    return Redirect::back()->withWarning(Lang::get('larabase.unique_password_required'));
-                }
-                $user->password = Hash::make($new_password);
-                $user->save();
-                return Redirect::to('profile')->withSuccess(Lang::get('larabase.profile_changed'));
+            if ($current_password == $new_password) {
+                return Redirect::back()->withWarning(Lang::get('larabase.unique_password_required'));
             }
-            return Redirect::back()->withError(Lang::get('larabase.password_incorrect'));
+            return Redirect::back()->withWarning('This feature is disabled for the live demo'); // Remove for production
+            $user->password = Hash::make($new_password);
+            $user->save();
+            return Redirect::to('profile')->withSuccess(Lang::get('larabase.password_saved'));
         }
+        return Redirect::back()->withError(Lang::get('larabase.password_incorrect'));
     }
 
 
@@ -120,6 +117,7 @@ class AccountController extends \BaseController {
 
     public function deleteAccount()
     {
+        return Redirect::back()->withWarning('This feature is disabled for the live demo'); // Remove for production
         $user = Auth::user();
         Post::whereUserId($user->id)->delete();
         Auth::logout();
