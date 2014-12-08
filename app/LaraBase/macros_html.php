@@ -63,7 +63,7 @@ HTML::macro('deleteModal', function($modalID, $resource, $resource_name, $resour
 HTML::macro('deleteAccountModal', function($modalID)
 {
     $form_open = Form::open(['action' => 'AccountController@deleteAccount']);
-    $form_submit = Form::submitField("Delete Account", "btn btn-danger");
+    $form_submit = Form::submitField("Delete Account", "btn btn-danger pull-left");
     $form_close =  Form::close();
     return '<div class="modal fade" id="'.$modalID.'" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
             <div class="modal-dialog">
@@ -74,11 +74,11 @@ HTML::macro('deleteAccountModal', function($modalID)
                     </div>
                     <div class="modal-body">
                         <h4>Are you sure you want to delete your account and all associated data?</h4>
-                        <br>
                         <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancel</button>
                         '.$form_open.'
                         '.$form_submit.'
                         '.$form_close.'
+                        <br><br>
                     </div>
                 </div>
             </div>
