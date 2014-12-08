@@ -26,16 +26,7 @@ h2 a:visited {color:#B3B3B3}
     .knob-content {color:#999; display:inline-block; position:relative; bottom:58px; right:120px; font-size:12px}
 }
 /* Counter for Dashboard metrics */
-.counter {
-    border-radius: 50%;
-    position: absolute;
-    top: 12px;
-    left: 35px;
-    width: 20px;
-    height: 20px;
-    font-size: 11px;
-    padding: 4px 4px 2px;
-}
+.counter {border-radius: 50%; position: absolute; top: 12px; left: 35px; width: 20px; height: 20px; font-size: 11px; padding: 4px 4px 2px}
 
 /* DataTables */
 @media (max-width: 992px) {
@@ -53,7 +44,7 @@ h2 a:visited {color:#B3B3B3}
 div.dataTables_info {color:#b4bcc2;}
 
 /* Tabs */
-.tab-content>.active {background-color: #fff; padding: 20px 20px 5px 20px;}
+.tab-content>.active {background-color: #fff; padding: 20px;}
 .tab-pane {border: 1px solid #ecf0f1; border-top-color: transparent;}
 .nav-tabs>li>a {background-color: #ecf0f1;}
 .nav-tabs>li>a:hover {color: #333;}

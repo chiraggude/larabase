@@ -92,9 +92,9 @@ class AccountController extends \BaseController {
     public function settings()
     {
         $user = Auth::user();
-        $security_settings = [];
-        $personal_settings = [$user->timezone, 'Value', 'Value', 'Value', 'Value'];
-        return View::make('account.settings', compact('user', 'security_settings', 'personal_settings'));
+        $example_settings = ['Value', 'Value', 'Value'];
+        $example_values = ['Setting 1', 'Setting 2', 'Setting 3'];
+        return View::make('account.settings', compact('user', 'example_settings', 'example_values'));
     }
 
 
