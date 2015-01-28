@@ -3,15 +3,15 @@
 // Log last login for User
 Event::listen('auth.login', function($user)
 {
-    $user->last_login = new DateTime;
-    $user->save();
+    $user->throttle->last_login = new DateTime;
+    $user->throttle->save();
 });
 
 // Log last activity for Authenticated user
 Event::listen('last.activity', function($user)
 {
-    $user->last_activity = new DateTime;
-    $user->save();
+    $user->throttle->last_activity = new DateTime;
+    $user->throttle->save();
 });
 
 // Send notification email to Admin when a Post is created
