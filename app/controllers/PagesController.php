@@ -8,7 +8,7 @@ class PagesController extends \BaseController {
 	}
 
 
-    public function feedback()
+    public function getFeedback()
     {
         return View::make('pages.feedback');
     }

@@ -107,5 +107,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return $this->hasMany('Post');
     }
 
+    public function throttle()
+    {
+        return $this->hasOne('Throttle');
+    }
+
+    public function profile()
+    {
+        return $this->hasOne('Profile');
+    }
+
 
 }

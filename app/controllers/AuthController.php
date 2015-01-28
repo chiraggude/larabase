@@ -20,13 +20,9 @@ class AuthController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput(Input::except('password', 'password_confirm'));
 		}
 		$code = str_random(32);
-		$user = new User;
-		$user->username = Input::get('username');
-		$user->email = Input::get('email');
-		$user->password = Hash::make(Input::get('password'));
-		$user->activation_code = $code;
-		$user->activated =  0;
-		$user->save();
+		$user = User::create(['username'=>$data['username'], 'email'=>$data['email'], 'password'=> Hash::make($data['password']), 'activation_code'=> $code, 'activated'=> 0]);
+		Throttle::create(['user_id'=> $user->id]);
+		Profile::create(['user_id'=> $user->id]);
 		$activation_link = URL::route('activate', $code);
 		//$user->email is out of scope for the mail closure, hence to access it, we have defined "use ($user)"
 		Mail::send('emails.users.activate', ['link' => $activation_link, 'username' => Input::get('username')], function($message) use($user) {
@@ -48,19 +44,18 @@ class AuthController extends \BaseController {
 
 	public function processLogin()
 	{
-		$data = Input::all();
-		$validator = User::validate_login($data);
-		if ($validator->fails())    {
+		$validator = User::validate_login($data = Input::all());
+		if ($validator->fails()) {
 			return Redirect::back()->withErrors($validator)->withInput(Input::except('password'));
 		}
 		else {
 			$user = User::where('email', '=', $data['email_or_username'])->orWhere('username', $data['email_or_username'])->first();
-			if ( ! $user == null) {  // Check if user in DB
-				if ( $user->activated == 0)  {  // Check if user is activated
+			if (!$user == null) {  // Check if user found in DB
+				if ($user->activated == 0)  {  // Check if user is activated
 					return Redirect::back()->withActivationMessage(Lang::get('larabase.unactivated_account'));
 				}
 				$attempt = Auth::attempt(['email' => $user->email, 'password' => $data['password']], Input::get('remember'));
-				if ( $attempt == true) {  // Check if user was authenticated
+				if ($attempt == true) {  // Check if user was authenticated
 					Event::fire('auth.login', array($user));
 					return Redirect::intended('dashboard')->withSuccess(Lang::get('larabase.login_success'));
 				}

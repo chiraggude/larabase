@@ -10,6 +10,7 @@ class PostsTableSeeder extends Seeder {
         DB::table('posts')->delete();
 
         $faker = Faker::create();
+
 		foreach(range(1, 20) as $index)
 		{
             Post::create([
