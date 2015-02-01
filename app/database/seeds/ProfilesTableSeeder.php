@@ -7,7 +7,7 @@ class ProfilesTableSeeder extends Seeder {
 	public function run()
 	{
 		//removes existing profiles from table
-		DB::table('Profiles')->delete();
+		DB::table('profiles')->delete();
 
 		$faker = Faker::create();
 
