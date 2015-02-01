@@ -4,6 +4,7 @@
 Event::listen('auth.login', function($user)
 {
     $user->throttle->last_login = new DateTime;
+    $user->throttle->ip_address = Request::getClientIp();
     $user->throttle->save();
 });
 

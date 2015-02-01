@@ -10,8 +10,7 @@
                 <h3 class="panel-title">Personal Info</h3>
             </div>
             <div class="panel-body">
-
-                {{ Form::open(['action'=> ['AccountController@personalInfo']]) }}
+                {{ Form::open(['action'=> ['ProfileController@personalInfo']]) }}
 
                 {{ Form::textField('first_name', 'First Name', 'First Name', $user->profile->first_name) }}
 
@@ -19,7 +18,7 @@
 
                 {{ Form::textField('location', 'Location', 'Location', $user->profile->location) }}
 
-                {{ Form::submitField('Save Personal Info') }}
+                {{ Form::submitField('Save Personal Info', 'btn btn-default') }}
 
                 {{ Form::close() }}
             </div>
@@ -29,36 +28,41 @@
                 <h3 class="panel-title">Avatar</h3>
             </div>
             <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="{{ image_url($user->profile->avatar_filename) }}" alt="{{ $user->full_name }}" class="img-thumbnail" width="250" height="250">
+                    </div>
+                    <div class="col-md-6">
+                        {{ Form::open(['action'=> ['ProfileController@avatarUpload'], 'files' => true]) }}
 
-            <img src="{{ image_url($user->profile->avatar_filename) }}" alt="{{ $user->full_name }}" class="img-thumbnail" width="240" height="240">
+                        {{ Form::fileField('avatar', 'Upload new Avatar image') }}
 
-            {{ Form::open(['action'=> ['AccountController@avatarUpload'], 'files' => true]) }}
+                        <br>
 
-            <br>
+                        {{ Form::submitField('Save Profile Picture', 'btn btn-default') }}
 
-            {{ Form::fileField('avatar', 'Upload new Avatar image') }}
-
-            <br>
-
-            {{ Form::submitField('Save Profile Picture') }}
-
-            {{ Form::close() }}
+                        {{ Form::close() }}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="col-md-6">
-        <div class="well">
-            <h3>Account Info</h3>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Account Info</h3>
+            </div>
+            <div class="panel-body">
+                {{ Form::model($user, ['action'=> ['ProfileController@accountInfo']]) }}
 
-            {{ Form::model($user, ['action'=> ['AccountController@accountInfo']]) }}
+                {{ Form::textField('username', 'Username') }}
 
-            {{ Form::textField('username', 'Username') }}
+                {{ Form::emailField('email', 'Email') }}
 
-            {{ Form::emailField('email', 'Email') }}
+                {{ Form::submitField('Save Account Info', 'btn btn-default') }}
 
-            {{ Form::submitField('Save Account Info') }}
-
-            {{ Form::close() }}
+                {{ Form::close() }}
+            </div>
         </div>
     </div>
 </div>
