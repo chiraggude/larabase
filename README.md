@@ -78,9 +78,7 @@ Admin Account - Email: `admin@gmail.com`   Password: `password`
 **Note**: The URL depends on how you have configured your webserver.
 
 ## Upcoming Features
-* OAuth 1 & 2 - Login via FaceBook, Twitter, LinkedIn, Google, Microsoft, GitHub
-* Track last login time, log in count and IP address
-* Expires sessions that have no activity in a specified period of time
+* Social Login - Login via FaceBook, Twitter, LinkedIn, Google, Microsoft, GitHub
 * User Suspension: A user can be temporarily banned from logging in to the app for a small interval (eg. 7 days)
 * User Banning: Admins can add a user's email to a banned list. A banned user will not be allowed to create a new account with their existing emails or social accounts (potentially)
 * Login Throttling: Locks an account after a specified number of failed sign-in attempts. Can unlock via email or after a specified time period.
@@ -88,7 +86,7 @@ Admin Account - Email: `admin@gmail.com`   Password: `password`
 * Permissions Types - Manage Everything, Manage a group of users, manage only themselves, manage certain resources, manage only certain actions in a resource
 
 ## Pending
-* Code refactoring (reduce ickiness)
+* Code refactoring (reduce yuckiness)
 * Write tests (reduce guilt)
 
 ## Requirements
