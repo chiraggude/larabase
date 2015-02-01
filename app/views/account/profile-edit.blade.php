@@ -35,7 +35,7 @@
                     <div class="col-md-6">
                         {{ Form::open(['action'=> ['ProfileController@avatarUpload'], 'files' => true]) }}
 
-                        {{ Form::fileField('avatar', 'Upload new Avatar image') }}
+                        {{ Form::fileField('avatar', 'Upload new Avatar image. Maximum file size: 2 mb') }}
 
                         <br>
 
