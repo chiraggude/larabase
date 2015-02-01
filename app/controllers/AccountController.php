@@ -34,9 +34,9 @@ class AccountController extends \BaseController {
     }
 
 
-    // Save Changes to User Profile
+    // Save Changes to the Profile's basic info
 
-    public function profileSave()
+    public function accountInfo()
     {
         $user = Auth::user();
         $data = Input::all();
@@ -49,6 +49,46 @@ class AccountController extends \BaseController {
         return Redirect::back()->withWarning('This feature is disabled for the live demo'); // Remove for production
         $user->update($data);
         return Redirect::to('profile')->withSuccess(Lang::get('larabase.profile_updated'));
+    }
+
+
+    // Save Changes to the Profile's personal info
+
+    public function personalInfo()
+    {
+        $validator_info = Profile::validate_info($data = Input::all());
+        if ($validator_info->fails()) {
+            return Redirect::back()->withInput()->withErrors($validator_info);
+        }
+        $user = Auth::user();
+        Profile::updateOrCreate(['user_id' => $user->id], $data);
+        return Redirect::to('profile')->withSuccess(Lang::get('larabase.profile_updated'));
+    }
+
+
+    // Upload new Profile Avatar
+
+    public function avatarUpload()
+    {
+        if (Input::hasFile('avatar'))
+        {
+            $validator = Validator::make(['avatar' => $avatar = Input::file('avatar')],['avatar' => 'image|mimes:jpeg,bmp,png|max:2048']);
+            if ($validator->fails())
+            {
+                return Redirect::back()->withInput()->withErrors($validator);
+            }
+            $user = Auth::user();
+            if($user->profile->avatar) {
+                $oldFile = public_path('uploads/avatars/').$user->profile->avatar;
+                File::delete($oldFile);
+            }
+            $filename = time() .'-'. $avatar->getClientOriginalName();
+            $avatar->move('uploads/avatars', $filename);
+            $user->profile->avatar = $filename;
+            $user->profile->save();
+            return Redirect::to('profile')->withSuccess(Lang::get('larabase.profile_updated'));
+        }
+        return Redirect::back();
     }
 
 

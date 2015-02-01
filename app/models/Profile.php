@@ -7,9 +7,28 @@ class Profile extends \Eloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'profile';
+	protected $table = 'profiles';
 
-	protected $fillable = ['user_id'];
+	protected $fillable = ['user_id', 'location', 'avatar', 'first_name', 'last_name'];
+
+	// Accessor method to get the Avatar of the User Profile
+	public function getAvatarFilenameAttribute()
+	{
+
+		if ($this->avatar == null) {
+			return 'default_avatar.jpg';
+		}
+		return $this->avatar;
+	}
+
+	public static function validate_info($data){
+		$info_rules = [
+			'first_name'  => 'required|min:2',
+			'last_name'  => 'required|min:2',
+			'location'  => 'required|min:2'
+		];
+		return Validator::make($data, $info_rules);
+	}
 
 	public function user()
 	{

@@ -13,11 +13,12 @@
                 <div class="panel-body">
                     <div class="media">
                         <a href="{{ URL::to('users/'.$user->username) }}" class="pull-left">
-                            <img src="{{ gravatar_url($user->email, 60) }}" alt="{{ $user->full_name }}" class="img-thumbnail">
+                            <img src="{{ image_url($user->profile->avatar_filename) }}" alt="{{ $user->full_name }}" width="60" height="60">
                         </a>
                         <div class="media-body">
-                            <h4 class="media-heading">{{ $user->full_name }} <small>{{ link_to("/users/{$user->username}", $user->username) }}</small></h4>
-                            <p class="text-muted">last seen {{$user->updated_at->diffForHumans() }}</p>
+                            <h4 class="media-heading">{{ $user->full_name }} </h4>
+                            <small class="text-muted">{{ link_to("/users/{$user->username}", $user->username) }}</small>
+                            <p class="small text-muted">last seen {{$user->updated_at->diffForHumans() }}</p>
                         </div>
                     </div>
                 </div>

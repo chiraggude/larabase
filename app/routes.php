@@ -17,19 +17,21 @@ Route::get('posts/user/{username}', 'PostsController@postsForUser');
 // Routes for Authenticated Users
 Route::group(['before' => 'auth'], function()
 {
-    Route::get('users',             'UsersController@index');
-    Route::get('users/{username}',  'UsersController@profile');
-    Route::get('dashboard',         'AccountController@dashboard');
-    Route::get('profile',           'AccountController@profile');
-    Route::get('settings',          'AccountController@settings');
-    Route::get('settings/edit',     'AccountController@settingsEdit');
-    Route::post('settings/edit',    'AccountController@settingsSave');
-    Route::get('password/change',   'AccountController@passwordChange');
-    Route::post('password/change',  'AccountController@passwordSave');
-    Route::get('profile/edit',      'AccountController@profileEdit');
-    Route::post('profile/edit',     'AccountController@profileSave');
-    Route::post('delete-account',   'AccountController@deleteAccount');
-    Route::get('logout',            'AuthController@logout');
+    Route::get('users',                  'UsersController@index');
+    Route::get('users/{username}',       'UsersController@profile');
+    Route::get('dashboard',              'AccountController@dashboard');
+    Route::get('profile',                'AccountController@profile');
+    Route::get('profile/edit',           'AccountController@profileEdit');
+    Route::post('profile/account-info',  'AccountController@accountInfo');
+    Route::post('profile/personal-info', 'AccountController@personalInfo');
+    Route::post('profile/avatar-upload', 'AccountController@avatarUpload');
+    Route::get('settings',               'AccountController@settings');
+    Route::get('settings/edit',          'AccountController@settingsEdit');
+    Route::post('settings/edit',         'AccountController@settingsSave');
+    Route::get('password/change',        'AccountController@passwordChange');
+    Route::post('password/change',       'AccountController@passwordSave');
+    Route::post('delete-account',        'AccountController@deleteAccount');
+    Route::get('logout',                 'AuthController@logout');
 });
 
 
@@ -42,8 +44,8 @@ Route::group(['before' => 'guest'], function()
     Route::post('sign-up',           'AuthController@processSignUp');
     Route::get('resend-activation',  'AuthController@resendActivation');
     Route::post('resend-activation', 'AuthController@resendActivationCode');
-    Route::get('activate/{code}', ['as'=>'activate', 'uses' => 'AuthController@activate']);
-    Route::controller('password', 'RemindersController');
+    Route::get('activate/{code}',    ['as'=>'activate', 'uses' => 'AuthController@activate']);
+    Route::controller('password',    'RemindersController');
 });
 
 

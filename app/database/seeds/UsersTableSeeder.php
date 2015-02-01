@@ -13,8 +13,6 @@ class UsersTableSeeder extends Seeder {
 
         User::create(array(
             'username' => 'admin',
-            'first_name' => 'Super',
-            'last_name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('password'),
             'activated' => true,
@@ -27,9 +25,7 @@ class UsersTableSeeder extends Seeder {
             'username' => $faker->unique()->userName,
             'password'=> Hash::make('password'),
             'email'=> $faker->unique()->freeEmail,
-            'activated' => true,
-            'first_name' => $faker->firstName,
-            'last_name' => $faker->lastName,
+            'activated' => true
             ]);
 		}
 	}

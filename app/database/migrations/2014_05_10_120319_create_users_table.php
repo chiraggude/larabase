@@ -18,8 +18,6 @@ class CreateUsersTable extends Migration {
             $table->increments('id');
             $table->string('username', 50)->unique();
             $table->string('email', 50)->unique();
-            $table->string('first_name', 50);
-            $table->string('last_name', 50);
             $table->string('timezone', 50)->default('UTC');
             $table->boolean('activated')->default(false);
             $table->string('activation_code', 32);

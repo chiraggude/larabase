@@ -37,7 +37,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     }
 
     // data entities that can be saved to the database via Mass Assginments
-    protected $fillable = ['username','email','password','first_name','last_name'];
+    protected $fillable = ['username','email','password'];
 
     // Mutator method to automatically hash the password
     /*public function setPasswordAttribute($password)
@@ -48,11 +48,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     // Accessor method to get User's full name
     public function getFullNameAttribute() {
 
-        if($this->first_name == null || $this->last_name == null)
+        if($this->profile->first_name == null || $this->profile->last_name == null)
         {
             return $this->username;
         }
-        return $this->first_name . ' ' . $this->last_name;
+        return $this->profile->first_name . ' ' . $this->profile->last_name;
     }
 
     // Validation rules for user login
@@ -88,8 +88,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
     public static function validate_profile($data, $user){
         $profile_rules = [
-            'first_name'  => 'min:2',
-            'last_name'  => 'min:2',
             'username'  => 'required|min:3|unique:users,username,'.$user->id,
             'email' => 'required|email|unique:users,email,'.$user->id
         ];
