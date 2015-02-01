@@ -17,21 +17,26 @@ Route::get('posts/user/{username}', 'PostsController@postsForUser');
 // Routes for Authenticated Users
 Route::group(['before' => 'auth'], function()
 {
-    Route::get('users',                  'UsersController@index');
-    Route::get('users/{username}',       'UsersController@profile');
-    Route::get('dashboard',              'AccountController@dashboard');
-    Route::get('profile',                'AccountController@profile');
-    Route::get('profile/edit',           'AccountController@profileEdit');
-    Route::post('profile/account-info',  'AccountController@accountInfo');
-    Route::post('profile/personal-info', 'AccountController@personalInfo');
-    Route::post('profile/avatar-upload', 'AccountController@avatarUpload');
-    Route::get('settings',               'AccountController@settings');
-    Route::get('settings/edit',          'AccountController@settingsEdit');
-    Route::post('settings/edit',         'AccountController@settingsSave');
-    Route::get('password/change',        'AccountController@passwordChange');
-    Route::post('password/change',       'AccountController@passwordSave');
-    Route::post('delete-account',        'AccountController@deleteAccount');
-    Route::get('logout',                 'AuthController@logout');
+    Route::get('users',             'UsersController@index');
+    Route::get('users/{username}',  'UsersController@profile');
+    Route::get('dashboard',         'AccountController@dashboard');
+    Route::get('settings',          'AccountController@settings');
+    Route::get('settings/edit',     'AccountController@settingsEdit');
+    Route::post('settings/edit',    'AccountController@settingsSave');
+    Route::get('password/change',   'AccountController@passwordChange');
+    Route::post('password/change',  'AccountController@passwordSave');
+    Route::post('delete-account',   'AccountController@deleteAccount');
+    Route::get('logout',            'AuthController@logout');
+});
+
+// Routes for User Profile
+Route::group(['before' => 'auth'], function()
+{
+    Route::get('profile',                'ProfileController@profile');
+    Route::get('profile/edit',           'ProfileController@profileEdit');
+    Route::post('profile/account-info',  'ProfileController@accountInfo');
+    Route::post('profile/personal-info', 'ProfileController@personalInfo');
+    Route::post('profile/avatar-upload', 'ProfileController@avatarUpload');
 });
 
 
@@ -78,7 +83,8 @@ Route::get('/',         'PagesController@home');
 Route::get('hello', 'DevController@hello');
 
 // Display all SQL executed in Eloquent if Debug mode is set to true
-/*if (Config::get('app.debug')) {
+/*if (Config::get('app.debug'))
+{
     Event::listen('illuminate.query', function($query)
     {
         var_dump($query);

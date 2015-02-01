@@ -86,12 +86,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return Validator::make($data, static::$registration_rules);
     }
 
-    public static function validate_profile($data, $user){
-        $profile_rules = [
+    public static function validate_account_info($data, $user){
+        $rules = [
             'username'  => 'required|min:3|unique:users,username,'.$user->id,
             'email' => 'required|email|unique:users,email,'.$user->id
         ];
-        return Validator::make($data, $profile_rules);
+        return Validator::make($data, $rules);
     }
 
     public static function validate_change_password($data){

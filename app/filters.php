@@ -31,7 +31,7 @@ App::after(function($request, $response)
     if (Auth::check())
     {
         // Log last User Activity
-        Event::fire('last.activity', array(Auth::user()));
+        Event::fire('last.activity', [Auth::user()]);
     }
 
 });

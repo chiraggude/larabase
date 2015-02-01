@@ -14,20 +14,20 @@ class Profile extends \Eloquent {
 	// Accessor method to get the Avatar of the User Profile
 	public function getAvatarFilenameAttribute()
 	{
-
-		if ($this->avatar == null) {
+		if (!$this->avatar)
+		{
 			return 'default_avatar.jpg';
 		}
 		return $this->avatar;
 	}
 
-	public static function validate_info($data){
-		$info_rules = [
+	public static function validate_personal_info($data){
+		$rules = [
 			'first_name'  => 'required|min:2',
 			'last_name'  => 'required|min:2',
 			'location'  => 'required|min:2'
 		];
-		return Validator::make($data, $info_rules);
+		return Validator::make($data, $rules);
 	}
 
 	public function user()
