@@ -17,6 +17,13 @@ function gravatar_url($email, $size = "150")
     return 'http://www.gravatar.com/avatar/'. md5($email) .'?s='. $size ;
 }
 
+// Generate the url for given Image
+// Used in user>profile.blade.php
+function image_url($filename)
+{
+    return asset('/uploads/avatars/'. $filename);
+}
+
 // Generate back button
 // Used in post.edit, post.create, deleted_users, settings_edit, profile_edit, feedback
 function cancel_button($text = "Cancel")

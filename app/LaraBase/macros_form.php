@@ -1,11 +1,14 @@
 <?php
 
-Form::macro('textField', function($name, $label, $placeholder)
+Form::macro('textField', function($name, $label, $placeholder = '', $value = null)
 {
-    $value = Form::getValueAttribute($name); // Get old form input type field (Does not work on textarea, select)
+    if($value == null) {
+        // Get old form input type field (Does not work on textarea, select)
+        $value = Form::getValueAttribute($name);
+    }
     return "<div class='form-group " . errorClass($name) ."'>
-            <label class='control-label' for='{$name}'>{$label}</label>
-            <input type='text' name='{$name}' class='form-control' id='{$name}' value='{$value}' placeholder='{$placeholder}'>"
+            <label class='control-label' for='{$name}'>{$label}</label>"
+            .Form::text($name, $value, ['class'=> 'form-control', 'placeholder'=>$placeholder])
             .errorMessage($name).
             "</div>";
 });
@@ -21,7 +24,7 @@ Form::macro('passwordField', function($name, $label, $placeholder)
 });
 
 
-Form::macro('emailField', function($name, $label, $placeholder)
+Form::macro('emailField', function($name, $label, $placeholder = '')
 {
     $value = Form::getValueAttribute($name); // Get old form input type field (Does not work on textarea, select)
     return "<div class='form-group " . errorClass($name) ."'>
@@ -60,6 +63,16 @@ Form::macro('selectTag', function($name, $id, $label)
     return "<div class='form-group " .errorClass($name)."'>
             <label class='control-label' for='{$name}'>{$label}</label>
             <input id='{$id}' class='form-control' name='{$name}'/>"
+            .errorMessage($name).
+            "</div>";
+});
+
+
+Form::macro('fileField', function($name, $label)
+{
+    return "<div class='form-group " .errorClass($name)."'>
+            <label class='control-label' for='{$name}'>{$label}</label>"
+            .Form::file($name)
             .errorMessage($name).
             "</div>";
 });

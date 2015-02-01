@@ -12,11 +12,11 @@
             <div class="panel-body">
                 <div class="media">
                     <div class="pull-left">
-                        <img src="{{ gravatar_url($user->email, 160) }}" alt="{{ $user->username }}" class="img-thumbnail">
+                        <img src="{{ image_url($user->profile->avatar_filename) }}" alt="{{ $user->full_name }}" class="img-thumbnail" width="160" height="160">
                     </div>
                     <div class="media-body">
                         <h3 class="media-heading">{{ $user->username }}</h3>
-                        <h4><i class="fa fa-map-marker"></i> City, Country</h4>
+                        <h4><i class="fa fa-map-marker"></i> {{ $user->profile->location }}</h4>
                         <p><strong>About me: </strong>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo,
                         tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. </p>
                     </div>

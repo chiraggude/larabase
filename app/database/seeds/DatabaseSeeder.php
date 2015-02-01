@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('CategoriesTableSeeder');
 		$this->call('PostCategoryTableSeeder');
 		$this->call('ThrottleTableSeeder');
-		$this->call('ProfileTableSeeder');
+		$this->call('ProfilesTableSeeder');
 	}
 
 }
