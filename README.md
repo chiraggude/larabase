@@ -1,32 +1,33 @@
 LaraBase
 ========
 
-> LaraBase is a starter app for speeding up the development of Laravel projects. Most SaaS apps require user authentication, email activation, feedback forms, dashboard, user profiles, setting, blog etc. With basic knowledge of Laravel's conventions, LaraBase can be adapted and customized to your needs. The frontend is built with Bootstrap 3.3 and the authentication system was built in such a way that you could use it right away or modify AuthController.php to change the control flow. LaraBase does not include external packages/libraries as dependencies.
+> LaraBase is a starter app for speeding up the development of Laravel projects. Most SaaS apps require user authentication, email activation, feedback form, dashboard, user profiles, setting, blog etc. With basic knowledge of Laravel's conventions, LaraBase can be adapted and customized to your needs. The frontend is built with Bootstrap 3.3 and this codebase includes the JeffreyWay/Laravel-4-Generators package as a dev-dependency.
 
 ### [Live Demo](http://larabase.turizon.co.in/) 
 **Demo Admin account** - Email: `admin@gmail.com` Password: `password`
 
 ## Features
-* Authentication: Login with email or username (with "remember me" option), Registration, Account Activation, Resend Activation code, Logout
+* Authentication: Login with email or username, Registration, Account Activation, Resend Activation code, Logout
 * Email Activation: An account activation email is sent to the user's email for verification 
 * Password Reset: Resets the user password after sends reset instructions to the user's email
-* Pages for authenticated Users: Dashboard, Profile, Settings
+* Dashboard: Stats & Graphs for authenticated users
 * Public pages: Home, About, FAQ's, Feedback Form, Privacy Policy, TOS
-* Blog: Users can create and manage posts, categories, tags
-* User Profile: Users have a Public and Private profile (editable)
-* Change Password: User can change password while logged in from Settings page
-* Basic Admin area to monitor Users (DataTables)
-* Dashboard Stats & Graphs
+* Blog: Users can create and manage Posts, Categories, Tags
+* Profile: 
+    * Users have a Public and Private profile
+    * Users can upload Profile avatar
+* Settings: 
+    * Users can change their password
+    * Users can set their Timezone 
+    * Users can delete their account and Admins can restore them
+* Admin section: Users, Posts, Tags, Categories
 * Contact/Feedback form submissions are saved in DB and emailed to the Admin
-* User Directory - List of all users with links to their public profiles
+* Throttle: User activity (last login, ip address etc.) is logged to a separate DB table
+* User Directory: List of all users with links to their public profiles
 * Responsive HTML email templates
 * Simple activity based access control (ABAC) with the Owner filter
-* Users can set their Timezone preferences in Settings
-* Users can delete their account and Admins can restore them
-* User activity is logged to updated_at column
-* Profile pictures via Gravatar
 * Custom Error page
-* Maintenance mode with Countdown timer
+* Maintenance mode page with Countdown timer
 
 ## Installation and Setup
 
