@@ -22,7 +22,10 @@ LaraBase
     * Users can delete their account and Admins can restore them
 * Admin section: Users, Posts, Tags, Categories
 * Contact/Feedback form submissions are saved in DB and emailed to the Admin
-* Throttle: User activity (last login, ip address etc.) is logged to a separate DB table
+* Throttle: User activity is logged to a separate DB table
+    * Track last login time, ip address, failed login attempts etc.
+    * Suspend an account after a specified number of failed login attempts. Suspended accounts are unlocked after a specified time period.
+    * Ban the user for an indefinite amount of time
 * User Directory: List of all users with links to their public profiles
 * Responsive HTML email templates
 * Simple activity based access control (ABAC) with the Owner filter
@@ -79,9 +82,6 @@ Admin Account - Email: `admin@gmail.com`   Password: `password`
 
 ## Upcoming Features
 * Social Login - Login via FaceBook, Twitter, LinkedIn, Google, Microsoft, GitHub
-* User Suspension: A user can be temporarily banned from logging in to the app for a small interval (eg. 7 days)
-* User Banning: Admins can add a user's email to a banned list. A banned user will not be allowed to create a new account with their existing emails or social accounts (potentially)
-* Login Throttling: Locks an account after a specified number of failed sign-in attempts. Can unlock via email or after a specified time period.
 * Role based Access Control (RBAC) – Super Admin, Group Admin, Users
 * Permissions Types - Manage Everything, Manage a group of users, manage only themselves, manage certain resources, manage only certain actions in a resource
 
