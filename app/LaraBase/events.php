@@ -15,6 +15,12 @@ Event::listen('last.activity', function($user)
     $user->throttle->save();
 });
 
+// Revoke suspension of user account
+Event::listen('user.revoke_suspend', function($data)
+{
+    DB::table('throttle')->whereUserId($data)->update(['suspended' => FALSE, 'attempts' => '0']);
+});
+
 // Send notification email to Admin when a Post is created
 Event::listen('post.created', function($data)
 {
