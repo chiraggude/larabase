@@ -18,7 +18,7 @@ return [
 
     /*
 	|--------------------------------------------------------------------------
-	| UserController
+	| AuthController
 	|--------------------------------------------------------------------------
 	*/
 
@@ -28,6 +28,8 @@ return [
     'login_success' => 'Your have successfully logged in',
     'unactivated_account' => 'Account activation is Pending. Check your email for the activation code or ',
     'invalid_credentials' => 'Invalid Credentials - Your email/username or password is incorrect',
+    'account_suspended' => 'Account Suspended - Your account is temporarily suspended for security reasons. It will be active in :suspend_duration minutes',
+    'account_banned' => 'Account Banned - Your account is currently locked-down for security reasons. Please get in touch with us',
     // Activate()
     'activation_success' => 'Your account is now Activated',
     'activation_failure' => 'Invalid activation code. Your account could not be activated',

@@ -9,6 +9,12 @@ class Throttle extends \Eloquent {
 	 */
 	protected $table = 'throttle';
 
+	// Date Mutator to convert the following fields into instances of Carbon
+	public function getDates()
+	{
+		return array('last_attempt');
+	}
+
 	protected $fillable = ['user_id'];
 
 	public function user()

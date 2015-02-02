@@ -49,8 +49,10 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest())
+    if (Auth::guest())
+    {
         return Redirect::guest('login')->withInfo(Lang::get('larabase.only_auth'));
+    }
 });
 
 Route::filter('auth.basic', function()

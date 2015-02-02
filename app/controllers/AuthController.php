@@ -50,15 +50,37 @@ class AuthController extends \BaseController {
 		}
 		else {
 			$user = User::where('email', '=', $data['email_or_username'])->orWhere('username', $data['email_or_username'])->first();
-			if (!$user == null) {  // Check if user found in DB
-				if ($user->activated == 0)  {  // Check if user is activated
+			// Check if user found in DB
+			if ($user) {
+				// Check if user is activated
+				if ($user->activated == 0)  {
 					return Redirect::back()->withActivationMessage(Lang::get('larabase.unactivated_account'));
 				}
+				// Check if user is suspended
+				$suspend_duration = '15';
+				if($user->throttle->suspended) {
+					// Find time duration between now and last login attempt. Throttle login if it is less than suspend_duration
+					if($user->throttle->last_attempt->diffInMinutes(Carbon\Carbon::now()) > $suspend_duration) {
+						return Redirect::back()->withWarning(Lang::get('larabase.account_suspended', ['suspend_duration' => $suspend_duration]));
+					}
+					Event::fire('user.revoke_suspend', [$user->id]);
+				}
+				// Check if user is banned
+				if($user->throttle->banned) {
+					return Redirect::back()->withWarning(Lang::get('larabase.account_banned'));
+				}
 				$attempt = Auth::attempt(['email' => $user->email, 'password' => $data['password']], Input::get('remember'));
-				if ($attempt == true) {  // Check if user was authenticated
+				// Check if user can be authenticated
+				if ($attempt) {
 					Event::fire('auth.login', array($user));
 					return Redirect::intended('dashboard')->withSuccess(Lang::get('larabase.login_success'));
 				}
+				// On failed login attempt, update the Throttle table
+				DB::table('throttle')->whereUserId($user->id)->update(['last_attempt' => new DateTime()]);
+				if($user->throttle->attempts == 5) {
+					DB::table('throttle')->whereUserId($user->id)->update(['suspended' => TRUE, 'attempts' => '0', 'last_attempt' => new DateTime()]);
+				}
+				DB::table('throttle')->whereUserId($user->id)->increment('attempts');
 				return Redirect::back()->withInput(Input::except('password'))->withError(Lang::get('larabase.invalid_credentials'));
 			}
 			return Redirect::back()->withInput(Input::except('password'))->withError(Lang::get('larabase.invalid_credentials'));
@@ -71,7 +93,7 @@ class AuthController extends \BaseController {
 	public function activate($code)
 	{
 		$user = User::where('activation_code', '=', $code)->where('activated', '=', 0)->first();
-		if ( ! $user == null) {
+		if ($user) {
 			$user->activated = 1;
 			$user->activation_code = null;
 			$user->save();
@@ -94,7 +116,7 @@ class AuthController extends \BaseController {
 	public function resendActivationCode()
 	{
 		$user = User::where('email', '=', Input::get('email'))->first();
-		if(! $user == null)
+		if($user)
 		{
 			if($user->activated == 1)
 			{
