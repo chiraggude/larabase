@@ -59,10 +59,12 @@ Route::group(['before' => 'auth|admin','prefix' => 'admin'], function()
 {
     Route::group(['namespace' => 'Admin'], function()
     {
-        Route::get('users',         'UsersController@users');
-        Route::post('restore-user', 'UsersController@restoreUser');
-        Route::get('posts',         'PostsController@posts');
-        Route::get('api/posts',     'PostsController@postsApi');
+        Route::get('users',            'UsersController@users');
+        Route::post('restore-user',    'UsersController@restoreUser');
+        Route::post('ban-user',        'UsersController@banUser');
+        Route::post('revoke-ban-user', 'UsersController@revokeBanUser');
+        Route::get('posts',            'PostsController@posts');
+        Route::get('api/posts',        'PostsController@postsApi');
     });
     Route::resource('tags',       'TagsController', ['except'=> ['show', 'create']]);
     Route::resource('categories', 'CategoriesController', ['except'=> ['show', 'create']]);

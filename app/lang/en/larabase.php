@@ -76,9 +76,13 @@ return [
 
     /*
 	|--------------------------------------------------------------------------
-	| PostsController
+	| Admin - UsersController
 	|--------------------------------------------------------------------------
 	*/
     // restoreUser()
     'user_restored' => 'User account and data has been restored',
+    // banUser()
+    'user_ban' => 'User account has been banned',
+    // revokeBanUser()
+    'user_ban_revoke' => 'User account ban has been revoked',
 ];
