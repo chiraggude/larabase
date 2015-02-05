@@ -17,7 +17,18 @@
     </div>
 </div>
 
-@include('admin.restore-users')
+<div class="row">
+    <div class="col-md-4">
+        @include('admin.restore-users')
+    </div>
+    <div class="col-md-4">
+        @include('admin.ban-users')
+    </div>
+    <div class="col-md-4">
+        @include('admin.revoke-ban-users')
+    </div>
+</div>
+<h3 class="text-muted">{{ $suspended_users }} users have been Suspended </h3>
 
 @stop
 

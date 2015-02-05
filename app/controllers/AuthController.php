@@ -59,8 +59,8 @@ class AuthController extends \BaseController {
 				// Check if user is suspended
 				$suspend_duration = '15';
 				if($user->throttle->suspended) {
-					// Find time duration between now and last login attempt. Throttle login if it is less than suspend_duration
-					if($user->throttle->last_attempt->diffInMinutes(Carbon\Carbon::now()) > $suspend_duration) {
+					// Find time since last login attempt. Throttle login if it is less than suspend_duration
+					if($user->throttle->last_attempt->diffInMinutes(Carbon\Carbon::now()) < $suspend_duration) {
 						return Redirect::back()->withWarning(Lang::get('larabase.account_suspended', ['suspend_duration' => $suspend_duration]));
 					}
 					Event::fire('user.revoke_suspend', [$user->id]);
@@ -69,9 +69,9 @@ class AuthController extends \BaseController {
 				if($user->throttle->banned) {
 					return Redirect::back()->withWarning(Lang::get('larabase.account_banned'));
 				}
+				// Attempt to authenticate the User
 				$attempt = Auth::attempt(['email' => $user->email, 'password' => $data['password']], Input::get('remember'));
-				// Check if user can be authenticated
-				if ($attempt) {
+				if($attempt) {
 					Event::fire('auth.login', array($user));
 					return Redirect::intended('dashboard')->withSuccess(Lang::get('larabase.login_success'));
 				}
@@ -93,7 +93,7 @@ class AuthController extends \BaseController {
 	public function activate($code)
 	{
 		$user = User::where('activation_code', '=', $code)->where('activated', '=', 0)->first();
-		if ($user) {
+		if($user) {
 			$user->activated = 1;
 			$user->activation_code = null;
 			$user->save();
