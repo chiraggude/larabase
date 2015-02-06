@@ -79,11 +79,28 @@ window.setTimeout(function() {
 
 /*
 ***********************************
-Dashboard
+User Dashboard
 ***********************************
 */
 
 if(jQuery('div#dashboard').length > 0) {
+
+    $('#user_posts').animateNumber(
+        {
+            number: user_posts,
+        },
+        1000
+    )
+
+}
+
+/*
+ ***********************************
+ Admin Dashboard
+ ***********************************
+ */
+
+if(jQuery('div#admin-dashboard').length > 0) {
 
     // Trends - Stats
     $('#posts').animateNumber(
@@ -100,20 +117,12 @@ if(jQuery('div#dashboard').length > 0) {
         2000
     )
 
-    $('#user_posts').animateNumber(
-        {
-            number: user_posts,
-        },
-        1000
-    )
-
     $('#feedback').animateNumber(
         {
             number: feedback,
         },
         1000
     )
-
 
 
     // Site Trends - Highcharts

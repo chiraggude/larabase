@@ -8,11 +8,8 @@ class AccountController extends \BaseController {
     public function dashboard()
     {
         $user = Auth::user();
-        $users = DB::table('users')->count();
         $user_posts = $user->posts->count();
-        $posts = Post::all()->count();
-        $feedback = Feedback::all()->count();
-        return View::make('account.dashboard', compact('user','posts','users','user_posts', 'feedback'));
+        return View::make('account.dashboard', compact('user','user_posts'));
     }
 
 
