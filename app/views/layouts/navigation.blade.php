@@ -20,6 +20,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Admin <b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <li class="{{ active('admin/dashboard') }}"><a href="{{ URL::to('admin/dashboard') }}">Dashboard</a></li>
                         <li class="{{ active('admin/users') }}"><a href="{{ URL::to('admin/users') }}">Users</a></li>
                         <li class="{{ active('admin/posts') }}"><a href="{{ URL::to('admin/posts') }}">Posts</a></li>
                         <li class="{{ active('admin/tags') }}"><a href="{{ URL::to('admin/tags') }}">Tags</a></li>

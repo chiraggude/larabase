@@ -59,6 +59,7 @@ Route::group(['before' => 'auth|admin','prefix' => 'admin'], function()
 {
     Route::group(['namespace' => 'Admin'], function()
     {
+        Route::get('dashboard',        'AdminController@dashboard');
         Route::get('users',            'UsersController@users');
         Route::post('restore-user',    'UsersController@restoreUser');
         Route::post('ban-user',        'UsersController@banUser');
