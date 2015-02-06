@@ -10,7 +10,7 @@ LaraBase
 * Authentication: Login with email or username, Registration, Account Activation, Resend Activation code, Logout
 * Email Activation: An account activation email is sent to the user's email for verification 
 * Password Reset: Resets the user password after sends reset instructions to the user's email
-* Dashboard: Stats & Graphs for authenticated users
+* Dashboard: Stats & Graphs for authenticated users and the admin
 * Public pages: Home, About, FAQ's, Feedback Form, Privacy Policy, TOS
 * Blog: Users can create and manage Posts, Categories, Tags
 * Profile: 
@@ -25,7 +25,7 @@ LaraBase
 * Throttle: User activity is logged to a separate DB table
     * Track last login time, ip address, failed login attempts etc.
     * Suspend an account after a specified number of failed login attempts. Suspended accounts are unlocked after a specified time period.
-    * Ban the user for an indefinite amount of time
+    * Admins can Ban the user for an indefinite amount of time
 * User Directory: List of all users with links to their public profiles
 * Responsive HTML email templates
 * Simple activity based access control (ABAC) with the Owner filter
