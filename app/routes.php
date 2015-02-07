@@ -64,6 +64,7 @@ Route::group(['before' => 'auth|role:admin','prefix' => 'admin'], function()
         Route::post('restore-user',    'UsersController@restoreUser');
         Route::post('ban-user',        'UsersController@banUser');
         Route::post('revoke-ban-user', 'UsersController@revokeBanUser');
+        Route::post('assign-user-roles', 'UsersController@assignUserRoles');
         Route::get('posts',            'PostsController@posts');
         Route::get('api/posts',        'PostsController@postsApi');
         Route::resource('roles',       'RolesController', ['except'=> ['show', 'create']]);

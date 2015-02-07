@@ -98,7 +98,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     // Assign Role to the User
     public function assignRole($role)
     {
-        $this->roles()->attach($role);
+        $this->roles()->sync($role);
     }
 
     // Assign Member role to the User
@@ -158,6 +158,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 
     // Eloquent Relationships
+
     public function posts()
     {
         return $this->hasMany('Post');

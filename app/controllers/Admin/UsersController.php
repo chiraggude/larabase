@@ -16,6 +16,14 @@ class UsersController extends \BaseController {
     }
 
 
+    public function assignUserRoles()
+    {
+        $user = \User::findOrFail(\Input::get('user_id'));
+        $user->assignRole(\Input::get('roles'));
+        return \Redirect::to('admin/users');
+    }
+
+
     public function restoreUser()
     {
         $user_id = \Input::get('user_id');

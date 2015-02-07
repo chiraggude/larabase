@@ -7,6 +7,8 @@
 
     {{ Form::textField('name', 'Role', null) }}
 
+    {{ Form::multiSelectField('permissions[]', Permission::lists('name', 'id'), $role->permissions->lists('id'), 'Permissions') }}
+
     {{ cancel_button() }}
 
     {{ Form::submitField('Save Changes') }}
