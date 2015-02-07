@@ -19,16 +19,17 @@
 
 <div class="row">
     <div class="col-md-4">
-        @include('admin.restore-users')
+        @include('admin.assign-user-roles')
     </div>
     <div class="col-md-4">
         @include('admin.ban-users')
     </div>
     <div class="col-md-4">
         @include('admin.revoke-ban-users')
+        @include('admin.restore-users')
+        <h3 class="text-muted">{{ $suspended_users }} users have been Suspended </h3>
     </div>
 </div>
-<h3 class="text-muted">{{ $suspended_users }} users have been Suspended </h3>
 
 @stop
 
@@ -41,17 +42,20 @@
       "{{ $user->profile->first_name }}",
       "{{ $user->profile->last_name }}",
       "{{ $user->email }}",
-      "{{ $user->updated_at->diffForHumans() }}",
+      "@foreach($user->roles as $role) <span class='label label-default'>{{ $role->name }}</span> @endforeach",
+      "{{ $user->throttle->last_activity->diffForHumans() }}",
       "<a href='{{ URL::to('users') }}/{{ $user->username}}' class='btn btn-xs btn-default'><i class='fa fa-user'></i></a>"
     ],
     @endforeach
     ];
+
 
     var columns = [
         { "title": "Username" },
         { "title": "First Name", "class": "text-center" },
         { "title": "Last Name", "class": "text-center" },
         { "title": "Email", "class": "text-center" },
+        { "title": "Roles", "class": "text-center" },
         { "title": "Last Active", "class": "text-center" },
         { "title": "Action", "class": "text-center"}
     ];

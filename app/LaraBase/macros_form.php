@@ -49,12 +49,22 @@ Form::macro('textareaField', function($name, $label, $placeholder)
 
 Form::macro('selectField', function($name, $options, $value, $label)
 {
-    $element = Form::select($name, $options, $value, array('class'=>'form-control'));
+    $element = Form::select($name, $options, $value, ['class'=>'form-control']);
     return "<div class='form-group " .errorClass($name)."'>
             <label class='control-label' for='{$name}'>{$label}</label>
             {$element}"
             .errorMessage($name).
             "</div>";
+});
+
+Form::macro('multiSelectField', function($name, $options, $value = null, $label)
+{
+    $element = Form::select($name, $options, $value, ['class' => 'form-control multiselect','multiple']);
+    return "<div class='form-group " .errorClass($name)."'>
+            <label class='control-label' for='{$name}'>{$label}</label>
+            {$element}"
+    .errorMessage($name).
+    "</div>";
 });
 
 

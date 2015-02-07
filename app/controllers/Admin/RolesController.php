@@ -24,7 +24,8 @@ class RolesController extends \BaseController {
 	 */
 	public function store()
 	{
-		\Role::create(['name' => \Input::get('name')]);
+		$role = \Role::create(['name' => \Input::get('name')]);
+		$role->assignPermissions(\Input::get('permissions'));
 		return \Redirect::route('admin.roles.index');
 	}
 
@@ -38,6 +39,7 @@ class RolesController extends \BaseController {
 	public function edit($id)
 	{
 		$role = \Role::find($id);
+		//return $role->permissions->lists('id');
 		return \View::make('roles.edit', compact('role'));
 	}
 
@@ -51,7 +53,8 @@ class RolesController extends \BaseController {
 	public function update($id)
 	{
 		$role = \Role::findOrFail($id);
-		$role->update($data = \Input::all());
+		$role->update(\Input::all());
+		$role->assignPermissions(\Input::get('permissions'));
 		return \Redirect::route('admin.roles.index');
 	}
 

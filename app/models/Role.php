@@ -10,7 +10,7 @@ class Role extends \Eloquent {
 	// Assign Permissions to the Role
 	public function assignPermissions($permissions)
 	{
-		$this->permissions()->attach($permissions);
+		$this->permissions()->sync($permissions);
 	}
 
 	public function users()

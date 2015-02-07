@@ -12,7 +12,7 @@ class Throttle extends \Eloquent {
 	// Date Mutator to convert the following fields into instances of Carbon
 	public function getDates()
 	{
-		return array('last_attempt');
+		return array('last_attempt', 'last_activity', 'last_login');
 	}
 
 	protected $fillable = ['user_id'];

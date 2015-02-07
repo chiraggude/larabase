@@ -10,6 +10,7 @@
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Permissions</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -17,6 +18,13 @@
                 @forelse($roles as $role)
                 <tr>
                     <td>{{ $role->name }}</td>
+                    <td>
+                        @forelse($role->permissions as $permission)
+                            <span class="label label-default">{{ $permission->name }}</span>
+                        @empty
+                            <p class="text-muted">Role has no associated Permissions</p>
+                        @endforelse
+                    </td>
                     <td class="col-md-2">
                         <a class="btn btn-xs btn-default" href="{{ route('admin.roles.edit', $role->id) }}"><i class="fa fa-edit"></i> Edit</a>
                         <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#{{ $role->name }}"><i class="fa fa-trash-o"></i> Delete</button>
@@ -39,6 +47,8 @@
     {{ Form::open(['route' => 'admin.roles.store', 'method' =>'post', 'class' => 'form-horizontal']) }}
 
     {{ Form::textField('name', 'Role Name', 'Role Name') }}
+
+    {{ Form::multiSelectField('permissions[]', Permission::lists('name', 'id'), ['2'], 'Permissions') }}
 
     {{ Form::submitField('Save new Role') }}
 

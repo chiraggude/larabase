@@ -4,9 +4,9 @@
 
         {{ Form::open(['action' => 'Admin\UsersController@revokeBanUser']) }}
 
-        {{ Form::selectField('banned_user_id', $banned_users, null, 'Select User to revoke account Ban') }}
+        {{ Form::selectField('banned_user_id', $banned_users, null, 'Select User to revoke Account Ban') }}
 
-        {{ Form::submitField('Revoke user account Ban') }}
+        {{ Form::submitField('Revoke User Account Ban') }}
 
         {{ Form::close() }}
 
