@@ -23,7 +23,7 @@
         @endforeach
     </ul>
 
-    @if (Auth::check() && is_owner_or_admin(Auth::user(), $post))
+    @if (Auth::check() && Auth::user()->isOwner($post))
         <a class="btn btn-xs btn-info" href="{{ $post->edit_url }}"><i class="fa fa-edit"></i> Edit</a>
         <button class="btn btn-xs btn-danger pull-right" data-toggle="modal" data-target="#delete"><i class="fa fa-trash-o"></i> Delete</button>
         {{ HTML::deleteModal('delete','posts','Post', $post->id) }}

@@ -8,8 +8,8 @@ class PostsController extends \BaseController {
      */
     public function __construct()
     {
-        $this->beforeFilter('auth', array('except' => ['index', 'show', 'postsForTag']));
-        $this->beforeFilter('owner', array('only' => ['edit', 'update', 'destroy']));
+        $this->beforeFilter('auth', ['except' => ['index', 'show', 'postsForTag']]);
+        $this->beforeFilter('resource_owner', ['only' => ['edit', 'update', 'destroy']]);
     }
 
     /**

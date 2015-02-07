@@ -9,25 +9,30 @@ class UsersTableSeeder extends Seeder {
         //removes existing users from table
         // truncate() is better than delete()
         // truncate() should not be used for tables in a Pivot table
-        DB::table('users')->truncate();
+        DB::table('users')->delete();
 
-        User::create(array(
-            'username' => 'admin',
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make('password'),
-            'activated' => true,
-        ));
+        $admin = User::create([
+                    'username' => 'admin',
+                    'email' => 'admin@gmail.com',
+                    'password' => Hash::make('password'),
+                    'activated' => true
+                ]);
+        // Assign role of Admin and Member
+        $admin->assignRole([1,2]);
 
 		$faker = Faker::create();
 		foreach(range(1, 20) as $index)
 		{
-            User::create([
-            'username' => $faker->unique()->userName,
-            'password'=> Hash::make('password'),
-            'email'=> $faker->unique()->freeEmail,
-            'activated' => true
-            ]);
+            $user = User::create([
+                        'username' => $faker->unique()->userName,
+                        'password'=> Hash::make('password'),
+                        'email'=> $faker->unique()->freeEmail,
+                        'activated' => true
+                    ]);
+            // Assign role of Member
+            $user->assignMemberRole();
 		}
+
 	}
 
 }

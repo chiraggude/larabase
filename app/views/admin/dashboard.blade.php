@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('header-js')
-    {{ HTML::script('//cdn.jsdelivr.net/highcharts/4.0.3/highcharts.js') }}
-    {{ HTML::script('//cdn.jsdelivr.net/highcharts/4.0.3/modules/exporting.js') }}
+    {{ HTML::script('//cdn.jsdelivr.net/highcharts/4.0.4/highcharts.js') }}
+    {{ HTML::script('//cdn.jsdelivr.net/highcharts/4.0.4/modules/exporting.js') }}
 @stop
 
 @section('content')

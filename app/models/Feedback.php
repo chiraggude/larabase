@@ -2,10 +2,11 @@
 
 class Feedback extends \Eloquent {
 
-    protected $fillable = ['full_name','email', 'topic', 'message_body'];
 
     // The DB table for this model is explicitly set, by default Eloquent would assume the DB table would be 'feedbacks' (plural)
     protected $table = 'feedback';
+
+    protected $fillable = ['full_name','email', 'topic', 'message_body'];
 
     public static $rules = [
         'full_name' => 'required|min:3',

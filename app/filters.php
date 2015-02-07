@@ -30,7 +30,7 @@ App::after(function($request, $response)
 {
     if (Auth::check())
     {
-        // Log last User Activity
+        // Log last User Activity timestamp
         Event::fire('last.activity', [Auth::user()]);
     }
 
@@ -104,24 +104,26 @@ Route::filter('csrf', function()
 |
 */
 
-Route::filter('admin', function()
+Route::filter('role', function($route, $request, $role)
 {
-    if (!is_admin(Auth::user()))
+    $user = Auth::user();
+    if(!$user->hasRole($role))
     {
-        return Redirect::to('dashboard')->withWarning(Lang::get('larabase.only_admin'));
+        return Redirect::to('dashboard')->withWarning(Lang::get('larabase.not_authorized'));
     }
 });
 
 
-Route::filter('owner', function()
+Route::filter('resource_owner', function()
 {
+    $user = Auth::user();
     $resource_id = Request::segment(2);
     $resource = Request::segment(1);
     $resource_singular = ucwords(str_singular($resource));
-    $object = $resource_singular::whereId($resource_id)->first();
-    if(!is_owner_or_admin(Auth::user(), $object))
+    $object = $resource_singular::whereId($resource_id)->get()->first();
+    if(!$user->isOwner($object))
     {
-     return Redirect::back()->withWarning(Lang::get('larabase.only_owner', ['resource_singular'=> $resource_singular]));
+        return Redirect::to('dashboard')->withWarning(Lang::get('larabase.only_owner', ['resource_singular'=> $resource_singular]));
     }
 });
 

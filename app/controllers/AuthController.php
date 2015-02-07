@@ -21,6 +21,7 @@ class AuthController extends \BaseController {
 		}
 		$code = str_random(32);
 		$user = User::create(['username'=>$data['username'], 'email'=>$data['email'], 'password'=> Hash::make($data['password']), 'activation_code'=> $code, 'activated'=> 0]);
+		$user->assignMemberRole();
 		Throttle::create(['user_id'=> $user->id]);
 		Profile::create(['user_id'=> $user->id]);
 		$activation_link = URL::route('activate', $code);

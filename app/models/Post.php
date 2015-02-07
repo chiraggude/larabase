@@ -6,6 +6,8 @@ class Post extends \Eloquent {
 
     use SoftDeletingTrait;
 
+    protected $table = 'posts';
+
     protected $dates = ['deleted_at'];
 
     // Accessor method to get URL of Post
