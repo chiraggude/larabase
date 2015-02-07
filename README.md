@@ -7,12 +7,11 @@ LaraBase
 **Demo Admin account** - Email: `admin@gmail.com` Password: `password`
 
 ## Features
-* Authentication: Login with email or username, Registration, Account Activation, Resend Activation code, Logout
-* Email Activation: An account activation email is sent to the user's email for verification 
-* Password Reset: Resets the user password after sends reset instructions to the user's email
+* Authentication: Login with email or username, Registration, Account Activation via email, Resend Activation code, Password Reset Logout
+* Authorization: Roles & Permissions based access control
 * Dashboard: Stats & Graphs for authenticated users and the admin
 * Public pages: Home, About, FAQ's, Feedback Form, Privacy Policy, TOS
-* Blog: Users can create and manage Posts, Categories, Tags
+* Blog: Users can create and manage Posts
 * Profile: 
     * Users have a Public and Private profile
     * Users can upload Profile avatar
@@ -20,15 +19,14 @@ LaraBase
     * Users can change their password
     * Users can set their Timezone 
     * Users can delete their account and Admins can restore them
-* Admin section: Users, Posts, Tags, Categories
+* Admin section: Users, Posts, Tags, Categories, Roles, Permissions
 * Contact/Feedback form submissions are saved in DB and emailed to the Admin
 * Throttle: User activity is logged to a separate DB table
     * Track last login time, ip address, failed login attempts etc.
     * Suspend an account after a specified number of failed login attempts. Suspended accounts are unlocked after a specified time period.
     * Admins can Ban the user for an indefinite amount of time
-* User Directory: List of all users with links to their public profiles
+* Users Directory: List of all users with links to their public profiles
 * Responsive HTML email templates
-* Simple activity based access control (ABAC) with the Owner filter
 * Custom Error page
 * Maintenance mode page with Countdown timer
 
@@ -82,12 +80,13 @@ Admin Account - Email: `admin@gmail.com`   Password: `password`
 
 ## Upcoming Features
 * Social Login - Login via FaceBook, Twitter, LinkedIn, Google, Microsoft, GitHub
-* Role based Access Control (RBAC) – Super Admin, Group Admin, Users
-* Permissions Types - Manage Everything, Manage a group of users, manage only themselves, manage certain resources, manage only certain actions in a resource
 
 ## Pending
+* Upgrade to Laravel 5
+* Assets via Elixr, Bower
 * Code refactoring (reduce yuckiness)
 * Write tests (reduce guilt)
+* Document custom helper functions in wiki
 
 ## Requirements
 * PHP >= 5.4.0
