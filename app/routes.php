@@ -55,7 +55,7 @@ Route::group(['before' => 'guest'], function()
 
 
 // Admin Routes
-Route::group(['before' => 'auth|admin','prefix' => 'admin'], function()
+Route::group(['before' => 'auth|role:admin','prefix' => 'admin'], function()
 {
     Route::group(['namespace' => 'Admin'], function()
     {
@@ -66,6 +66,8 @@ Route::group(['before' => 'auth|admin','prefix' => 'admin'], function()
         Route::post('revoke-ban-user', 'UsersController@revokeBanUser');
         Route::get('posts',            'PostsController@posts');
         Route::get('api/posts',        'PostsController@postsApi');
+        Route::resource('roles',       'RolesController', ['except'=> ['show', 'create']]);
+        Route::resource('permissions', 'PermissionsController', ['except'=> ['show', 'create']]);
     });
     Route::resource('tags',       'TagsController', ['except'=> ['show', 'create']]);
     Route::resource('categories', 'CategoriesController', ['except'=> ['show', 'create']]);

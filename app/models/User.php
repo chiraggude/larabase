@@ -55,6 +55,64 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return $this->profile->first_name . ' ' . $this->profile->last_name;
     }
 
+    // Check if User is Admin
+    public function isAdmin()
+    {
+        return $this->hasRole('admin');
+    }
+
+    // Check if User is the Owner of the object
+    public function isOwner($object)
+    {
+        if($this->id == $object->user_id || $this->hasRole('admin'))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    // Check if User's role can perform an action
+    public function can($name)
+    {
+        foreach($this->roles as $role)
+        {
+            foreach($role->permissions as $permission)
+            {
+                if($permission->name == $name) return true;
+            }
+            return false;
+        }
+        return false;
+    }
+
+    // Check if User has a Role
+    public function hasRole($name)
+    {
+        foreach($this->roles as $role)
+        {
+            if($role->name == $name) return true;
+        }
+        return false;
+    }
+
+    // Assign Role to the User
+    public function assignRole($role)
+    {
+        $this->roles()->attach($role);
+    }
+
+    // Assign Member role to the User
+    public function assignMemberRole()
+    {
+        $this->assignRole([2]);
+    }
+
+    // Revoke User's Role
+    public function revokeRole($role)
+    {
+        $this->roles()->detach($role);
+    }
+
     // Validation rules for user login
     public static $login_rules = [
         'email_or_username' => 'required|min:3',
@@ -113,6 +171,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     public function profile()
     {
         return $this->hasOne('Profile');
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany('Role')->withTimestamps();
     }
 
 

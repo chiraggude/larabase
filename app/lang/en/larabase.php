@@ -8,11 +8,11 @@ return [
 	*/
 
     // Guest filter
-    'only_guest' => 'Your already logged in',
+    'only_guest' => 'You are already logged in',
     // Auth filter
     'only_auth' => 'You need to login',
     // Admin filter
-    'only_admin' => 'Your not the admin',
+    'not_authorized' => 'You are not Authorized to proceed',
     // Owner filter
     'only_owner' => 'Only owners of this :resource_singular can perform this action',
 

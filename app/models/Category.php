@@ -2,6 +2,9 @@
 
 class Category extends \Eloquent {
 
+
+	protected $table = 'categories';
+
 	protected $fillable = ['name', 'description'];
 
 	public static $rules = [

@@ -2,6 +2,9 @@
 
 class Tag extends \Eloquent {
 
+
+	protected $table = 'tags';
+
 	protected $fillable = ['name'];
 
 	public static $rules = [

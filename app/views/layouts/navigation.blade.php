@@ -16,12 +16,14 @@
                 <li class="{{ active('feedback') }}"><a href="{{ URL::to('feedback') }}">Feedback</a></li>
                 @if(Auth::check())
                 <li class="{{ active('users') }}"><a href="{{ URL::to('users') }}"> Users</a></li>
-                @if(is_admin(Auth::user()))
+                @if(Auth::user()->isAdmin())
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Admin <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li class="{{ active('admin/dashboard') }}"><a href="{{ URL::to('admin/dashboard') }}">Dashboard</a></li>
                         <li class="{{ active('admin/users') }}"><a href="{{ URL::to('admin/users') }}">Users</a></li>
+                        <li class="{{ active('admin/roles') }}"><a href="{{ URL::to('admin/roles') }}">Roles</a></li>
+                        <li class="{{ active('admin/permissions') }}"><a href="{{ URL::to('admin/permissions') }}">Permissions</a></li>
                         <li class="{{ active('admin/posts') }}"><a href="{{ URL::to('admin/posts') }}">Posts</a></li>
                         <li class="{{ active('admin/tags') }}"><a href="{{ URL::to('admin/tags') }}">Tags</a></li>
                         <li class="{{ active('admin/categories') }}"><a href="{{ URL::to('admin/categories') }}">Categories</a></li>
