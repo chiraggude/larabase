@@ -19,14 +19,14 @@
 
 <div class="row">
     <div class="col-md-4">
-        @include('admin.assign-user-roles')
+        @include('admin.partials.assign-user-roles')
     </div>
     <div class="col-md-4">
-        @include('admin.ban-users')
+        @include('admin.partials.ban-users')
     </div>
     <div class="col-md-4">
-        @include('admin.revoke-ban-users')
-        @include('admin.restore-users')
+        @include('admin.partials.revoke-ban-users')
+        @include('admin.partials.restore-users')
         <h3 class="text-muted">{{ $suspended_users }} users have been Suspended </h3>
     </div>
 </div>
@@ -44,7 +44,7 @@
       "{{ $user->email }}",
       "@foreach($user->roles as $role) <span class='label label-default'>{{ $role->name }}</span> @endforeach",
       "{{ $user->throttle->last_activity->diffForHumans() }}",
-      "<a href='{{ URL::to('users') }}/{{ $user->username}}' class='btn btn-xs btn-default'><i class='fa fa-user'></i></a>"
+      "<a href='{{ URL::to('users') }}/{{ $user->username }}' class='btn btn-xs btn-default'><i class='fa fa-user'></i></a>"
     ],
     @endforeach
     ];

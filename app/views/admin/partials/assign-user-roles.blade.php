@@ -4,7 +4,7 @@
 
 {{ Form::selectField('user_id', $users_list, null, 'Select User') }}
 
-{{ Form::multiSelectField('roles[]', Role::lists('name', 'id'), ['2'], 'Roles') }}
+{{ Form::multiSelectField('roles[]', $roles_list, ['2'], 'Roles') }}
 
 {{ Form::submitField('Assign User Roles') }}
 

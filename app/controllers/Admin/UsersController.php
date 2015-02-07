@@ -12,7 +12,8 @@ class UsersController extends \BaseController {
         $suspended_users = \Throttle::where('suspended', 1)->count();
         $banned_users = \Throttle::where('banned', 1)->lists('user_id', 'user_id');
         $users_list = \User::all()->lists('username', 'id');
-        return \View::make('admin.users', compact('users', 'deleted_users', 'suspended_users', 'users_list', 'banned_users'));
+        $roles_list = \Role::lists('name', 'id');
+        return \View::make('admin.users', compact('users', 'deleted_users', 'suspended_users', 'users_list', 'banned_users', 'roles_list'));
     }
 
 

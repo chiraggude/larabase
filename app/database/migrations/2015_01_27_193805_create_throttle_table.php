@@ -22,7 +22,7 @@ class CreateThrottleTable extends Migration {
 			$table->boolean('banned')->default(false);
 			$table->timestamp('last_activity');
 			$table->timestamp('last_login');
-			$table->timestamp('last_attempt');
+			$table->timestamp('last_attempt')->nullable();
 			$table->timestamps();
 		});
 	}
