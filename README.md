@@ -4,6 +4,7 @@ LaraBase
 > LaraBase is a starter app for speeding up the development of Laravel projects. Most SaaS apps require user authentication, email activation, feedback form, dashboard, user profiles, setting, blog etc. With basic knowledge of Laravel's conventions, LaraBase can be adapted and customized to your needs. The frontend is built with Bootstrap 3.3 and this codebase includes the JeffreyWay/Laravel-4-Generators package as a dev-dependency.
 
 ### [Live Demo](http://larabase.turizon.co.in/) 
+
 **Demo Admin account** - Email: `admin@gmail.com` Password: `password`
 
 ## Features
@@ -22,7 +23,7 @@ LaraBase
 * Admin section: Users, Posts, Tags, Categories, Roles, Permissions
 * Contact/Feedback form submissions are saved in DB and emailed to the Admin
 * Throttle: User activity is logged to a separate DB table
-    * Track last login time, ip address, failed login attempts etc.
+    * Track last login time, IP address, failed login attempts etc.
     * Suspend an account after a specified number of failed login attempts. Suspended accounts are unlocked after a specified time period.
     * Admins can Ban the user for an indefinite amount of time
 * Users Directory: List of all users with links to their public profiles
@@ -33,9 +34,10 @@ LaraBase
 ## Installation and Setup
 
 ### Step 1 - Get LaraBase
+
 **Option 1**: [Download LaraBase](https://github.com/chiraggude/larabase/archive/master.zip) and unzip it (remember to rename the folder to larabase)
 
-**Option 2**: Git Clone `git clone https://github.com/chiraggude/larabase.git larabase`
+**Option 2**: git clone `git clone https://github.com/chiraggude/larabase.git larabase`
 
 ### Step 2: Use Composer to install dependencies: 
 ```
@@ -60,11 +62,16 @@ By default, LaraBase's environment is set to `local`, so all configurations in `
 
 
 ### Step 4: Database Migrations and Seeding
-Setup migrations table in DB: `php artisan migrate`
 
-Seed the database: `php artisan db:seed`
+* Setup migrations table in DB: `php artisan migrate`
+* Change details of Admin account and assigned Roles in `/app/database/seeds/UsersTableSeeder.php`
+* Check in-built Roles in `/app/database/seeds/RolesTableSeeder.php`. Modify them as required.
+* Check in-built Permissions in `/app/database/seeds/PermissionsTableSeeder.php`. Modify them as required.
+* Check permissions assigned to the in-built Roles in `/app/database/seeds/PermissionRoleTableSeeder.php`
+* Seed the database: `php artisan db:seed`
 
 ### Step 5: Setup extra Dev Tools (optional)
+
 Add the following line to the list of Service Providers in `/app/config/local/app.php`
 ```
 // Larabase
@@ -72,6 +79,7 @@ Add the following line to the list of Service Providers in `/app/config/local/ap
 ```
 
 ### Step 6: Start using LaraBase
+
 LaraBase: [http://localhost/larabase/public](http://localhost/larabase/public)
 
 Admin Account - Email: `admin@gmail.com`   Password: `password`
@@ -79,9 +87,11 @@ Admin Account - Email: `admin@gmail.com`   Password: `password`
 **Note**: The URL depends on how you have configured your webserver.
 
 ## Upcoming Features
+
 * Social Login - Login via FaceBook, Twitter, LinkedIn, Google, Microsoft, GitHub
 
 ## Pending
+
 * Upgrade to Laravel 5
 * Assets via Elixr, Bower
 * Code refactoring (reduce yuckiness)
@@ -89,11 +99,12 @@ Admin Account - Email: `admin@gmail.com`   Password: `password`
 * Document custom helper functions in wiki
 
 ## Requirements
+
 * PHP >= 5.4.0
 * MCrypt PHP Extension
 * Composer
 
-### Learn More: [LaraBase Wiki](https://github.com/chiraggude/larabase/wiki)
+### Extended Documentation: [LaraBase Wiki](https://github.com/chiraggude/larabase/wiki)
 
 ##### Extra Resources
 * [Mailchimp Email Blueprints](https://github.com/mailchimp/Email-Blueprints)
