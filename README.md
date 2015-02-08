@@ -3,7 +3,7 @@ LaraBase
 
 > LaraBase is a starter app for speeding up the development of Laravel projects. Most SaaS apps require user authentication, email activation, feedback form, dashboard, user profiles, setting, blog etc. With basic knowledge of Laravel's conventions, LaraBase can be adapted and customized to your needs. The frontend is built with Bootstrap 3.3 and this codebase includes the JeffreyWay/Laravel-4-Generators package as a dev-dependency.
 
-### [Live Demo](http://larabase.turizon.co.in/) 
+### [Live Demo](http://larabase.turizon.co.in/)
 
 **Demo Admin account** - Email: `admin@gmail.com` Password: `password`
 
@@ -35,9 +35,8 @@ LaraBase
 
 ### Step 1 - Get LaraBase
 
-**Option 1**: [Download LaraBase](https://github.com/chiraggude/larabase/archive/master.zip) and unzip it (remember to rename the folder to larabase)
-
-**Option 2**: git clone `git clone https://github.com/chiraggude/larabase.git larabase`
+* **Option 1**: [Download LaraBase](https://github.com/chiraggude/larabase/archive/master.zip) and unzip it (remember to rename the folder to larabase)
+* **Option 2**: git clone `git clone https://github.com/chiraggude/larabase.git larabase`
 
 ### Step 2: Use Composer to install dependencies: 
 ```
@@ -48,18 +47,12 @@ composer install
 
 By default, LaraBase's environment is set to `local`, so all configurations in `/app/config/local/` will take precedence over configurations in `/app/config/`.
 
-**Step A**: Copy **app.php**, **database.php**, **mail.php** and **larabase.php** from `/app/config/` to `/app/config/local`
-
-**Step B**: Configure App settings in `/app/config/local/app.php`. Add your app encryption `key` and set `debug` to `true`
-
-**Step C**: Create a new database on your machine and change the appropriate settings in `/app/config/local/database.php`
-
-**Step D**: Configure your mail settings in `/app/config/local/mail.php`
-
-**Step E**:  Configure your LaraBase specific settings in `/app/config/local/larabase.php`
-
-[Read this guide if your planning to deploy an app built on LaraBase to production](https://github.com/chiraggude/larabase/wiki/Deployment-on-a-VPS#env-file)
-
+* Copy **app.php**, **database.php**, **mail.php** and **larabase.php** from `/app/config/` to `/app/config/local`
+* Configure App settings in `/app/config/local/app.php`. Add your app encryption `key` and set `debug` to `true`
+* Create a new database on your machine and change the appropriate settings in `/app/config/local/database.php`
+* Configure your mail settings in `/app/config/local/mail.php`
+* Configure your LaraBase specific settings in `/app/config/local/larabase.php`
+* [Read this guide if your planning to deploy an app built on LaraBase to production](https://github.com/chiraggude/larabase/wiki/Deployment-on-a-VPS#env-file)
 
 ### Step 4: Database Migrations and Seeding
 
@@ -80,11 +73,8 @@ Add the following line to the list of Service Providers in `/app/config/local/ap
 
 ### Step 6: Start using LaraBase
 
-LaraBase: [http://localhost/larabase/public](http://localhost/larabase/public)
-
-Admin Account - Email: `admin@gmail.com`   Password: `password`
-
-**Note**: The URL depends on how you have configured your webserver.
+* LaraBase: [http://localhost/larabase/public](http://localhost/larabase/public) `(Depends on your local web server config)`
+* Admin Account - Email: `admin@gmail.com`   Password: `password`
 
 ## Upcoming Features
 
