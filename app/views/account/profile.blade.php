@@ -10,7 +10,7 @@
             <div class="media">
               <div class="media-left">
                 <a href="{{ URL::to('users/'.$user->username) }}">
-                    <img src="{{ image_url($user->profile->avatar_filename) }}" alt="{{ $user->full_name }}" class="img-thumbnail media-object" width="220" height="220">
+                    <img src="{{ image_url($user->profile->avatar_filename) }}" alt="{{ $user->full_name }}" class="media-object" width="220" height="220">
                 </a>
               </div>
               <div class="media-body">
