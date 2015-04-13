@@ -16,7 +16,7 @@
                             <img src="{{ image_url($user->profile->avatar_filename) }}" alt="{{ $user->full_name }}" width="60" height="60">
                         </a>
                         <div class="media-body">
-                            <h4 class="media-heading">{{ $user->full_name }} </h4>
+                            <h4 class="media-heading">{{ link_to("/users/{$user->username}", $user->full_name) }}</h4>
                             <small class="text-muted">{{ link_to("/users/{$user->username}", $user->username) }}</small>
                             <p class="small text-muted">last seen {{$user->updated_at->diffForHumans() }}</p>
                         </div>
